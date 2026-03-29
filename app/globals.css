@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --color-borgonha: #7b1d40;
+  --color-borgonha-escuro: #541030;
+  --color-borgonha-claro: #a03560;
+  --color-ouro: #c9a55a;
+  --color-ouro-claro: #e8c97a;
+  --color-ouro-escuro: #a07c35;
+  --color-preto: #0a0808;
+  --color-cinza-fundo: #111010;
+  --color-cinza-quente: #1c1418;
+  --color-branco: #fafafa;
+  --color-creme: #f5ede0;
+  --color-creme-escuro: #ebd9c2;
+  --shadow-borgonha: 0 20px 60px rgba(123, 29, 64, 0.3);
+}
+
+@theme inline {
+  --color-borgonha: var(--color-borgonha);
+  --color-borgonha-escuro: var(--color-borgonha-escuro);
+  --color-borgonha-claro: var(--color-borgonha-claro);
+  --color-ouro: var(--color-ouro);
+  --color-ouro-claro: var(--color-ouro-claro);
+  --color-ouro-escuro: var(--color-ouro-escuro);
+  --color-preto: var(--color-preto);
+  --color-cinza-fundo: var(--color-cinza-fundo);
+  --color-cinza-quente: var(--color-cinza-quente);
+  --color-branco: var(--color-branco);
+  --color-creme: var(--color-creme);
+  --color-creme-escuro: var(--color-creme-escuro);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-cormorant: var(--font-cormorant);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-great-vibes: var(--font-great-vibes);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-preto);
+  color: var(--color-branco);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+@media (min-width: 768px) {
+  body[data-cursor-custom="true"]:not([data-reduced-motion="true"]) {
+    cursor: none;
+  }
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant), serif;
+}
+
+.font-great-vibes {
+  font-family: var(--font-great-vibes), cursive;
+}
+
+.text-hero-title {
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.95;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.text-section-title {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.text-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.text-script-accent {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.text-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.shimmer-ouro {
+  background: linear-gradient(90deg, #c9a55a, #e8c97a, #c9a55a);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 55s linear infinite;
+}
+
+.marquee-pause:hover {
+  animation-play-state: paused;
+}
+
+.glass-nav {
+  backdrop-filter: blur(20px);
+  background: rgba(10, 8, 8, 0.6);
+}
+
+.prose-mif {
+  color: var(--color-preto);
+}
+
+.prose-mif p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
