@@ -13,11 +13,12 @@ const Footer = () => (
     <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:items-start md:justify-between">
       <div className="max-w-sm">
         <Image
-          src="/logo.png"
+          src="/mindjer_i_futuro_logo.svg"
           alt="Mindjer i Futuro"
-          width={140}
-          height={56}
-          className="mb-6 h-12 w-auto object-contain"
+          width={180}
+          height={64}
+          className="mb-6 h-12 w-auto object-contain object-left"
+          unoptimized
         />
         <p className="text-sm font-light leading-relaxed text-white/70">
           Conferência de Liderança Feminina na Guiné-Bissau. Um espaço criado por mulheres, para mulheres.

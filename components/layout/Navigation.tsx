@@ -73,12 +73,13 @@ const Navigation = ({ lightBg = false }: Props) => {
         >
           <Link href="/" className="relative z-10 shrink-0 md:cursor-none">
             <Image
-              src="/logo.png"
+              src="/mindjer_i_futuro_logo.svg"
               alt="Mindjer i Futuro"
-              width={120}
-              height={48}
-              className="h-10 w-auto object-contain"
+              width={160}
+              height={56}
+              className="h-10 w-auto object-contain object-left"
               priority
+              unoptimized
             />
           </Link>
 

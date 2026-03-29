@@ -7,7 +7,7 @@ const jsonLd = {
   description:
     "Conferência sem fins lucrativos de liderança feminina na Guiné-Bissau. Workshops, mentoria, bolsas de estudo e eventos que capacitam jovens mulheres guineenses.",
   url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
+  logo: `${siteUrl}/mindjer_i_futuro_logo.svg`,
   address: {
     "@type": "PostalAddress",
     addressCountry: "GW",

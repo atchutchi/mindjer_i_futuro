@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     url: site,
     siteName: "Mindjer i Futuro",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Mindjer i Futuro" }],
+    images: [{ url: "/mindjer_i_futuro_logo.svg", width: 800, height: 800, alt: "Mindjer i Futuro" }],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },

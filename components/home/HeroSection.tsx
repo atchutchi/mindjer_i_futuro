@@ -100,12 +100,13 @@ const HeroSection = () => {
 
         <div ref={logoRef} className="mb-10">
           <Image
-            src="/logo.png"
+            src="/mindjer_i_futuro_logo.svg"
             alt="Mindjer i Futuro — Conferência de Liderança Feminina"
-            width={200}
-            height={200}
-            className="mx-auto h-36 w-auto object-contain drop-shadow-[var(--shadow-borgonha)] md:h-44"
+            width={320}
+            height={320}
+            className="mx-auto h-36 w-auto max-w-[min(90vw,22rem)] object-contain drop-shadow-[var(--shadow-borgonha)] md:h-44"
             priority
+            unoptimized
           />
         </div>
 
