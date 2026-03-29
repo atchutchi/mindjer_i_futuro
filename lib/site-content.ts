@@ -190,15 +190,21 @@ export const testemunhoFallback: TestemunhoFallback = {
     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
 }
 
-export const parceirosNomes = [
-  "RENAJ",
-  "NKD",
-  "Adama Connect",
-  "Tabanka TV",
-  "Abiptom",
-  "Impact Hub Bissau",
-  "CCFBG",
-  "QR Consulting",
-  "Embaixada EUA",
-  "Embaixada França",
-] as const
+export type ParceiroItem = {
+  nome: string
+  logoSrc: string
+}
+
+export const parceirosItems: ParceiroItem[] = [
+  { nome: "Abiptom", logoSrc: "/parceiros/abiptom.svg" },
+  { nome: "Adama Connect", logoSrc: "/parceiros/adama_connect.svg" },
+  {
+    nome: "CCFBG",
+    logoSrc: "/parceiros/centre_culturel_franco_bissau_guineen.svg",
+  },
+  { nome: "Impact Hub Bissau", logoSrc: "/parceiros/impact_hub.svg" },
+  { nome: "iParticipate", logoSrc: "/parceiros/iparticipate.svg" },
+  { nome: "No Kunsi Digital", logoSrc: "/parceiros/no_kunsi_digital.svg" },
+  { nome: "QR Consulting", logoSrc: "/parceiros/qr_consulting.svg" },
+  { nome: "Tabanka TV", logoSrc: "/parceiros/tabanka.svg" },
+]

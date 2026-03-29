@@ -1,19 +1,20 @@
 "use client"
 
-import { parceirosNomes } from "@/lib/site-content"
+import { parceirosItems } from "@/lib/site-content"
+
+const logoClass =
+  "h-11 w-auto max-w-[min(200px,42vw)] object-contain object-center brightness-0 invert opacity-90 transition-all duration-300 hover:scale-105 hover:brightness-100 hover:invert-0 md:h-14 md:max-w-[220px]"
 
 const Row = ({ reverse, slow }: { reverse?: boolean; slow?: boolean }) => (
   <div
-    className={`flex w-max gap-16 py-6 ${slow ? "animate-marquee-slow marquee-pause" : "animate-marquee marquee-pause"} ${
-      reverse ? "[animation-direction:reverse]" : ""
-    }`}
+    className={`flex w-max items-center gap-12 py-6 md:gap-20 ${
+      slow ? "animate-marquee-slow marquee-pause" : "animate-marquee marquee-pause"
+    } ${reverse ? "[animation-direction:reverse]" : ""}`}
   >
-    {[...parceirosNomes, ...parceirosNomes].map((nome, i) => (
-      <span
-        key={`${nome}-${i}`}
-        className="shrink-0 text-2xl font-light uppercase tracking-[0.2em] text-[var(--color-branco)] brightness-0 invert transition-transform duration-300 hover:scale-110 hover:brightness-100 hover:invert-0 md:text-3xl"
-      >
-        {nome}
+    {[...parceirosItems, ...parceirosItems].map((p, i) => (
+      <span key={`${p.nome}-${i}`} className="flex shrink-0 items-center justify-center">
+        {/* eslint-disable-next-line @next/next/no-img-element -- SVGs locais variados; evita otimização pesada */}
+        <img src={p.logoSrc} alt={p.nome} className={logoClass} loading="lazy" />
       </span>
     ))}
   </div>
