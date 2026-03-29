@@ -1,11 +1,23 @@
+import {
+  textoBolsasLinguaFrancesa,
+  textoBrunchAngariacao,
+  textoCursoHabilidadesProfissionais,
+  textoIdentidadesDiasporicas,
+  textoMasterclassFalarEmPublico,
+  textoPodcast,
+  textoProgramaMentoria,
+} from "./projectos-textos"
+
 export type ProjectoFallback = {
   titulo: string
   slug: string
   categoria: string
   descricaoBreve: string
+  descricaoLonga: string
   destaque: boolean
   impacto?: string
   imagemCapaUrl: string
+  galeriaUrls?: string[]
 }
 
 export type EventoFallback = {
@@ -36,9 +48,9 @@ export type TestemunhoFallback = {
 }
 
 export const heroSlideUrls = [
-  "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1920&q=80",
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80",
-  "https://images.unsplash.com/photo-1540575467063-27a2dade0f47?w=1920&q=80",
+  "/projectos/identidades-diasporicas/capa.png",
+  "/projectos/curso-habilidades-profissionais/capa.png",
+  "/projectos/brunch-angariacao/capa.png",
 ]
 
 export const impactoBgUrl =
@@ -51,10 +63,14 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Capacitação",
     descricaoBreve:
       "Parceria com a Embaixada dos EUA. 30 participantes, 6 semanas: CV, entrevistas e comunicação digital.",
+    descricaoLonga: textoCursoHabilidadesProfissionais,
     destaque: true,
     impacto: "30 participantes",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
+    imagemCapaUrl: "/projectos/curso-habilidades-profissionais/capa.png",
+    galeriaUrls: [
+      "/projectos/curso-habilidades-profissionais/galeria-1.png",
+      "/projectos/curso-habilidades-profissionais/galeria-2.png",
+    ],
   },
   {
     titulo: "Masterclass Falar em Público",
@@ -62,10 +78,11 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Capacitação",
     descricaoBreve:
       "Na Escola Nacional de Administração: confiança, linguagem corporal e comunicação assertiva.",
+    descricaoLonga: textoMasterclassFalarEmPublico,
     destaque: true,
     impacto: "Escola Nacional de Administração",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
+    imagemCapaUrl: "/projectos/masterclass-falar-em-publico/capa.png",
+    galeriaUrls: ["/projectos/masterclass-falar-em-publico/galeria-1.png"],
   },
   {
     titulo: "Mulheres Guineenses e Identidades Diaspóricas",
@@ -73,10 +90,14 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Cultura",
     descricaoBreve:
       "Embaixada de França e CCFBG: identidade, pertença e diáspora guineense.",
+    descricaoLonga: textoIdentidadesDiasporicas,
     destaque: true,
     impacto: "Embaixada de França + CCFBG",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+    imagemCapaUrl: "/projectos/identidades-diasporicas/capa.png",
+    galeriaUrls: [
+      "/projectos/identidades-diasporicas/galeria-1.png",
+      "/projectos/identidades-diasporicas/galeria-2.png",
+    ],
   },
   {
     titulo: "Bolsas de Estudo Língua Francesa",
@@ -84,10 +105,10 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Bolsas",
     descricaoBreve:
       "10 bolsas, 8 meses, no Centro Cultural Franco-Bissau-Guineense.",
+    descricaoLonga: textoBolsasLinguaFrancesa,
     destaque: true,
     impacto: "10 bolsas · 8 meses",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80",
+    imagemCapaUrl: "/projectos/bolsas-lingua-francesa/capa.png",
   },
   {
     titulo: "Programa de Mentoria",
@@ -95,10 +116,10 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Mentoria",
     descricaoBreve:
       "9 pares mentora/aprendiz ao longo de 7 meses para desenvolvimento pessoal e profissional.",
+    descricaoLonga: textoProgramaMentoria,
     destaque: true,
     impacto: "9 pares · 7 meses",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    imagemCapaUrl: "/projectos/programa-mentoria/capa.png",
   },
   {
     titulo: "Brunch & Angariação de Fundos",
@@ -106,10 +127,11 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Angariação",
     descricaoBreve:
       "Parceria com o Restaurante Gã Melá: rede e financiamento da organização.",
+    descricaoLonga: textoBrunchAngariacao,
     destaque: true,
     impacto: "Parceria Gã Melá",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    imagemCapaUrl: "/projectos/brunch-angariacao/capa.png",
+    galeriaUrls: ["/projectos/brunch-angariacao/galeria-1.png"],
   },
   {
     titulo: "Podcast Mindjer i Futuro",
@@ -117,10 +139,10 @@ export const projectosFallback: ProjectoFallback[] = [
     categoria: "Podcast",
     descricaoBreve:
       "Parceria iParticipate, mensal no YouTube: vozes de mulheres guineenses inspiradoras.",
+    descricaoLonga: textoPodcast,
     destaque: true,
     impacto: "Mensal · YouTube",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80",
+    imagemCapaUrl: "/projectos/podcast-mindjer-i-futuro/capa.png",
   },
 ]
 
