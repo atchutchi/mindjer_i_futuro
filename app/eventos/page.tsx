@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { fetchEventos } from "@/lib/sanity.fetch"
 import { urlForImage } from "@/lib/sanity.image"
-import { eventosFallback } from "@/lib/site-content"
+import { eventosFallbackOrdenados } from "@/lib/site-content"
 import EventosSection, { type EventoListItem } from "@/components/home/EventosSection"
 
 export const metadata: Metadata = {
@@ -20,20 +20,24 @@ type SanityEvento = {
 }
 
 const build = (raw: SanityEvento[] | null): EventoListItem[] => {
+  const fb = eventosFallbackOrdenados
+  const mapSanity = (ev: SanityEvento, i: number): EventoListItem => ({
+    titulo: ev.titulo,
+    slug: ev.slug,
+    data: ev.data,
+    local: ev.local ?? "Bissau, Guiné-Bissau",
+    descricaoBreve: ev.descricaoBreve,
+    status: ev.status,
+    imagemUrl:
+      urlForImage(ev.imagemCapa)?.width(800).height(800).url() ??
+      fb[i % fb.length].imagemCapaUrl,
+  })
   if (raw?.length) {
-    return raw.map((ev, i) => ({
-      titulo: ev.titulo,
-      slug: ev.slug,
-      data: ev.data,
-      local: ev.local ?? "Bissau, Guiné-Bissau",
-      descricaoBreve: ev.descricaoBreve,
-      status: ev.status,
-      imagemUrl:
-        urlForImage(ev.imagemCapa)?.width(800).height(800).url() ??
-        eventosFallback[i % eventosFallback.length].imagemCapaUrl,
-    }))
+    return [...raw.map(mapSanity)].sort(
+      (a, b) => new Date(b.data).getTime() - new Date(a.data).getTime(),
+    )
   }
-  return eventosFallback.map((ev) => ({
+  return fb.map((ev) => ({
     titulo: ev.titulo,
     slug: ev.slug,
     data: ev.data,

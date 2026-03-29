@@ -7,7 +7,7 @@ import {
 import { urlForImage } from "@/lib/sanity.image"
 import {
   equipaFallback,
-  eventosFallback,
+  eventosFallbackOrdenados,
   projectosFallback,
   testemunhoFallback,
 } from "@/lib/site-content"
@@ -77,20 +77,24 @@ const buildProjectos = (raw: SanityProjecto[] | null): ProjectoPreview[] => {
 }
 
 const buildEventos = (raw: SanityEvento[] | null): EventoListItem[] => {
+  const fb = eventosFallbackOrdenados
+  const mapSanity = (ev: SanityEvento, i: number): EventoListItem => ({
+    titulo: ev.titulo,
+    slug: ev.slug,
+    data: ev.data,
+    local: ev.local ?? "Bissau, Guiné-Bissau",
+    descricaoBreve: ev.descricaoBreve,
+    status: ev.status,
+    imagemUrl:
+      urlForImage(ev.imagemCapa)?.width(800).height(800).url() ??
+      fb[i % fb.length].imagemCapaUrl,
+  })
   if (raw?.length) {
-    return raw.map((ev, i) => ({
-      titulo: ev.titulo,
-      slug: ev.slug,
-      data: ev.data,
-      local: ev.local ?? "Bissau, Guiné-Bissau",
-      descricaoBreve: ev.descricaoBreve,
-      status: ev.status,
-      imagemUrl:
-        urlForImage(ev.imagemCapa)?.width(800).height(800).url() ??
-        eventosFallback[i % eventosFallback.length].imagemCapaUrl,
-    }))
+    return [...raw.map(mapSanity)].sort(
+      (a, b) => new Date(b.data).getTime() - new Date(a.data).getTime(),
+    ).slice(0, 6)
   }
-  return eventosFallback.map((ev) => ({
+  return fb.slice(0, 6).map((ev) => ({
     titulo: ev.titulo,
     slug: ev.slug,
     data: ev.data,

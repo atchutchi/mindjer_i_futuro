@@ -20,15 +20,8 @@ export type ProjectoFallback = {
   galeriaUrls?: string[]
 }
 
-export type EventoFallback = {
-  titulo: string
-  slug: string
-  data: string
-  local: string
-  descricaoBreve: string
-  status: "passado" | "proximo" | "inscricoes-abertas"
-  imagemCapaUrl: string
-}
+export type { EventoFallback } from "./eventos-data"
+export { eventosFallback, eventosFallbackOrdenados } from "./eventos-data"
 
 export type MembroFallback = {
   nome: string
@@ -143,31 +136,6 @@ export const projectosFallback: ProjectoFallback[] = [
     destaque: true,
     impacto: "Mensal · YouTube",
     imagemCapaUrl: "/projectos/podcast-mindjer-i-futuro/capa.png",
-  },
-]
-
-export const eventosFallback: EventoFallback[] = [
-  {
-    titulo: "Conferência Mindjer i Futuro 2024",
-    slug: "conferencia-2024",
-    data: "2024-03-15T09:00:00.000Z",
-    local: "Bissau, Guiné-Bissau",
-    descricaoBreve:
-      "Encontro anual com palestras, debates e workshops de liderança feminina.",
-    status: "passado",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1540575467063-27a2dade0f47?w=800&q=80",
-  },
-  {
-    titulo: "Próxima edição — Mindjer i Futuro",
-    slug: "proxima-edicao",
-    data: "2026-06-01T09:00:00.000Z",
-    local: "Bissau, Guiné-Bissau",
-    descricaoBreve:
-      "Novas sessões de capacitação, mentoria e partilha de histórias. Inscrições em breve.",
-    status: "proximo",
-    imagemCapaUrl:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80",
   },
 ]
 

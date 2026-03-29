@@ -4,7 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { fetchEventoBySlug } from "@/lib/sanity.fetch"
 import { urlForImage } from "@/lib/sanity.image"
-import { eventosFallback } from "@/lib/site-content"
+import { eventosFallback, type EventoFallback } from "@/lib/site-content"
 import PortableBody from "@/components/content/PortableBody"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -62,9 +62,10 @@ export default async function EventoDetalhePage({ params }: Props) {
     day: "numeric",
     month: "long",
     year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
   })
+  const meta = fb as EventoFallback | undefined
+  const parceiroLinha =
+    meta?.parceiro && meta.parceiro.trim() !== "-" ? meta.parceiro : null
 
   return (
     <article className="bg-[var(--color-creme)] pb-24 pt-28 md:pt-36">
@@ -79,6 +80,28 @@ export default async function EventoDetalhePage({ params }: Props) {
         <h1 className="font-cormorant text-section-title mb-4 text-[var(--color-borgonha)]">{titulo}</h1>
         <p className="font-great-vibes text-2xl text-[var(--color-borgonha)]/80 md:text-3xl">{dateStr}</p>
         <p className="mt-2 text-sm uppercase tracking-widest text-[var(--color-preto)]/60">{local}</p>
+        {meta ? (
+          <dl className="mt-8 grid gap-3 border-t border-[var(--color-borgonha)]/15 pt-8 text-[var(--color-preto)]/85">
+            <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+              <dt className="text-label shrink-0 text-[var(--color-borgonha)]">Participantes</dt>
+              <dd className="font-light">{meta.totalParticipantes}</dd>
+            </div>
+            <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+              <dt className="text-label shrink-0 text-[var(--color-borgonha)]">Duração</dt>
+              <dd className="font-light">{meta.duracao}</dd>
+            </div>
+            <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+              <dt className="text-label shrink-0 text-[var(--color-borgonha)]">Facilitação</dt>
+              <dd className="font-light">{meta.facilitador}</dd>
+            </div>
+            {parceiroLinha ? (
+              <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+                <dt className="text-label shrink-0 text-[var(--color-borgonha)]">Parceiros</dt>
+                <dd className="font-light">{parceiroLinha}</dd>
+              </div>
+            ) : null}
+          </dl>
+        ) : null}
         {doc?.capacidade ? (
           <p className="mt-4 text-sm text-[var(--color-preto)]/75">Capacidade: {doc.capacidade} lugares</p>
         ) : null}
