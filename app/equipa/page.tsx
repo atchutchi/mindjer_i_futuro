@@ -7,7 +7,8 @@ import type { MembroItem } from "@/components/home/EquipaSection"
 
 export const metadata: Metadata = {
   title: "Equipa",
-  description: "Conhece as mulheres por detrás da Mindjer i Futuro e da conferência de liderança feminina.",
+  description:
+    "Conhece as co-fundadoras, coordenadoras e assistentes que constroem a Mindjer i Futuro na Guiné-Bissau.",
 }
 
 type SanityMembro = {
@@ -17,27 +18,32 @@ type SanityMembro = {
   foto?: unknown
   linkedin?: string
   instagram?: string
+  ordem?: number
 }
 
 const mapMembros = (raw: SanityMembro[] | null): MembroItem[] => {
   if (raw?.length) {
-    return raw.map((m) => ({
+    return [...raw]
+      .sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0))
+      .map((m) => ({
+        nome: m.nome,
+        cargo: m.cargo ?? "",
+        bio: m.bio ?? "",
+        fotoUrl: urlForImage(m.foto)?.width(600).height(800).url() ?? undefined,
+        linkedin: m.linkedin,
+        instagram: m.instagram,
+      }))
+  }
+  return [...equipaFallback]
+    .sort((a, b) => a.ordem - b.ordem)
+    .map((m) => ({
       nome: m.nome,
-      cargo: m.cargo ?? "",
-      bio: m.bio ?? "",
-      fotoUrl: urlForImage(m.foto)?.width(600).height(800).url() ?? undefined,
+      cargo: m.cargo,
+      bio: m.bio,
+      fotoUrl: m.fotoUrl,
       linkedin: m.linkedin,
       instagram: m.instagram,
     }))
-  }
-  return equipaFallback.map((m) => ({
-    nome: m.nome,
-    cargo: m.cargo,
-    bio: m.bio,
-    fotoUrl: m.fotoUrl,
-    linkedin: m.linkedin,
-    instagram: m.instagram,
-  }))
 }
 
 export default async function EquipaPage() {
@@ -49,10 +55,10 @@ export default async function EquipaPage() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <p className="text-label mb-3 text-[var(--color-ouro)]">Equipa completa</p>
         <h1 className="font-cormorant text-section-title mb-6 text-[var(--color-branco)]">
-          Mulheres que lideram a mudança
+          Quem somos
         </h1>
         <p className="mb-16 max-w-2xl text-lg font-light text-white/75">
-          Promotoras, mentoras e voluntárias que constroem, dia a dia, o futuro que queremos ver.
+          Co-fundadoras, coordenação e equipa operacional que levam a conferência e os projectos a cada edição.
         </p>
       </div>
       <EquipaSection membros={membros} variant="page" />

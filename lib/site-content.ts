@@ -151,28 +151,43 @@ export const eventosFallback: EventoFallback[] = [
 
 export const equipaFallback: MembroFallback[] = [
   {
-    nome: "Equipa Mindjer i Futuro",
-    cargo: "Promotoras e voluntárias",
-    bio: "Mulheres comprometidas com o empoderamento e a liderança feminina na Guiné-Bissau.",
+    nome: "Ana Djú",
+    cargo: "Co-Fundadora",
+    bio: "Co-fundadora da Mindjer i Futuro, Ana Dju é empreendedora social com experiência no sistema das Nações Unidas, nomeadamente no PNUD, onde tem liderado iniciativas nas áreas de juventude, género, inovação e acesso à justiça. É licenciada em Direito e mestre em Políticas Africanas pela SOAS, University of London. Ao longo do seu percurso, tem desenvolvido projetos focados no empoderamento de jovens mulheres, inclusão social e criação de oportunidades, combinando trabalho comunitário, desenvolvimento de políticas e inovação para gerar impacto sustentável na Guiné-Bissau.",
     ordem: 1,
-    fotoUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    fotoUrl: "/equipa/ana-dju.png",
   },
   {
-    nome: "Rede de mentoras",
-    cargo: "Mentoria",
-    bio: "Profissionais que acompanham jovens mulheres no percurso de crescimento pessoal e profissional.",
+    nome: "Né Vaz",
+    cargo: "Co-Fundadora",
+    bio: "",
     ordem: 2,
-    fotoUrl:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80",
   },
   {
-    nome: "Parceiros de programa",
-    cargo: "Capacitação",
-    bio: "Instituições e formadoras que tornam possíveis os cursos e masterclasses.",
+    nome: "Ilsa Cá e Sá",
+    cargo: "Coordenadora de Logística",
+    bio: "Tem mais de 10 anos de experiência em contextos multissetoriais, incluindo colaboração com instituições governamentais, agências das Nações Unidas e ONGs. Especializada em gestão de projetos e diálogo político, demonstra forte compromisso com a inclusão, igualdade de género e desenvolvimento sustentável. Ao longo do seu percurso profissional, liderou várias iniciativas de participação cívica e capacitação de jovens na Guiné-Bissau. Tem experiência em monitorização, avaliação e gestão baseada em resultados. É formada em Relações Internacionais, Desenvolvimento e Cooperação Internacional.",
     ordem: 3,
-    fotoUrl:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80",
+  },
+  {
+    nome: "Domingos Lourenço",
+    cargo: "Assistente de Programas & Operações",
+    bio: "",
+    ordem: 4,
+  },
+  {
+    nome: "Aissatu Ly",
+    cargo: "Assistente de Eventos & Logística",
+    bio: "Aissatu Ly é estudante finalista do curso de Gestão de Empresas na Universidade Católica da Guiné-Bissau e desempenha funções como secretária estagiária na empresa Darling Sarl. Desenvolve competências em organização administrativa e comunicação profissional. Integra a equipa da Mindjer i Futuro como Assistente de Eventos & Logística, contribuindo na organização e coordenação de atividades para o desenvolvimento de jovens mulheres. Acredita na educação, liderança jovem e networking como ferramentas de transformação social.",
+    ordem: 5,
+    fotoUrl: "/equipa/aissatu-ly.png",
+  },
+  {
+    nome: "Biljorge Dinis Semedo Cabral",
+    cargo: "Assistente de TIC & Comunicação",
+    bio: "Biljorge Dinis Semedo Cabral é líder juvenil e profissional da educação na Guiné-Bissau, com formação em Ciências da Educação e experiência em economia e tecnologia. É Secretário-Geral do Youth Sounding Board (PNUD/União Europeia). Foi presidente da AJOC. Atua na capacitação de jovens e mulheres com foco em marketing digital e TIC. Trabalha com inovação, liderança inclusiva e desenvolvimento sustentável.",
+    ordem: 6,
+    fotoUrl: "/equipa/biljorge-cabral.png",
   },
 ]
 

@@ -47,6 +47,7 @@ type SanityMembro = {
   foto?: unknown
   linkedin?: string
   instagram?: string
+  ordem?: number
 }
 
 type SanityTestemunho = {
@@ -102,23 +103,27 @@ const buildEventos = (raw: SanityEvento[] | null): EventoListItem[] => {
 
 const buildEquipa = (raw: SanityMembro[] | null): MembroItem[] => {
   if (raw?.length) {
-    return raw.map((m) => ({
+    return [...raw]
+      .sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0))
+      .map((m) => ({
+        nome: m.nome,
+        cargo: m.cargo ?? "",
+        bio: m.bio ?? "",
+        fotoUrl: urlForImage(m.foto)?.width(600).height(800).url() ?? undefined,
+        linkedin: m.linkedin,
+        instagram: m.instagram,
+      }))
+  }
+  return [...equipaFallback]
+    .sort((a, b) => a.ordem - b.ordem)
+    .map((m) => ({
       nome: m.nome,
-      cargo: m.cargo ?? "",
-      bio: m.bio ?? "",
-      fotoUrl: urlForImage(m.foto)?.width(600).height(800).url() ?? undefined,
+      cargo: m.cargo,
+      bio: m.bio,
+      fotoUrl: m.fotoUrl,
       linkedin: m.linkedin,
       instagram: m.instagram,
     }))
-  }
-  return equipaFallback.map((m) => ({
-    nome: m.nome,
-    cargo: m.cargo,
-    bio: m.bio,
-    fotoUrl: m.fotoUrl,
-    linkedin: m.linkedin,
-    instagram: m.instagram,
-  }))
 }
 
 const buildTestemunho = (raw: SanityTestemunho | null) => {

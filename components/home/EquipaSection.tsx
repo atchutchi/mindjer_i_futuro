@@ -56,9 +56,29 @@ const EquipaSection = ({ membros, variant = "home" }: Props) => (
 
 const MembroCard = ({ membro, index }: { membro: MembroItem; index: number }) => {
   const [open, setOpen] = useState(false)
+  const hasBio = membro.bio.trim().length > 0
   const src =
     membro.fotoUrl ??
     "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
+
+  const photoInner = (
+    <div className="relative h-full w-full">
+      <Image
+        src={src}
+        alt={membro.nome}
+        fill
+        className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+        sizes="(max-width: 640px) 100vw, 33vw"
+        loading="lazy"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[var(--color-borgonha)] opacity-0 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-30" />
+      {hasBio ? (
+        <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[var(--color-branco)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          Ler biografia
+        </span>
+      ) : null}
+    </div>
+  )
 
   return (
     <motion.article
@@ -68,30 +88,31 @@ const MembroCard = ({ membro, index }: { membro: MembroItem; index: number }) =>
       transition={{ delay: index * 0.1, duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="text-center"
     >
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        className="group relative mx-auto block aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-cinza-quente)] text-left md:cursor-none"
-        aria-expanded={open}
-      >
-        <div className="relative h-full w-full">
-          <Image
-            src={src}
-            alt={membro.nome}
-            fill
-            className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-            sizes="(max-width: 640px) 100vw, 33vw"
-            loading="lazy"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[var(--color-borgonha)] opacity-0 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-30" />
+      {hasBio ? (
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          className="group relative mx-auto block aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-cinza-quente)] text-left md:cursor-none"
+          aria-expanded={open}
+          aria-label={`${open ? "Ocultar" : "Mostrar"} biografia de ${membro.nome}`}
+        >
+          {photoInner}
+        </button>
+      ) : (
+        <div className="group relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-cinza-quente)]">
+          {photoInner}
         </div>
-      </button>
+      )}
       <h3 className="font-cormorant mt-6 text-2xl text-[var(--color-branco)]">{membro.nome}</h3>
       <p className="text-label mt-2 text-[var(--color-ouro)]">{membro.cargo}</p>
+      {!hasBio ? (
+        <p className="mt-4 text-sm font-light italic text-white/45">Biografia em breve.</p>
+      ) : null}
       <motion.div
         initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+        animate={{ height: open && hasBio ? "auto" : 0, opacity: open && hasBio ? 1 : 0 }}
         className="overflow-hidden"
+        aria-hidden={!open || !hasBio}
       >
         <p className="mt-4 text-sm font-light leading-relaxed text-white/75">{membro.bio}</p>
       </motion.div>
