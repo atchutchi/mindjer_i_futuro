@@ -369,6 +369,8 @@ export const eventosFallback: EventoFallback[] = [
   }),
 ]
 
-export const eventosFallbackOrdenados = [...eventosFallback].sort(
-  (a, b) => new Date(b.data).getTime() - new Date(a.data).getTime(),
-)
+export const eventosFallbackOrdenados = [...eventosFallback].sort((a, b) => {
+  const t = new Date(b.data).getTime() - new Date(a.data).getTime()
+  if (t !== 0) return t
+  return a.no - b.no
+})
