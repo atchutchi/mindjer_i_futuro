@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useRef } from "react"
+import { Component, type ReactNode, useMemo, useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Points, PointMaterial } from "@react-three/drei"
 import * as THREE from "three"
@@ -39,16 +39,64 @@ const ParticleField = () => {
   )
 }
 
-const HeroParticles = () => (
-  <div className="pointer-events-none absolute inset-0 z-[1] opacity-80">
-    <Canvas
-      camera={{ position: [0, 0, 6], fov: 45 }}
-      gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
-      dpr={[1, 2]}
-    >
-      <ParticleField />
-    </Canvas>
-  </div>
-)
+const useClientWebGLSupported = () => {
+  const [supported, setSupported] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    try {
+      const canvas = document.createElement("canvas")
+      const gl =
+        canvas.getContext("webgl2", { failIfMajorPerformanceCaveat: false }) ??
+        canvas.getContext("webgl", { failIfMajorPerformanceCaveat: false })
+      setSupported(!!gl)
+    } catch {
+      setSupported(false)
+    }
+  }, [])
+
+  return supported
+}
+
+type BoundaryState = { hasError: boolean }
+
+class ParticlesErrorBoundary extends Component<{ children: ReactNode }, BoundaryState> {
+  state: BoundaryState = { hasError: false }
+
+  static getDerivedStateFromError(): BoundaryState {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error: Error) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("[HeroParticles] WebGL:", error.message)
+    }
+  }
+
+  render() {
+    if (this.state.hasError) return null
+    return this.props.children
+  }
+}
+
+const HeroParticles = () => {
+  const webgl = useClientWebGLSupported()
+
+  if (webgl === false) return null
+  if (webgl === null) return null
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-[1] opacity-80">
+      <ParticlesErrorBoundary>
+        <Canvas
+          camera={{ position: [0, 0, 6], fov: 45 }}
+          gl={{ alpha: true, antialias: false, powerPreference: "default" }}
+          dpr={[1, 2]}
+        >
+          <ParticleField />
+        </Canvas>
+      </ParticlesErrorBoundary>
+    </div>
+  )
+}
 
 export default HeroParticles
