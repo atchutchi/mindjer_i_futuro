@@ -152,6 +152,7 @@ export const equipaFallback: MembroFallback[] = [
     cargo: "Co-Fundadora",
     bio: "",
     ordem: 2,
+    fotoUrl: "/equipa/ne-vaz.png",
   },
   {
     nome: "Ilsa Cá e Sá",
@@ -164,6 +165,7 @@ export const equipaFallback: MembroFallback[] = [
     cargo: "Assistente de Programas & Operações",
     bio: "",
     ordem: 4,
+    fotoUrl: "/equipa/domingos-lourenco.png",
   },
   {
     nome: "Aissatu Ly",
