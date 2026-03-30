@@ -145,7 +145,7 @@ export const equipaFallback: MembroFallback[] = [
     cargo: "Co-Fundadora",
     bio: "Co-fundadora da Mindjer i Futuro, Ana Dju é empreendedora social com experiência no sistema das Nações Unidas, nomeadamente no PNUD, onde tem liderado iniciativas nas áreas de juventude, género, inovação e acesso à justiça. É licenciada em Direito e mestre em Políticas Africanas pela SOAS, University of London. Ao longo do seu percurso, tem desenvolvido projetos focados no empoderamento de jovens mulheres, inclusão social e criação de oportunidades, combinando trabalho comunitário, desenvolvimento de políticas e inovação para gerar impacto sustentável na Guiné-Bissau.",
     ordem: 1,
-    fotoUrl: "/equipa/ana-dju.png",
+    fotoUrl: "/equipa/ana_dju.jpeg",
   },
   {
     nome: "Né Vaz",
