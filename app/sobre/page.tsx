@@ -8,32 +8,102 @@ export const metadata: Metadata = {
     "Mindjer i Futuro — Conferência de Liderança Feminina na Guiné-Bissau. Missão, valores e impacto.",
 }
 
+const valores = [
+  {
+    titulo: "Igualdade",
+    descricao:
+      "Acreditamos num mundo onde todas as mulheres têm os mesmos direitos, oportunidades e reconhecimento.",
+  },
+  {
+    titulo: "Empoderamento",
+    descricao:
+      "Valorizamos a força interior de cada mulher e apoiamos o seu crescimento e autonomia.",
+  },
+  {
+    titulo: "Educação",
+    descricao:
+      "Defendemos o conhecimento como ferramenta de transformação e liberdade.",
+  },
+  {
+    titulo: "Sororidade",
+    descricao:
+      "Cultivamos uma rede de apoio, união e partilha entre mulheres, na Guiné-Bissau e na diáspora.",
+  },
+  {
+    titulo: "Coragem",
+    descricao:
+      "Incentivamos mulheres a desafiar limites, quebrar barreiras e ocupar o seu lugar.",
+  },
+  {
+    titulo: "Impacto",
+    descricao:
+      "Trabalhamos para gerar mudanças reais e duradouras na vida das mulheres e na sociedade.",
+  },
+]
+
 export default function SobrePage() {
   return (
     <div className="bg-[var(--color-creme)] pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-3xl px-5 md:px-8">
+        {/* Quem Somos */}
         <p className="text-label mb-4 text-[var(--color-borgonha)]">Quem somos</p>
         <h1 className="font-cormorant text-section-title mb-10 text-[var(--color-borgonha)]">
-          Sobre a Mindjer i Futuro
+          Mindjer i Futuro
         </h1>
-        <div className="space-y-8 text-base font-light leading-relaxed text-[var(--color-preto)]/90">
+        <div className="space-y-6 text-base font-light leading-relaxed text-[var(--color-preto)]/90">
           <p>
-            <strong className="font-medium text-[var(--color-borgonha)]">Mindjer i Futuro</strong> — Mulher é o
-            Futuro, em Crioulo Guineense — é uma conferência criada na Guiné-Bissau com o propósito de promover
-            debates, palestras e workshops para a partilha de conhecimento e experiências entre mulheres nos mais
-            variados quadrantes da vida social, cultural e económica.
+            A{" "}
+            <strong className="font-medium text-[var(--color-borgonha)]">
+              Mindjer i Futuro (MiF)
+            </strong>{" "}
+            nasce da convicção de que quando uma mulher avança, toda a sociedade progride. A
+            Mindjer i Futuro acredita no poder, na voz e no potencial das jovens raparigas e
+            mulheres da Guiné-Bissau.
           </p>
           <p>
-            Esta iniciativa não tem fins lucrativos e as suas promotoras visam sobretudo promover e motivar mulheres
-            que, de forma exemplar, dão o seu contributo para o desenvolvimento da nossa sociedade e que se destacam
-            pelo seu papel na transformação social, cultural e económica no nosso país.
-          </p>
-          <p>
-            Através de programas de mentoria, bolsas de estudo, masterclasses e parcerias estratégicas, construímos
-            redes de apoio para jovens mulheres guineenses.
+            A MiF cria oportunidades e fortalece capacidades, promovendo uma geração de mulheres
+            confiantes, preparadas e protagonistas do seu próprio futuro. Através da educação, da
+            mentoria e da criação de redes — incluindo a diáspora — construímos pontes para um
+            amanhã mais justo, inclusivo e cheio de possibilidades.
           </p>
         </div>
-        <div className="mt-14 flex flex-col gap-4 sm:flex-row">
+
+        {/* Missão */}
+        <div className="mt-20">
+          <p className="text-label mb-4 text-[var(--color-borgonha)]">Missão</p>
+          <h2 className="font-cormorant mb-8 text-[clamp(1.8rem,3.5vw,2.8rem)] font-semibold text-[var(--color-borgonha)]">
+            Transformar potencial em ação
+          </h2>
+          <p className="text-base font-light leading-relaxed text-[var(--color-preto)]/90">
+            Inspirar, capacitar e acompanhar meninas e mulheres guineenses na construção do seu
+            percurso pessoal e profissional, promovendo o acesso ao conhecimento, à liderança e à
+            autonomia económica. A nossa missão é transformar potencial em ação, contribuindo para
+            uma sociedade onde todas as mulheres tenham voz, espaço e oportunidade de prosperar.
+          </p>
+        </div>
+
+        {/* Valores */}
+        <div className="mt-20">
+          <p className="text-label mb-4 text-[var(--color-borgonha)]">Os nossos valores</p>
+          <h2 className="font-cormorant mb-12 text-[clamp(1.8rem,3.5vw,2.8rem)] font-semibold text-[var(--color-borgonha)]">
+            O que nos move
+          </h2>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {valores.map((v) => (
+              <div key={v.titulo} className="space-y-2">
+                <h3 className="font-cormorant text-xl font-semibold text-[var(--color-borgonha)]">
+                  {v.titulo}
+                </h3>
+                <p className="text-sm font-light leading-relaxed text-[var(--color-preto)]/80">
+                  {v.descricao}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTAs */}
+        <div className="mt-20 flex flex-col gap-4 sm:flex-row">
           <Button href="/projectos">Ver projectos</Button>
           <Link
             href="/contacto"

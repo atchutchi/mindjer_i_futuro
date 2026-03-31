@@ -28,7 +28,6 @@ const ParceirosSection = () => (
     </h2>
     <div className="flex flex-col gap-2">
       <Row />
-      <Row reverse slow />
     </div>
   </section>
 )
