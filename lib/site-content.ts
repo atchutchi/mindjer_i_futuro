@@ -155,15 +155,16 @@ export const equipaFallback: MembroFallback[] = [
     fotoUrl: "/equipa/ne-vaz.png",
   },
   {
-    nome: "Ilsa Cá e Sá",
+    nome: "Ilsa Cá Sá",
     cargo: "Coordenadora de Logística",
     bio: "Tem mais de 10 anos de experiência em contextos multissetoriais, incluindo colaboração com instituições governamentais, agências das Nações Unidas e ONGs. Especializada em gestão de projetos e diálogo político, demonstra forte compromisso com a inclusão, igualdade de género e desenvolvimento sustentável. Ao longo do seu percurso profissional, liderou várias iniciativas de participação cívica e capacitação de jovens na Guiné-Bissau. Tem experiência em monitorização, avaliação e gestão baseada em resultados. É formada em Relações Internacionais, Desenvolvimento e Cooperação Internacional.",
     ordem: 3,
+    fotoUrl: "/equipa/ilsa_sa.jpeg",
   },
   {
     nome: "Domingos Lourenço",
     cargo: "Assistente de Programas & Operações",
-    bio: "",
+    bio: "Especialista em redes, sistemas informáticos e suporte técnico, com experiência em administração de sistemas Windows e Linux, configuração de firewalls, montagem e manutenção de hardware e resolução de problemas de conectividade. Focado na otimização de processos tecnológicos e na segurança de dados, destaca-se também pelo seu espírito de equipa e atitude proativa, contribuindo ativamente para o bom funcionamento e a implementação das atividades e programação da associação.",
     ordem: 4,
     fotoUrl: "/equipa/domingos-lourenco.png",
   },
