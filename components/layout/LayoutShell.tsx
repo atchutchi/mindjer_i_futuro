@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer"
 import CustomCursor from "@/components/ui/CustomCursor"
 import SmoothScroll from "@/components/ui/SmoothScroll"
 
-const lightNavPrefixes = ["/sobre", "/contacto", "/parceiros", "/equipa", "/projectos", "/eventos"]
+const lightNavPrefixes = ["/sobre", "/contacto", "/parceiros", "/equipa", "/projectos", "/eventos", "/programacao"]
 
 type Props = {
   children: React.ReactNode
