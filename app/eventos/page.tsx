@@ -53,13 +53,13 @@ export default async function EventosPage() {
   const eventos = build(raw as SanityEvento[] | null)
 
   return (
-    <div className="pb-8 pt-28 md:pt-36">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <p className="text-label mb-3 text-center text-[var(--color-borgonha)]">Agenda</p>
-        <h1 className="font-cormorant text-section-title mb-6 text-center text-[var(--color-borgonha)]">
+    <div className="bg-[var(--color-creme)] pb-8 pt-32 md:pt-40">
+      <div className="mx-auto max-w-3xl px-5 md:px-8">
+        <p className="text-label mb-4 text-[var(--color-borgonha)]">Agenda</p>
+        <h1 className="font-cormorant text-section-title mb-6 text-[var(--color-borgonha)]">
           Eventos
         </h1>
-        <p className="mx-auto mb-16 max-w-2xl text-center text-lg font-light text-[var(--color-preto)]/75">
+        <p className="mb-16 max-w-2xl text-lg font-light text-[var(--color-preto)]/75">
           Encontros que reúnem mulheres de todo o país para aprender, partilhar e liderar.
         </p>
       </div>
