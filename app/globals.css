@@ -37,12 +37,29 @@
 
 html {
   scroll-behavior: auto;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
   background: var(--color-preto);
   color: var(--color-branco);
   font-family: var(--font-dm-sans), system-ui, sans-serif;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+#conteudo-principal {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  html,
+  body,
+  #conteudo-principal {
+    overflow-x: hidden;
+  }
 }
 
 @media (min-width: 768px) {
@@ -60,7 +77,7 @@ body {
 }
 
 .text-hero-title {
-  font-size: clamp(4rem, 10vw, 9rem);
+  font-size: clamp(3.25rem, 14vw, 9rem);
   line-height: 0.95;
   font-weight: 300;
   font-style: italic;

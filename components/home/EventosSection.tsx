@@ -76,7 +76,7 @@ const EventosSection = ({ eventos, showHeading = true }: Props) => {
   )
 
   return (
-    <section ref={rootRef} className="relative bg-[var(--color-creme)] px-5 py-[12vh] md:px-8">
+    <section ref={rootRef} className="relative overflow-hidden bg-[var(--color-creme)] px-5 py-[12vh] md:px-8">
       <div className="pointer-events-none absolute bottom-0 left-1/2 top-24 hidden w-px md:block" aria-hidden>
         <svg className="h-full w-2 -translate-x-1/2 overflow-visible" preserveAspectRatio="none">
           <path
