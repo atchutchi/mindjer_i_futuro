@@ -37,6 +37,8 @@ A Mindjer i Futuro (MiF) promove workshops, conferências, diálogos, programas 
 │   ├── sobre/              # Quem somos, missão e valores
 │   ├── projectos/          # Projectos e detalhe ([slug])
 │   ├── eventos/            # Eventos passados e futuros
+│   ├── blog/               # Artigos publicados via CMS
+│   ├── calendario/         # Agenda cronológica e exportação .ics
 │   ├── programacao/        # Programação anual 2026
 │   ├── equipa/             # Membros da equipa
 │   ├── parceiros/          # Parceiros e apoiantes
@@ -56,7 +58,7 @@ A Mindjer i Futuro (MiF) promove workshops, conferências, diálogos, programas 
 │   ├── sanity.fetch.ts     # Queries de dados
 │   └── fonts.ts            # Cormorant Garamond · DM Sans · Great Vibes
 ├── sanity/                 # Schemas do CMS
-│   └── schemaTypes/        # projecto, evento, membroEquipa, testemunho
+│   └── schemaTypes/        # configuração, artigo, projecto, evento, equipa, testemunho
 ├── public/                 # Assets estáticos
 │   ├── projectos/          # Imagens de projectos
 │   ├── eventos/            # Imagens de eventos
@@ -112,6 +114,18 @@ npm run dev
 - Site: [http://localhost:3000](http://localhost:3000)
 - Sanity Studio: [http://localhost:3000/studio](http://localhost:3000/studio)
 
+### Painel CMS
+
+O painel Sanity em `/studio` permite gerir:
+
+- Artigos do blog, com estado de publicação, imagem de capa, SEO e corpo em rich text.
+- Eventos, datas, inscrição, galeria, capacidade e exportação para calendário.
+- Projectos, imagens, galeria, impacto e metadados SEO.
+- Equipa e testemunhos.
+- Configuração do site, incluindo textos e imagens do hero da homepage.
+
+Em produção, a ferramenta Vision do Sanity fica desactivada por segurança.
+
 ---
 
 ## Scripts
@@ -150,6 +164,9 @@ npm run dev
 | `/projectos` | Todos os projectos com cards 3D |
 | `/projectos/[slug]` | Detalhe de cada projecto |
 | `/eventos` | Lista completa de eventos (30+) |
+| `/calendario` | Calendário de actividades com link `.ics` por evento |
+| `/blog` | Artigos publicados no CMS |
+| `/blog/[slug]` | Detalhe de artigo |
 | `/programacao` | Programação anual 2026 — workshops, diálogos e conferências |
 | `/equipa` | Membros da equipa |
 | `/parceiros` | Parceiros e apoiantes |

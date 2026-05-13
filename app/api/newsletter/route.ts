@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { rateLimit, requestIp } from "@/lib/rate-limit"
 import { newsletterSchema } from "@/lib/validations/contact"
 
 export const runtime = "nodejs"
 
 export const POST = async (req: Request) => {
+  const ip = requestIp(req)
+  const limited = rateLimit(`newsletter:${ip}`, 10, 60 * 60 * 1000)
+  if (!limited.ok) {
+    return NextResponse.json({ error: "Muitas tentativas. Tenta mais tarde." }, { status: 429 })
+  }
+
   const key = process.env.RESEND_API_KEY
   const admin = process.env.CONTACT_EMAIL ?? "ferreira.atchutchi@gmail.com"
 
@@ -25,6 +32,9 @@ export const POST = async (req: Request) => {
   const parsed = newsletterSchema.safeParse(body)
   if (!parsed.success) {
     return NextResponse.json({ error: "Email inválido." }, { status: 400 })
+  }
+  if (parsed.data.company) {
+    return NextResponse.json({ ok: true })
   }
 
   const resend = new Resend(key)

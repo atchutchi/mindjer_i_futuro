@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { fetchEventoBySlug } from "@/lib/sanity.fetch"
+import { CalendarPlus } from "lucide-react"
+import { fetchEventoBySlug, fetchEventoSlugs } from "@/lib/sanity.fetch"
 import { urlForImage } from "@/lib/sanity.image"
 import { eventosFallback, type EventoFallback } from "@/lib/site-content"
 import PortableBody from "@/components/content/PortableBody"
@@ -15,11 +16,20 @@ type SanityEventoDetail = {
   data: string
   local?: string
   status: "passado" | "proximo" | "inscricoes-abertas"
+  descricaoBreve?: string
   descricao?: unknown
-  imagemCapa?: unknown
+  imagemCapa?: { alt?: string }
+  galeria?: unknown[]
   linkInscricao?: string
   capacidade?: number
+  dataFim?: string
+  facilitador?: string
+  parceiros?: string[]
+  seoTitulo?: string
+  seoDescricao?: string
 }
+
+const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mindjerifuturo.org"
 
 const statusLabel = {
   passado: "Passado",
@@ -28,17 +38,38 @@ const statusLabel = {
 } as const
 
 export async function generateStaticParams() {
-  return eventosFallback.map((e) => ({ slug: e.slug }))
+  const sanitySlugs = ((await fetchEventoSlugs()) as { slug: string }[] | null) ?? []
+  const slugs = new Set([...eventosFallback.map((e) => e.slug), ...sanitySlugs.map((e) => e.slug)])
+  return [...slugs].map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const doc = (await fetchEventoBySlug(slug)) as SanityEventoDetail | null
   const fb = eventosFallback.find((e) => e.slug === slug)
-  const title = doc?.titulo ?? fb?.titulo ?? "Evento"
+  const title = doc?.seoTitulo ?? doc?.titulo ?? fb?.titulo ?? "Evento"
+  const description = doc?.seoDescricao ?? doc?.descricaoBreve ?? fb?.descricaoBreve ?? ""
+  const image = urlForImage(doc?.imagemCapa)?.width(1200).height(630).url() ?? fb?.imagemCapaUrl
+  const canonical = `/eventos/${slug}`
   return {
     title,
-    description: fb?.descricaoBreve ?? "",
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: `${site}${canonical}`,
+      type: "article",
+      images: image
+        ? [{ url: image, width: 1200, height: 630, alt: doc?.imagemCapa?.alt ?? doc?.titulo ?? fb?.titulo ?? title }]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
   }
 }
 
@@ -53,8 +84,11 @@ export default async function EventoDetalhePage({ params }: Props) {
   const data = doc?.data ?? fb!.data
   const local = doc?.local ?? fb!.local
   const status = doc?.status ?? fb!.status
+  const descricaoBreve = doc?.descricaoBreve ?? fb?.descricaoBreve
   const imagemUrl =
-    urlForImage(doc?.imagemCapa)?.width(1200).height(800).url() ?? fb!.imagemCapaUrl
+    urlForImage(doc?.imagemCapa)?.width(1200).height(800).url() ??
+    fb?.imagemCapaUrl ??
+    "/projectos/identidades-diasporicas/capa.png"
 
   const date = new Date(data)
   const dateStr = date.toLocaleDateString("pt-PT", {
@@ -108,17 +142,37 @@ export default async function EventoDetalhePage({ params }: Props) {
         <div className="relative mb-12 mt-10 aspect-[16/10] w-full overflow-hidden bg-[var(--color-creme-escuro)]">
           <Image
             src={imagemUrl}
-            alt={titulo}
+            alt={doc?.imagemCapa?.alt ?? titulo}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 768px"
             priority
           />
         </div>
-        {fb?.descricaoBreve && !doc?.descricao ? (
-          <p className="mb-8 text-lg font-light leading-relaxed text-[var(--color-preto)]/90">{fb.descricaoBreve}</p>
+        {descricaoBreve && !doc?.descricao ? (
+          <p className="mb-8 text-lg font-light leading-relaxed text-[var(--color-preto)]/90">{descricaoBreve}</p>
         ) : null}
         {doc?.descricao ? <PortableBody value={doc.descricao} className="prose-mif" /> : null}
+        {doc?.galeria?.length ? (
+          <div className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-3">
+            {doc.galeria.map((img, i) => {
+              const u = urlForImage(img)?.width(700).height(700).url()
+              if (!u) return null
+              return (
+                <div key={i} className="relative aspect-square overflow-hidden bg-[var(--color-creme-escuro)]">
+                  <Image
+                    src={u}
+                    alt={`${titulo} fotografia ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width:768px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                </div>
+              )
+            })}
+          </div>
+        ) : null}
         {doc?.linkInscricao && status === "inscricoes-abertas" ? (
           <a
             href={doc.linkInscricao}
@@ -129,6 +183,13 @@ export default async function EventoDetalhePage({ params }: Props) {
             Inscrever-me
           </a>
         ) : null}
+        <a
+          href={`/api/eventos/${slug}/ics`}
+          className="mt-6 inline-flex items-center gap-2 text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[var(--color-borgonha)] underline decoration-[var(--color-ouro)] underline-offset-4 transition-colors hover:text-[var(--color-ouro-escuro)] md:cursor-none"
+        >
+          <CalendarPlus className="h-4 w-4" aria-hidden />
+          Adicionar ao calendário
+        </a>
       </div>
     </article>
   )

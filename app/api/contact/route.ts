@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { rateLimit, requestIp } from "@/lib/rate-limit"
 import { contactSchema } from "@/lib/validations/contact"
 
 export const runtime = "nodejs"
@@ -14,6 +15,12 @@ const motivoLabels: Record<string, string> = {
 }
 
 export const POST = async (req: Request) => {
+  const ip = requestIp(req)
+  const limited = rateLimit(`contact:${ip}`, 5, 60 * 60 * 1000)
+  if (!limited.ok) {
+    return NextResponse.json({ error: "Muitas tentativas. Tenta mais tarde." }, { status: 429 })
+  }
+
   const key = process.env.RESEND_API_KEY
   const to = process.env.CONTACT_EMAIL ?? "ferreira.atchutchi@gmail.com"
 
@@ -38,6 +45,10 @@ export const POST = async (req: Request) => {
   }
 
   const d = parsed.data
+  if (d.website) {
+    return NextResponse.json({ ok: true })
+  }
+
   const resend = new Resend(key)
   const from = process.env.RESEND_FROM ?? "Mindjer i Futuro <onboarding@resend.dev>"
 

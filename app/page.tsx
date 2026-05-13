@@ -1,4 +1,5 @@
 import {
+  fetchConfiguracaoSite,
   fetchEquipa,
   fetchEventos,
   fetchProjectosDestaque,
@@ -55,6 +56,13 @@ type SanityTestemunho = {
   nome: string
   programa?: string
   foto?: unknown
+}
+
+type SanitySiteConfig = {
+  heroEyebrow?: string
+  heroTitulo?: string
+  heroSubtitulo?: string
+  heroImagens?: unknown[]
 }
 
 const buildProjectos = (raw: SanityProjecto[] | null): ProjectoPreview[] => {
@@ -142,8 +150,19 @@ const buildTestemunho = (raw: SanityTestemunho | null) => {
   return testemunhoFallback
 }
 
+const buildHero = (raw: SanitySiteConfig | null) => ({
+  eyebrow: raw?.heroEyebrow,
+  titulo: raw?.heroTitulo,
+  subtitulo: raw?.heroSubtitulo,
+  slideUrls:
+    raw?.heroImagens
+      ?.map((img) => urlForImage(img)?.width(1920).height(1080).url())
+      .filter((url): url is string => Boolean(url)) ?? undefined,
+})
+
 export default async function HomePage() {
-  const [rawP, rawE, rawEq, rawT] = await Promise.all([
+  const [rawConfig, rawP, rawE, rawEq, rawT] = await Promise.all([
+    fetchConfiguracaoSite(),
     fetchProjectosDestaque(),
     fetchEventos(),
     fetchEquipa(),
@@ -154,10 +173,11 @@ export default async function HomePage() {
   const eventos = buildEventos(rawE as SanityEvento[] | null)
   const equipa = buildEquipa(rawEq as SanityMembro[] | null)
   const testemunho = buildTestemunho(rawT as SanityTestemunho | null)
+  const hero = buildHero(rawConfig as SanitySiteConfig | null)
 
   return (
     <>
-      <HeroSection />
+      <HeroSection {...hero} />
       <ManifestoSection />
       <ProjectosSection projectos={projectos} />
       <EventosSection eventos={eventos} />

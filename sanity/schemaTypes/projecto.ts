@@ -35,17 +35,40 @@ export default defineType({
       title: "Imagem de capa",
       type: "image",
       options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Texto alternativo",
+          type: "string",
+          validation: (r) => r.max(140),
+        }),
+      ],
     }),
     defineField({
       name: "galeria",
       title: "Galeria",
       type: "array",
-      of: [{ type: "image", options: { hotspot: true } }],
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Texto alternativo",
+              type: "string",
+              validation: (r) => r.max(140),
+            }),
+          ],
+        },
+      ],
     }),
     defineField({ name: "destaque", title: "Destaque na homepage", type: "boolean", initialValue: false }),
     defineField({ name: "parceiros", title: "Parceiros", type: "array", of: [{ type: "string" }] }),
     defineField({ name: "impacto", title: "Impacto (ex.: 30 participantes)", type: "string" }),
     defineField({ name: "dataRealizacao", title: "Data de realização", type: "date" }),
+    defineField({ name: "seoTitulo", title: "Título SEO", type: "string", validation: (r) => r.max(70) }),
+    defineField({ name: "seoDescricao", title: "Descrição SEO", type: "text", rows: 2, validation: (r) => r.max(160) }),
   ],
   preview: {
     select: { title: "titulo", media: "imagemCapa" },

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react"
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("")
+  const [company, setCompany] = useState("")
   const [focused, setFocused] = useState(false)
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">("idle")
   const [msg, setMsg] = useState("")
@@ -17,13 +18,14 @@ const NewsletterSection = () => {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, company }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error ?? "Erro")
       setStatus("ok")
       setMsg("Obrigada pela subscrição.")
       setEmail("")
+      setCompany("")
     } catch {
       setStatus("err")
       setMsg("Não foi possível subscrever. Tenta novamente.")
@@ -41,6 +43,15 @@ const NewsletterSection = () => {
           Subscreve para receber novidades sobre eventos e oportunidades.
         </p>
         <form onSubmit={handleSubmit} className="mx-auto max-w-md text-left">
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            aria-hidden="true"
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+          />
           <div className="relative">
             <label htmlFor="newsletter-email" className="sr-only">
               Email

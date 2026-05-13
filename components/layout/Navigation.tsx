@@ -13,7 +13,8 @@ const links = [
   { href: "/sobre", label: "Sobre" },
   { href: "/projectos", label: "Projectos" },
   { href: "/eventos", label: "Eventos" },
-  { href: "/programacao", label: "Programação" },
+  { href: "/calendario", label: "Calendário" },
+  { href: "/blog", label: "Blog" },
   { href: "/equipa", label: "Equipa" },
   { href: "/parceiros", label: "Parceiros" },
   { href: "/contacto", label: "Contacto" },
@@ -84,7 +85,7 @@ const Navigation = ({ lightBg = false }: Props) => {
             />
           </Link>
 
-          <ul className="hidden items-center gap-8 md:flex">
+          <ul className="hidden items-center gap-5 lg:gap-7 md:flex">
             {links.map(({ href, label }) => {
               const active = pathname === href
               return (

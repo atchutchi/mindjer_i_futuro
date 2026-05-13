@@ -1,5 +1,5 @@
 import { visionTool } from "@sanity/vision"
-import { defineConfig } from "sanity"
+import { defineConfig, isDev } from "sanity"
 import { structureTool } from "sanity/structure"
 import { schemaTypes } from "./schemaTypes"
 
@@ -12,6 +12,9 @@ export default defineConfig({
   projectId,
   dataset,
   basePath: "/studio",
-  plugins: [structureTool(), visionTool({ defaultApiVersion: "2024-01-01" })],
+  plugins: [
+    structureTool(),
+    ...(isDev ? [visionTool({ defaultApiVersion: "2024-01-01" })] : []),
+  ],
   schema: { types: schemaTypes },
 })

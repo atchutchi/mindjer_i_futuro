@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { fetchProjectoBySlug } from "@/lib/sanity.fetch"
+import { fetchProjectoBySlug, fetchProjectoSlugs } from "@/lib/sanity.fetch"
 import { urlForImage } from "@/lib/sanity.image"
 import { projectosFallback } from "@/lib/site-content"
 import { paragrafosDeTexto } from "@/lib/texto"
@@ -19,20 +19,43 @@ type SanityProjectoDetail = {
   galeria?: { asset?: unknown }[]
   impacto?: string
   parceiros?: string[]
+  seoTitulo?: string
+  seoDescricao?: string
 }
 
+const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mindjerifuturo.org"
+
 export async function generateStaticParams() {
-  return projectosFallback.map((p) => ({ slug: p.slug }))
+  const sanitySlugs = ((await fetchProjectoSlugs()) as { slug: string }[] | null) ?? []
+  const slugs = new Set([...projectosFallback.map((p) => p.slug), ...sanitySlugs.map((p) => p.slug)])
+  return [...slugs].map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const doc = (await fetchProjectoBySlug(slug)) as SanityProjectoDetail | null
   const fb = projectosFallback.find((p) => p.slug === slug)
-  const title = doc?.titulo ?? fb?.titulo ?? "Projecto"
+  const title = doc?.seoTitulo ?? doc?.titulo ?? fb?.titulo ?? "Projecto"
+  const description = doc?.seoDescricao ?? doc?.descricaoBreve ?? fb?.descricaoBreve ?? ""
+  const image = urlForImage(doc?.imagemCapa)?.width(1200).height(630).url() ?? fb?.imagemCapaUrl
+  const canonical = `/projectos/${slug}`
   return {
     title,
-    description: doc?.descricaoBreve ?? fb?.descricaoBreve ?? "",
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: `${site}${canonical}`,
+      type: "article",
+      images: image ? [{ url: image, width: 1200, height: 630, alt: doc?.titulo ?? fb?.titulo ?? title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
   }
 }
 
@@ -50,7 +73,9 @@ export default async function ProjectoDetalhePage({ params }: Props) {
   const galeriaFallback = fb?.galeriaUrls
   const impacto = doc?.impacto ?? fb!.impacto
   const capaUrl =
-    urlForImage(doc?.imagemCapa)?.width(1200).height(900).url() ?? fb!.imagemCapaUrl
+    urlForImage(doc?.imagemCapa)?.width(1200).height(900).url() ??
+    fb?.imagemCapaUrl ??
+    "/projectos/identidades-diasporicas/capa.png"
 
   const corpoParagrafos =
     !doc?.descricaoCompleta && descricaoLongaFallback

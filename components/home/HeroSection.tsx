@@ -13,20 +13,54 @@ import Button, { ButtonOutline } from "@/components/ui/Button"
 
 const HeroParticles = dynamic(() => import("./HeroParticles"), { ssr: false })
 
-const titleWords = ["Mindjer", "i", "Futuro"]
+type Props = {
+  eyebrow?: string
+  titulo?: string
+  subtitulo?: string
+  slideUrls?: string[]
+}
 
-const HeroSection = () => {
+const HeroSection = ({
+  eyebrow = "Guiné-Bissau · Desde 2022",
+  titulo = "Mindjer i Futuro",
+  subtitulo = "Conferência de Liderança Feminina",
+  slideUrls = heroSlideUrls,
+}: Props) => {
   const rootRef = useRef<HTMLElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLDivElement>(null)
   const [slide, setSlide] = useState(0)
+  const [reducedMotion, setReducedMotion] = useState(false)
+  const [showParticles, setShowParticles] = useState(false)
+  const titleWords = titulo.split(" ").filter(Boolean)
+  const images = slideUrls.length ? slideUrls : heroSlideUrls
 
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const apply = () => setReducedMotion(mq.matches)
+    apply()
+    mq.addEventListener("change", apply)
+    return () => mq.removeEventListener("change", apply)
+  }, [])
+
+  useEffect(() => {
+    if (reducedMotion) return
+    const loadParticles = () => setShowParticles(true)
+    const idle = window.requestIdleCallback?.(loadParticles)
+    const timeout = window.setTimeout(loadParticles, 1800)
+    return () => {
+      if (idle) window.cancelIdleCallback?.(idle)
+      window.clearTimeout(timeout)
+    }
+  }, [reducedMotion])
+
+  useEffect(() => {
+    if (reducedMotion || images.length <= 1) return
     const id = window.setInterval(() => {
-      setSlide((s) => (s + 1) % heroSlideUrls.length)
+      setSlide((s) => (s + 1) % images.length)
     }, 4000)
     return () => window.clearInterval(id)
-  }, [])
+  }, [images.length, reducedMotion])
 
   useGSAP(
     () => {
@@ -73,7 +107,7 @@ const HeroSection = () => {
       className="relative flex min-h-screen flex-col justify-end overflow-hidden pb-16 pt-28 md:pb-24 md:pt-32"
     >
       <div ref={bgRef} className="absolute inset-0 scale-110 will-change-transform">
-        {heroSlideUrls.map((url, i) => (
+        {images.map((url, i) => (
           <Image
             key={url}
             src={url}
@@ -93,10 +127,10 @@ const HeroSection = () => {
         />
       </div>
 
-      <HeroParticles />
+      {showParticles ? <HeroParticles /> : null}
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center md:px-8">
-        <p className="text-label mb-6 text-[var(--color-ouro)]">Guiné-Bissau · Desde 2022</p>
+        <p className="text-label mb-6 text-[var(--color-ouro)]">{eyebrow}</p>
 
         <div ref={logoRef} className="mb-10">
           <Image
@@ -130,7 +164,7 @@ const HeroSection = () => {
           transition={{ delay: 0.6, duration: 0.9 }}
           className="text-label mb-12 max-w-xl text-[var(--color-branco)]/90"
         >
-          Conferência de Liderança Feminina
+          {subtitulo}
         </motion.p>
 
         <div className="hero-cta-row flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

@@ -5,6 +5,9 @@ const footerLinks = [
   { href: "/sobre", label: "Sobre" },
   { href: "/projectos", label: "Projectos" },
   { href: "/eventos", label: "Eventos" },
+  { href: "/calendario", label: "Calendário" },
+  { href: "/blog", label: "Blog" },
+  { href: "/parceiros", label: "Parceiros" },
   { href: "/contacto", label: "Contacto" },
 ]
 

@@ -77,6 +77,14 @@ const ContactForm = () => {
       </AnimatePresence>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mx-auto max-w-xl space-y-8" noValidate>
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+          {...register("website")}
+        />
         <div>
           <label htmlFor="name" className="text-label text-[var(--color-borgonha)]">
             Nome completo *
