@@ -1,23 +1,31 @@
 "use client"
 
-import { Component, type ReactNode, useMemo, useRef, useState, useEffect } from "react"
+import { Component, type ReactNode, useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Points, PointMaterial } from "@react-three/drei"
 import * as THREE from "three"
 
 const COUNT = 20
 
+const seededUnit = (index: number) => {
+  const x = Math.sin(index * 12.9898 + 78.233) * 43758.5453
+  return x - Math.floor(x)
+}
+
+const createParticlePositions = () => {
+  const arr = new Float32Array(COUNT * 3)
+  for (let i = 0; i < COUNT; i++) {
+    arr[i * 3] = (seededUnit(i * 3) - 0.5) * 10
+    arr[i * 3 + 1] = (seededUnit(i * 3 + 1) - 0.5) * 10
+    arr[i * 3 + 2] = (seededUnit(i * 3 + 2) - 0.5) * 4
+  }
+  return arr
+}
+
+const particlePositions = createParticlePositions()
+
 const ParticleField = () => {
   const ref = useRef<THREE.Points>(null)
-  const positions = useMemo(() => {
-    const arr = new Float32Array(COUNT * 3)
-    for (let i = 0; i < COUNT; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 10
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 10
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 4
-    }
-    return arr
-  }, [])
 
   useFrame((state) => {
     if (!ref.current) return
@@ -26,7 +34,7 @@ const ParticleField = () => {
   })
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+    <Points ref={ref} positions={particlePositions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
         color="#c9a55a"
@@ -43,15 +51,19 @@ const useClientWebGLSupported = () => {
   const [supported, setSupported] = useState<boolean | null>(null)
 
   useEffect(() => {
-    try {
-      const canvas = document.createElement("canvas")
-      const gl =
-        canvas.getContext("webgl2", { failIfMajorPerformanceCaveat: false }) ??
-        canvas.getContext("webgl", { failIfMajorPerformanceCaveat: false })
-      setSupported(!!gl)
-    } catch {
-      setSupported(false)
-    }
+    const id = window.setTimeout(() => {
+      try {
+        const canvas = document.createElement("canvas")
+        const gl =
+          canvas.getContext("webgl2", { failIfMajorPerformanceCaveat: false }) ??
+          canvas.getContext("webgl", { failIfMajorPerformanceCaveat: false })
+        setSupported(!!gl)
+      } catch {
+        setSupported(false)
+      }
+    }, 0)
+
+    return () => window.clearTimeout(id)
   }, [])
 
   return supported

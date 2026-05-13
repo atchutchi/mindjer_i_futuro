@@ -57,7 +57,7 @@ export const eventosQuery = `*[_type == "evento" && ${published}] | order(data d
   facilitador,
   capacidade,
   imagemCapa,
-  "descricaoBreve": coalesce(descricaoBreve, string::substring(coalesce(pt::text(descricao), ""), 0, 200))
+  "descricaoBreve": coalesce(descricaoBreve, pt::text(descricao))
 }`
 
 export const eventoPorSlugQuery = `*[_type == "evento" && ${published} && slug.current == $slug][0] {
