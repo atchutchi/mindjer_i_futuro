@@ -33,13 +33,13 @@ const NewsletterSection = () => {
   }
 
   return (
-    <section className="bg-[var(--color-preto)] px-5 py-[12vh] md:px-8">
+    <section className="bg-[var(--color-creme)] px-5 py-[12vh] md:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="font-great-vibes text-script-accent mb-6 text-[var(--color-ouro)]">juntas</p>
-        <h2 className="font-cormorant text-section-title mb-4 text-[var(--color-branco)]">
+        <p className="font-great-vibes text-script-accent mb-6 text-[var(--color-ouro-escuro)]">juntas</p>
+        <h2 className="font-cormorant text-section-title mb-4 text-[var(--color-borgonha)]">
           Faz parte da mudança
         </h2>
-        <p className="text-subtitle mb-10 font-light text-white/75">
+        <p className="text-subtitle mb-10 font-light text-[var(--color-preto)]/75">
           Subscreve para receber novidades sobre actividades e oportunidades.
         </p>
         <form onSubmit={handleSubmit} className="mx-auto max-w-md text-left">
@@ -71,7 +71,7 @@ const NewsletterSection = () => {
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               placeholder="O teu email"
-              className="w-full border-0 border-b border-white/20 bg-transparent py-3 text-[var(--color-branco)] placeholder:text-white/40 focus:border-transparent focus:outline-none focus:ring-0"
+              className="w-full border-0 border-b border-[var(--color-borgonha)]/25 bg-transparent py-3 text-[var(--color-preto)] placeholder:text-[var(--color-preto)]/40 focus:border-transparent focus:outline-none focus:ring-0"
             />
           </div>
           <button

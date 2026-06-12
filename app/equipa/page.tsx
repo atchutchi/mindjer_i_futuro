@@ -51,13 +51,13 @@ export default async function EquipaPage() {
   const membros = mapMembros(raw as SanityMembro[] | null)
 
   return (
-    <div className="bg-[var(--color-preto)] pb-8 pt-28 md:pt-36">
+    <div className="bg-[var(--color-creme)] pb-8 pt-28 md:pt-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <p className="text-label mb-3 text-[var(--color-ouro)]">Equipa completa</p>
-        <h1 className="font-cormorant text-section-title mb-6 text-[var(--color-branco)]">
+        <p className="text-label mb-3 text-[var(--color-ouro-escuro)]">Equipa completa</p>
+        <h1 className="font-cormorant text-section-title mb-6 text-[var(--color-borgonha)]">
           Quem somos
         </h1>
-        <p className="mb-16 max-w-2xl text-lg font-light text-white/75">
+        <p className="mb-16 max-w-2xl text-lg font-light text-[var(--color-preto)]/75">
           Co-fundadoras, coordenação e equipa operacional que levam a conferência e os projectos a cada edição.
         </p>
       </div>

@@ -24,15 +24,15 @@ const EquipaSection = ({ membros, variant = "home" }: Props) => (
   <section
     className={
       variant === "home"
-        ? "bg-[var(--color-preto)] px-5 py-[12vh] md:px-8"
-        : "bg-[var(--color-preto)] px-5 pb-[12vh] md:px-8"
+        ? "border-b border-[var(--color-borgonha)]/10 bg-[var(--color-creme)] px-5 py-[12vh] md:px-8"
+        : "bg-[var(--color-creme)] px-5 pb-[12vh] md:px-8"
     }
   >
     <div className="mx-auto max-w-7xl">
       {variant === "home" ? (
         <>
-          <p className="text-label mb-3 text-[var(--color-ouro)]">Quem somos</p>
-          <h2 className="font-cormorant text-section-title mb-16 text-[var(--color-branco)]">Equipa</h2>
+          <p className="text-label mb-3 text-[var(--color-ouro-escuro)]">Quem somos</p>
+          <h2 className="font-cormorant text-section-title mb-16 text-[var(--color-borgonha)]">Equipa</h2>
         </>
       ) : null}
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -44,7 +44,7 @@ const EquipaSection = ({ membros, variant = "home" }: Props) => (
         <div className="mt-12 text-center">
           <Link
             href="/equipa"
-            className="text-label text-[var(--color-ouro)] underline decoration-[var(--color-ouro)] underline-offset-8 md:cursor-none"
+            className="text-label text-[var(--color-borgonha)] underline decoration-[var(--color-ouro-escuro)] underline-offset-8 md:cursor-none"
           >
             Ver página completa
           </Link>
@@ -92,21 +92,21 @@ const MembroCard = ({ membro, index }: { membro: MembroItem; index: number }) =>
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="group relative mx-auto block aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-cinza-quente)] text-left md:cursor-none"
+          className="group relative mx-auto block aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-creme-escuro)] text-left md:cursor-none"
           aria-expanded={open}
           aria-label={`${open ? "Ocultar" : "Mostrar"} biografia de ${membro.nome}`}
         >
           {photoInner}
         </button>
       ) : (
-        <div className="group relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-cinza-quente)]">
+        <div className="group relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden bg-[var(--color-creme-escuro)]">
           {photoInner}
         </div>
       )}
-      <h3 className="font-cormorant mt-6 text-2xl text-[var(--color-branco)]">{membro.nome}</h3>
-      <p className="text-label mt-2 text-[var(--color-ouro)]">{membro.cargo}</p>
+      <h3 className="font-cormorant mt-6 text-2xl text-[var(--color-borgonha)]">{membro.nome}</h3>
+      <p className="text-label mt-2 text-[var(--color-ouro-escuro)]">{membro.cargo}</p>
       {!hasBio ? (
-        <p className="mt-4 text-sm font-light italic text-white/45">Biografia em breve.</p>
+        <p className="mt-4 text-sm font-light italic text-[var(--color-preto)]/50">Biografia em breve.</p>
       ) : null}
       <motion.div
         initial={false}
@@ -114,7 +114,7 @@ const MembroCard = ({ membro, index }: { membro: MembroItem; index: number }) =>
         className="overflow-hidden"
         aria-hidden={!open || !hasBio}
       >
-        <p className="mt-4 text-sm font-light leading-relaxed text-white/75">{membro.bio}</p>
+        <p className="mt-4 text-sm font-light leading-relaxed text-[var(--color-preto)]/75">{membro.bio}</p>
       </motion.div>
       <div className="mt-4 flex justify-center gap-4">
         {membro.linkedin ? (
@@ -122,7 +122,7 @@ const MembroCard = ({ membro, index }: { membro: MembroItem; index: number }) =>
             href={membro.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 transition-colors hover:text-[var(--color-ouro)] md:cursor-none"
+            className="text-[var(--color-borgonha)]/65 transition-colors hover:text-[var(--color-ouro-escuro)] md:cursor-none"
             aria-label={`LinkedIn de ${membro.nome}`}
           >
             <Link2 className="h-5 w-5" />
@@ -133,7 +133,7 @@ const MembroCard = ({ membro, index }: { membro: MembroItem; index: number }) =>
             href={membro.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 transition-colors hover:text-[var(--color-ouro)] md:cursor-none"
+            className="text-[var(--color-borgonha)]/65 transition-colors hover:text-[var(--color-ouro-escuro)] md:cursor-none"
             aria-label={`Instagram de ${membro.nome}`}
           >
             <Share2 className="h-5 w-5" />

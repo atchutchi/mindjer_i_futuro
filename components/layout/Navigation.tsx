@@ -42,25 +42,19 @@ const Navigation = ({ lightBg = false }: Props) => {
   const isStudio = pathname?.startsWith("/studio")
   if (isStudio) return null
 
-  const textOnLight = lightBg && !scrolled
-
   return (
     <>
       <motion.header
         initial={false}
         animate={{
-          backgroundColor:
-            scrolled || lightBg
-              ? lightBg && !scrolled
-                ? "rgba(245, 237, 224, 0.92)"
-                : "rgba(10, 8, 8, 0.72)"
-              : "rgba(10, 8, 8, 0.58)",
+          backgroundColor: scrolled ? "rgba(245, 237, 224, 0.97)" : "rgba(245, 237, 224, 0.9)",
         }}
         transition={{ duration: 0.45, ease: easeOutQuart }}
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl",
-          scrolled || !lightBg ? "border-white/10" : "border-transparent",
-          lightBg && !scrolled ? "border-[var(--color-creme-escuro)]/40" : "",
+          scrolled || lightBg
+            ? "border-[var(--color-borgonha)]/15"
+            : "border-[var(--color-borgonha)]/10",
         )}
         style={{
           backdropFilter: "blur(20px)",
@@ -94,8 +88,8 @@ const Navigation = ({ lightBg = false }: Props) => {
                     href={href}
                     className={cn(
                       "group relative text-[0.85rem] font-normal uppercase tracking-wider transition-colors duration-300 md:cursor-none",
-                      textOnLight ? "text-[var(--color-preto)]" : "text-[var(--color-branco)]",
-                      active && "text-[var(--color-ouro)]",
+                      "text-[var(--color-borgonha)]",
+                      active && "text-[var(--color-ouro-escuro)]",
                     )}
                   >
                     {label}
@@ -115,7 +109,7 @@ const Navigation = ({ lightBg = false }: Props) => {
             type="button"
             className={cn(
               "relative z-10 md:hidden",
-              textOnLight ? "text-[var(--color-preto)]" : "text-[var(--color-branco)]",
+              "text-[var(--color-borgonha)]",
             )}
             aria-expanded={open}
             aria-controls="menu-mobile"

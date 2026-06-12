@@ -67,8 +67,8 @@ const ContactForm = () => {
             className={cn(
               "fixed bottom-8 right-8 z-50 max-w-sm border px-6 py-4 text-sm shadow-[var(--shadow-borgonha)]",
               toast.type === "ok"
-                ? "border-[var(--color-ouro)] bg-[var(--color-preto)] text-[var(--color-branco)]"
-                : "border-red-400/50 bg-[var(--color-preto)] text-red-200",
+                ? "border-[var(--color-ouro)] bg-[var(--color-borgonha)] text-[var(--color-branco)]"
+                : "border-red-400/50 bg-[var(--color-borgonha)] text-red-100",
             )}
           >
             {toast.text}

@@ -97,11 +97,11 @@ const ManifestoSection = () => {
     <section
       ref={rootRef}
       id="manifesto"
-      className="relative bg-[var(--color-preto)] px-5 py-[15vh] md:px-8"
+      className="relative border-b border-[var(--color-borgonha)]/10 bg-[var(--color-creme)] px-5 py-[15vh] md:px-8"
     >
       <div className="mx-auto max-w-4xl text-center">
-        <p className="font-great-vibes text-script-accent mb-10 text-[var(--color-ouro)]">porque</p>
-        <blockquote className="font-cormorant text-section-title mb-12 font-light italic leading-tight text-[var(--color-branco)] md:text-[clamp(2rem,4vw,3.2rem)]">
+        <p className="font-great-vibes text-script-accent mb-10 text-[var(--color-ouro-escuro)]">porque</p>
+        <blockquote className="font-cormorant text-section-title mb-12 font-light italic leading-tight text-[var(--color-borgonha)] md:text-[clamp(2rem,4vw,3.2rem)]">
           {wordNodes}
         </blockquote>
         <div
@@ -114,11 +114,11 @@ const ManifestoSection = () => {
             <div key={s.label} className="text-center">
               <p
                 data-count={i}
-                className="font-cormorant text-4xl text-[var(--color-ouro)] md:text-5xl"
+                className="font-cormorant text-4xl text-[var(--color-ouro-escuro)] md:text-5xl"
               >
                 0{s.suffix}
               </p>
-              <p className="mt-2 text-sm font-light uppercase tracking-widest text-white/60">{s.label}</p>
+              <p className="mt-2 text-sm font-light uppercase tracking-widest text-[var(--color-preto)]/60">{s.label}</p>
             </div>
           ))}
         </div>

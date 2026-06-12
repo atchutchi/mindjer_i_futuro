@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-PT" className={`${cormorant.variable} ${dmSans.variable} ${greatVibes.variable}`}>
-      <body className="min-h-screen bg-[var(--color-preto)] font-sans antialiased">
+      <body className="min-h-screen bg-[var(--color-creme)] font-sans antialiased">
         <JsonLd />
         <LayoutShell>{children}</LayoutShell>
       </body>

@@ -15,7 +15,7 @@ const Row = ({ reverse, slow }: { reverse?: boolean; slow?: boolean }) => (
       <span
         key={`${p.nome}-${i}`}
         className={`flex min-h-28 min-w-56 shrink-0 items-center justify-center rounded-sm px-7 py-5 shadow-lg ${
-          p.darkBackground ? "bg-[var(--color-preto)]" : "bg-white"
+          p.darkBackground ? "bg-[var(--color-borgonha)]" : "bg-white"
         }`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element -- SVGs locais variados; evita otimização pesada */}
@@ -26,9 +26,9 @@ const Row = ({ reverse, slow }: { reverse?: boolean; slow?: boolean }) => (
 )
 
 const ParceirosSection = () => (
-  <section className="overflow-hidden bg-[var(--color-borgonha)] py-12">
-    <p className="text-label mb-6 text-center text-[var(--color-ouro)]">Confiança</p>
-    <h2 className="font-cormorant text-section-title mb-10 text-center text-[var(--color-branco)]">
+  <section className="overflow-hidden border-b border-[var(--color-borgonha)]/10 bg-[var(--color-creme)] py-12">
+    <p className="text-label mb-6 text-center text-[var(--color-ouro-escuro)]">Confiança</p>
+    <h2 className="font-cormorant text-section-title mb-10 text-center text-[var(--color-borgonha)]">
       Parceiros
     </h2>
     <div className="flex flex-col gap-2">

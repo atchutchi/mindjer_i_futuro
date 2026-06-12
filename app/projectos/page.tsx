@@ -42,11 +42,11 @@ export default async function ProjectosPage() {
   const list = buildList(raw as SanityProjecto[] | null)
 
   return (
-    <div className="bg-[var(--color-cinza-fundo)] pb-24 pt-32 md:pb-32 md:pt-40">
+    <div className="bg-[var(--color-creme)] pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <p className="text-label mb-3 text-[var(--color-ouro)]">Impacto</p>
-        <h1 className="font-cormorant text-section-title mb-6 text-[var(--color-branco)]">Todos os projectos</h1>
-        <p className="mb-14 max-w-2xl text-lg font-light text-white/75">
+        <p className="text-label mb-3 text-[var(--color-ouro-escuro)]">Impacto</p>
+        <h1 className="font-cormorant text-section-title mb-6 text-[var(--color-borgonha)]">Todos os projectos</h1>
+        <p className="mb-14 max-w-2xl text-lg font-light text-[var(--color-preto)]/75">
           Capacitação profissional, mentoria, bolsas, cultura e angariação — iniciativas sem fins lucrativos para
           mulheres guineenses.
         </p>
@@ -58,7 +58,7 @@ export default async function ProjectosPage() {
         <div className="mt-16 text-center">
           <Link
             href="/contacto"
-            className="text-label text-[var(--color-ouro)] underline decoration-[var(--color-ouro)] underline-offset-8 md:cursor-none"
+            className="text-label text-[var(--color-borgonha)] underline decoration-[var(--color-ouro-escuro)] underline-offset-8 md:cursor-none"
           >
             Queres colaborar?
           </Link>

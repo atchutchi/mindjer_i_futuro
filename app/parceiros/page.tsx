@@ -12,20 +12,20 @@ const logoClass =
 
 export default function ParceirosPage() {
   return (
-    <div className="bg-[var(--color-borgonha)] pb-24 pt-32 text-[var(--color-branco)] md:pb-32 md:pt-40">
+    <div className="bg-[var(--color-creme)] pb-24 pt-32 text-[var(--color-preto)] md:pb-32 md:pt-40">
       <div className="mx-auto max-w-5xl px-5 md:px-8">
-        <p className="text-label mb-4 text-[var(--color-ouro)]">Rede</p>
-        <h1 className="font-cormorant text-section-title mb-10">Parceiros</h1>
-        <p className="mb-14 max-w-2xl text-lg font-light leading-relaxed text-white/85">
+        <p className="text-label mb-4 text-[var(--color-ouro-escuro)]">Rede</p>
+        <h1 className="font-cormorant text-section-title mb-10 text-[var(--color-borgonha)]">Parceiros</h1>
+        <p className="mb-14 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-preto)]/75">
           O impacto da Mindjer i Futuro é possível graças a parceiros que acreditam na liderança feminina e no
           desenvolvimento da Guiné-Bissau.
         </p>
-        <ul className="grid grid-cols-1 gap-10 border-t border-white/20 pt-12 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-10 border-t border-[var(--color-borgonha)]/20 pt-12 sm:grid-cols-2 lg:grid-cols-3">
           {parceirosItems.map((p) => (
             <li
               key={p.nome}
-              className={`flex items-center justify-center rounded-sm border border-white/60 px-6 py-12 shadow-lg ${
-                p.darkBackground ? "bg-[var(--color-preto)]" : "bg-white"
+              className={`flex items-center justify-center rounded-sm border border-[var(--color-borgonha)]/15 px-6 py-12 shadow-lg ${
+                p.darkBackground ? "bg-[var(--color-borgonha)]" : "bg-white"
               }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

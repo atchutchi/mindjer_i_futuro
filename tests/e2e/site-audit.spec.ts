@@ -142,4 +142,42 @@ test.describe("Auditoria do site", () => {
     expect(firstLogoClass).not.toContain("brightness-0")
     expect(firstLogoClass).not.toContain("invert")
   })
+
+  test("Superfícies — creme uniforme e preto exclusivo do rodapé", async ({ page }) => {
+    const creme = "rgb(245, 237, 224)"
+    const preto = "rgb(10, 8, 8)"
+
+    await page.goto("/")
+
+    await expect(page.locator("body")).toHaveCSS("background-color", creme)
+    await expect(page.locator("#manifesto")).toHaveCSS("background-color", creme)
+
+    for (const heading of ["Projectos", "Equipa", "Parceiros", "Faz parte da mudança"]) {
+      const section = page.locator("section").filter({
+        has: page.getByRole("heading", { level: 2, name: heading }),
+      })
+      await expect(section).toHaveCSS("background-color", creme)
+    }
+
+    await expect(page.getByRole("contentinfo")).toHaveCSS("background-color", preto)
+    const blackOnHomeOutsideFooter = await page.evaluate((black) => {
+      return Array.from(document.querySelectorAll("body *")).filter((element) => {
+        if (element.closest("footer")) return false
+        return getComputedStyle(element).backgroundColor === black
+      }).length
+    }, preto)
+    expect(blackOnHomeOutsideFooter).toBe(0)
+
+    for (const path of ["/projectos", "/equipa", "/parceiros"]) {
+      await page.goto(path)
+      await expect(page.locator("body")).toHaveCSS("background-color", creme)
+      const blackOutsideFooter = await page.evaluate((black) => {
+        return Array.from(document.querySelectorAll("body *")).filter((element) => {
+          if (element.closest("footer")) return false
+          return getComputedStyle(element).backgroundColor === black
+        }).length
+      }, preto)
+      expect(blackOutsideFooter).toBe(0)
+    }
+  })
 })

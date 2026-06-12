@@ -10,7 +10,7 @@ const footerLinks = [
 ]
 
 const Footer = () => (
-  <footer className="border-t border-white/10 bg-[var(--color-cinza-fundo)] px-5 py-16 md:px-8">
+  <footer className="border-t border-white/10 bg-[var(--color-preto)] px-5 py-16 md:px-8">
     <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:items-start md:justify-between">
       <div className="max-w-sm">
         <Image

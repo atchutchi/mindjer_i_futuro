@@ -105,7 +105,7 @@ const HeroSection = ({
           />
         ))}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[var(--color-creme)]/20 via-[var(--color-borgonha)]/35 to-[var(--color-preto)]/90"
+          className="absolute inset-0 bg-gradient-to-b from-[var(--color-creme)]/15 via-[var(--color-borgonha)]/35 to-[var(--color-borgonha-escuro)]/95"
           aria-hidden
         />
       </div>
