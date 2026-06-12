@@ -5,8 +5,8 @@ const publicRoutes = [
   { path: "/sobre", needH1: true },
   { path: "/projectos", needH1: true },
   { path: "/projectos/curso-habilidades-profissionais", needH1: true },
-  { path: "/eventos", needH1: true },
   { path: "/eventos/e29-4-conferencia-lideranca-feminina-2026", needH1: true },
+  { path: "/calendario", needH1: true },
   { path: "/equipa", needH1: true },
   { path: "/parceiros", needH1: true },
   { path: "/contacto", needH1: true },
@@ -18,6 +18,7 @@ const ignoreConsoleSubstrings = [
   "[HMR]",
   "hot-update",
   "webpack-internal",
+  "WebSocket connection to",
   "ResizeObserver",
   "Lit is in dev mode",
 ]
@@ -74,5 +75,71 @@ test.describe("Auditoria do site", () => {
     await expect(
       page.getByRole("navigation", { name: /principal/i }).getByRole("link", { name: "Projectos" }),
     ).toBeVisible()
+  })
+
+  test("Navegação pública — Agenda substitui Calendário e remove Eventos e Blog", async ({ page }) => {
+    await page.goto("/")
+    const nav = page.getByRole("navigation", { name: /principal/i })
+
+    await expect(nav.getByRole("link", { name: "Agenda" })).toHaveAttribute("href", "/calendario")
+    await expect(nav.getByRole("link", { name: "Eventos" })).toHaveCount(0)
+    await expect(nav.getByRole("link", { name: "Blog" })).toHaveCount(0)
+    await expect(page.getByText("Guiné-Bissau · Desde 2022")).toHaveCount(0)
+  })
+
+  test("Home — projectos têm títulos sempre expostos e não carrega canvas 3D", async ({ page }) => {
+    await page.goto("/")
+
+    const copy = page.getByTestId("project-card-copy")
+    await expect(copy).toHaveCount(7)
+    await expect(copy.first()).toBeVisible()
+    await expect(page.locator("canvas")).toHaveCount(0)
+  })
+
+  test("Agenda — apresenta somente actividades futuras", async ({ page }) => {
+    await page.goto("/calendario")
+
+    await expect(page.getByRole("heading", { level: 1, name: "Agenda" })).toBeVisible()
+    await expect(page.getByText("Passado", { exact: true })).toHaveCount(0)
+    await expect(page.getByText("Novas actividades serão publicadas em breve.")).toBeVisible()
+  })
+
+  test("Rodapé — inclui Facebook e não expõe Eventos ou Blog", async ({ page }) => {
+    await page.goto("/")
+    const footer = page.getByRole("contentinfo")
+
+    await expect(footer.getByRole("link", { name: "Facebook" })).toHaveAttribute(
+      "href",
+      "https://www.facebook.com/mindjerifuturo/",
+    )
+    await expect(footer.getByRole("link", { name: "Eventos" })).toHaveCount(0)
+    await expect(footer.getByRole("link", { name: "Blog" })).toHaveCount(0)
+  })
+
+  test("Secções removidas — Eventos redirecciona para Agenda e Blog para a homepage", async ({ page }) => {
+    await page.goto("/eventos")
+    await expect(page).toHaveURL(/\/calendario$/)
+
+    await page.goto("/blog")
+    await expect(page).toHaveURL(/\/$/)
+  })
+
+  test("Detalhes legados — evento regressa à Agenda e artigo redirecciona para a homepage", async ({ page }) => {
+    await page.goto("/eventos/e29-4-conferencia-lideranca-feminina-2026")
+    await expect(page.locator("article").getByRole("link", { name: "Agenda" })).toHaveAttribute("href", "/calendario")
+
+    await page.goto("/blog/artigo-legado")
+    await expect(page).toHaveURL(/\/$/)
+  })
+
+  test("Parceiros — logótipos mantêm as cores originais", async ({ page }) => {
+    await page.goto("/parceiros")
+
+    const logos = page.getByTestId("partner-logo")
+    await expect(logos).toHaveCount(8)
+
+    const firstLogoClass = await logos.first().getAttribute("class")
+    expect(firstLogoClass).not.toContain("brightness-0")
+    expect(firstLogoClass).not.toContain("invert")
   })
 })

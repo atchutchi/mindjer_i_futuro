@@ -7,14 +7,14 @@ import { eventosFallbackOrdenados } from "@/lib/site-content"
 const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mindjerifuturo.org"
 
 export const metadata: Metadata = {
-  title: "Calendário",
+  title: "Agenda",
   description:
-    "Calendário de workshops, conferências, diálogos e actividades da Mindjer i Futuro.",
+    "Agenda de workshops, conferências, diálogos e actividades futuras da Mindjer i Futuro.",
   alternates: { canonical: "/calendario" },
   openGraph: {
-    title: "Calendário | Mindjer i Futuro",
+    title: "Agenda | Mindjer i Futuro",
     description:
-      "Calendário de workshops, conferências, diálogos e actividades da Mindjer i Futuro.",
+      "Agenda de workshops, conferências, diálogos e actividades futuras da Mindjer i Futuro.",
     url: `${site}/calendario`,
     type: "website",
   },
@@ -46,12 +46,6 @@ type SanityEvento = {
   capacidade?: number
 }
 
-const statusLabel: Record<EventoCalendario["status"], string> = {
-  passado: "Passado",
-  proximo: "Próximo",
-  "inscricoes-abertas": "Inscrições abertas",
-}
-
 const tipoLabel: Record<string, string> = {
   workshop: "Workshop",
   conferencia: "Conferência",
@@ -61,8 +55,14 @@ const tipoLabel: Record<string, string> = {
 }
 
 const buildEventos = (raw: SanityEvento[] | null): EventoCalendario[] => {
+  const futuros = (items: EventoCalendario[]) =>
+    items
+      .filter((evento) => new Date(evento.data).getTime() > Date.now())
+      .sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime())
+
   if (raw?.length) {
-    return raw
+    return futuros(
+      raw
       .map((ev) => ({
         titulo: ev.titulo,
         slug: ev.slug,
@@ -74,13 +74,12 @@ const buildEventos = (raw: SanityEvento[] | null): EventoCalendario[] => {
         descricaoBreve: ev.descricaoBreve,
         facilitador: ev.facilitador,
         capacidade: ev.capacidade,
-      }))
-      .sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime())
+      })),
+    )
   }
 
-  return [...eventosFallbackOrdenados]
-    .reverse()
-    .map((ev) => ({
+  return futuros(
+    eventosFallbackOrdenados.map((ev) => ({
       titulo: ev.titulo,
       slug: ev.slug,
       tipo: ev.titulo.toLowerCase().includes("conferência") ? "conferencia" : "workshop",
@@ -90,7 +89,8 @@ const buildEventos = (raw: SanityEvento[] | null): EventoCalendario[] => {
       descricaoBreve: ev.descricaoBreve,
       facilitador: ev.facilitador,
       capacidade: ev.totalParticipantes,
-    }))
+    })),
+  )
 }
 
 const formatDate = (value: string) =>
@@ -125,16 +125,17 @@ export default async function CalendarioPage() {
   return (
     <div className="bg-[var(--color-creme)] pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-5xl px-5 md:px-8">
-        <p className="text-label mb-4 text-center text-[var(--color-borgonha)]">Agenda</p>
+        <p className="text-label mb-4 text-center text-[var(--color-borgonha)]">Próximas actividades</p>
         <h1 className="font-cormorant text-section-title mb-6 text-center text-[var(--color-borgonha)]">
-          Calendário
+          Agenda
         </h1>
         <p className="mx-auto mb-16 max-w-2xl text-center text-lg font-light text-[var(--color-preto)]/75">
-          Workshops, conferências e diálogos organizados pela Mindjer i Futuro.
+          Workshops, conferências e diálogos futuros organizados pela Mindjer i Futuro.
         </p>
 
-        <div className="space-y-14">
-          {Object.entries(grupos).map(([mes, items]) => (
+        {Object.keys(grupos).length ? (
+          <div className="space-y-14">
+            {Object.entries(grupos).map(([mes, items]) => (
             <section key={mes} aria-labelledby={`mes-${mes.replace(/\s+/g, "-")}`}>
               <h2
                 id={`mes-${mes.replace(/\s+/g, "-")}`}
@@ -159,7 +160,7 @@ export default async function CalendarioPage() {
                       <div>
                         <div className="mb-3 flex flex-wrap gap-2">
                           <span className="text-label border border-[var(--color-borgonha)]/30 px-3 py-1 text-[var(--color-borgonha)]">
-                            {statusLabel[evento.status]}
+                            {evento.status === "inscricoes-abertas" ? "Inscrições abertas" : "Próximo"}
                           </span>
                           {evento.capacidade ? (
                             <span className="text-label border border-[var(--color-ouro)]/45 px-3 py-1 text-[var(--color-ouro-escuro)]">
@@ -208,8 +209,19 @@ export default async function CalendarioPage() {
                 })}
               </div>
             </section>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="border border-[var(--color-borgonha)]/20 bg-white/45 px-6 py-14 text-center">
+            <p className="font-cormorant text-3xl text-[var(--color-borgonha)]">
+              Novas actividades serão publicadas em breve.
+            </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm font-light leading-relaxed text-[var(--color-preto)]/70">
+              A equipa está a preparar a próxima programação. Segue as redes sociais da Mindjer i Futuro para
+              receber as novidades.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )

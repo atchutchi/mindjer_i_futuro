@@ -76,7 +76,7 @@ const buildProjectos = (raw: SanityProjecto[] | null): ProjectoPreview[] => {
         projectosFallback[i % projectosFallback.length].imagemCapaUrl,
     }))
   }
-  return projectosFallback.slice(0, 6).map((p) => ({
+  return projectosFallback.slice(0, 7).map((p) => ({
     titulo: p.titulo,
     slug: p.slug,
     categoria: p.categoria,
@@ -97,20 +97,26 @@ const buildEventos = (raw: SanityEvento[] | null): EventoListItem[] => {
       urlForImage(ev.imagemCapa)?.width(800).height(800).url() ??
       fb[i % fb.length].imagemCapaUrl,
   })
+  const proximos = (items: EventoListItem[]) =>
+    items
+      .filter((evento) => new Date(evento.data).getTime() > Date.now())
+      .sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime())
+      .slice(0, 3)
+
   if (raw?.length) {
-    return [...raw.map(mapSanity)].sort(
-      (a, b) => new Date(b.data).getTime() - new Date(a.data).getTime(),
-    ).slice(0, 6)
+    return proximos(raw.map(mapSanity))
   }
-  return fb.slice(0, 6).map((ev) => ({
-    titulo: ev.titulo,
-    slug: ev.slug,
-    data: ev.data,
-    local: ev.local,
-    descricaoBreve: ev.descricaoBreve,
-    status: ev.status,
-    imagemUrl: ev.imagemCapaUrl,
-  }))
+  return proximos(
+    fb.map((ev) => ({
+      titulo: ev.titulo,
+      slug: ev.slug,
+      data: ev.data,
+      local: ev.local,
+      descricaoBreve: ev.descricaoBreve,
+      status: ev.status,
+      imagemUrl: ev.imagemCapaUrl,
+    })),
+  )
 }
 
 const buildEquipa = (raw: SanityMembro[] | null): MembroItem[] => {
@@ -151,7 +157,7 @@ const buildTestemunho = (raw: SanityTestemunho | null) => {
 }
 
 const buildHero = (raw: SanitySiteConfig | null) => ({
-  eyebrow: raw?.heroEyebrow,
+  eyebrow: raw?.heroEyebrow?.includes("2022") ? undefined : raw?.heroEyebrow,
   titulo: raw?.heroTitulo,
   subtitulo: raw?.heroSubtitulo,
   slideUrls:

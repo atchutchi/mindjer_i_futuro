@@ -26,7 +26,7 @@ const ImpactoSection = ({ quote, nome, programa, fotoUrl }: Props) => {
     <section ref={sectionRef} className="relative min-h-[85vh] overflow-hidden py-24 md:py-32">
       <motion.div className="absolute inset-0 scale-110" style={{ y: smoothY }}>
         <Image
-          src={fotoUrl ?? "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"}
+          src={fotoUrl ?? "/projectos/identidades-diasporicas/capa.png"}
           alt=""
           fill
           className="object-cover"

@@ -40,7 +40,7 @@ const NewsletterSection = () => {
           Faz parte da mudança
         </h2>
         <p className="text-subtitle mb-10 font-light text-white/75">
-          Subscreve para receber novidades sobre eventos e oportunidades.
+          Subscreve para receber novidades sobre actividades e oportunidades.
         </p>
         <form onSubmit={handleSubmit} className="mx-auto max-w-md text-left">
           <input

@@ -3,7 +3,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { fetchProjectoBySlug, fetchProjectoSlugs } from "@/lib/sanity.fetch"
 import { urlForImage } from "@/lib/sanity.image"
-import { projectosFallback } from "@/lib/site-content"
+import { projectosDetalheFallback, projectosEstrutura } from "@/lib/site-content"
 import { paragrafosDeTexto } from "@/lib/texto"
 import PortableBody from "@/components/content/PortableBody"
 
@@ -27,14 +27,14 @@ const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mindjerifuturo.org"
 
 export async function generateStaticParams() {
   const sanitySlugs = ((await fetchProjectoSlugs()) as { slug: string }[] | null) ?? []
-  const slugs = new Set([...projectosFallback.map((p) => p.slug), ...sanitySlugs.map((p) => p.slug)])
+  const slugs = new Set([...projectosDetalheFallback.map((p) => p.slug), ...sanitySlugs.map((p) => p.slug)])
   return [...slugs].map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const doc = (await fetchProjectoBySlug(slug)) as SanityProjectoDetail | null
-  const fb = projectosFallback.find((p) => p.slug === slug)
+  const fb = projectosDetalheFallback.find((p) => p.slug === slug)
   const title = doc?.seoTitulo ?? doc?.titulo ?? fb?.titulo ?? "Projecto"
   const description = doc?.seoDescricao ?? doc?.descricaoBreve ?? fb?.descricaoBreve ?? ""
   const image = urlForImage(doc?.imagemCapa)?.width(1200).height(630).url() ?? fb?.imagemCapaUrl
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectoDetalhePage({ params }: Props) {
   const { slug } = await params
   const doc = (await fetchProjectoBySlug(slug)) as SanityProjectoDetail | null
-  const fb = projectosFallback.find((p) => p.slug === slug)
+  const fb = projectosDetalheFallback.find((p) => p.slug === slug)
 
   if (!doc && !fb) notFound()
 
@@ -72,6 +72,7 @@ export default async function ProjectoDetalhePage({ params }: Props) {
   const descricaoLongaFallback = fb?.descricaoLonga
   const galeriaFallback = fb?.galeriaUrls
   const impacto = doc?.impacto ?? fb!.impacto
+  const estrutura = projectosEstrutura[slug]
   const capaUrl =
     urlForImage(doc?.imagemCapa)?.width(1200).height(900).url() ??
     fb?.imagemCapaUrl ??
@@ -93,6 +94,32 @@ export default async function ProjectoDetalhePage({ params }: Props) {
         <div className="relative mb-12 aspect-[16/10] w-full overflow-hidden bg-[var(--color-creme-escuro)]">
           <Image src={capaUrl} alt={titulo} fill className="object-cover" sizes="(max-width: 896px) 100vw, 896px" priority />
         </div>
+        {estrutura ? (
+          <div className="mb-14 grid gap-8 border-y border-[var(--color-borgonha)]/20 py-10 md:grid-cols-3">
+            <section>
+              <p className="text-label mb-3 text-[var(--color-borgonha)]">Objectivo</p>
+              <p className="text-sm font-light leading-relaxed text-[var(--color-preto)]/85">
+                {estrutura.objectivo}
+              </p>
+            </section>
+            <section>
+              <p className="text-label mb-3 text-[var(--color-borgonha)]">Actividades</p>
+              <ul className="space-y-2 text-sm font-light leading-relaxed text-[var(--color-preto)]/85">
+                {estrutura.actividades.map((actividade) => (
+                  <li key={actividade}>• {actividade}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <p className="text-label mb-3 text-[var(--color-borgonha)]">Resultados</p>
+              <ul className="space-y-2 text-sm font-light leading-relaxed text-[var(--color-preto)]/85">
+                {estrutura.resultados.map((resultado) => (
+                  <li key={resultado}>• {resultado}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        ) : null}
         {doc?.descricaoCompleta ? (
           <>
             <p className="mb-10 text-lg font-light leading-relaxed text-[var(--color-preto)]/90">{descricaoBreve}</p>

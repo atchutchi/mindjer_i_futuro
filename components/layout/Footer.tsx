@@ -4,9 +4,7 @@ import Image from "next/image"
 const footerLinks = [
   { href: "/sobre", label: "Sobre" },
   { href: "/projectos", label: "Projectos" },
-  { href: "/eventos", label: "Eventos" },
-  { href: "/calendario", label: "Calendário" },
-  { href: "/blog", label: "Blog" },
+  { href: "/calendario", label: "Agenda" },
   { href: "/parceiros", label: "Parceiros" },
   { href: "/contacto", label: "Contacto" },
 ]
@@ -47,6 +45,14 @@ const Footer = () => (
           className="mt-2 block hover:text-[var(--color-branco)] md:cursor-none"
         >
           Instagram
+        </a>
+        <a
+          href="https://www.facebook.com/mindjerifuturo/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 block hover:text-[var(--color-branco)] md:cursor-none"
+        >
+          Facebook
         </a>
         <p className="mt-8 text-xs text-white/40">© {new Date().getFullYear()} Mindjer i Futuro</p>
       </div>

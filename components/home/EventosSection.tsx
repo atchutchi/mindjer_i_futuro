@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { useGSAP } from "@gsap/react"
 import { gsap, ScrollTrigger } from "@/lib/gsapConfig"
-import { cn } from "@/lib/utils"
 
 export type EventoListItem = {
   titulo: string
@@ -15,12 +14,6 @@ export type EventoListItem = {
   descricaoBreve?: string
   status: "passado" | "proximo" | "inscricoes-abertas"
   imagemUrl: string
-}
-
-const statusLabel: Record<EventoListItem["status"], string> = {
-  passado: "Passado",
-  proximo: "Próximo",
-  "inscricoes-abertas": "Inscrições Abertas",
 }
 
 type Props = {
@@ -93,28 +86,28 @@ const EventosSection = ({ eventos, showHeading = true }: Props) => {
       <div className="mx-auto max-w-6xl">
         {showHeading ? (
           <>
-            <p className="text-label mb-3 text-center text-[var(--color-borgonha)]">Agenda</p>
+            <p className="text-label mb-3 text-center text-[var(--color-borgonha)]">Próximas actividades</p>
             <h2 className="font-cormorant text-section-title mb-16 text-center text-[var(--color-borgonha)]">
-              Eventos
+              Agenda
             </h2>
           </>
         ) : null}
 
-        <div className="flex flex-col gap-16 md:gap-24">
-          {eventos.map((ev, i) => {
+        {eventos.length ? (
+          <div className="flex flex-col gap-16 md:gap-24">
+            {eventos.map((ev, i) => {
             const date = new Date(ev.data)
             const dateStr = date.toLocaleDateString("pt-PT", {
               day: "numeric",
               month: "long",
               year: "numeric",
             })
-            const isLeft = i % 2 === 0
             return (
               <article
                 key={ev.slug}
                 className="evento-row relative grid gap-8 md:grid-cols-2 md:items-center"
               >
-                <div className={cn(!isLeft && "md:order-2")}>
+                <div className={i % 2 === 0 ? "" : "md:order-2"}>
                   <Link
                     href={`/eventos/${ev.slug}`}
                     className="group relative block aspect-square overflow-hidden bg-[var(--color-creme-escuro)] shadow-[var(--shadow-borgonha)] md:cursor-none"
@@ -133,15 +126,9 @@ const EventosSection = ({ eventos, showHeading = true }: Props) => {
                   </Link>
                 </div>
                 <div
-                  className={cn(
-                    "text-center md:text-left",
-                    !isLeft && "md:order-1 md:text-right",
-                  )}
+                  className={`text-center md:text-left ${i % 2 === 0 ? "" : "md:order-1 md:text-right"}`}
                 >
                   <p className="font-great-vibes text-3xl text-[var(--color-ouro)] md:text-4xl">{dateStr}</p>
-                  <span className="text-label mt-3 inline-block rounded-none border border-[var(--color-borgonha)] px-3 py-1 text-[var(--color-borgonha)]">
-                    {statusLabel[ev.status]}
-                  </span>
                   <h3 className="font-cormorant mt-4 text-3xl font-semibold text-[var(--color-borgonha)] md:text-4xl">
                     <Link href={`/eventos/${ev.slug}`} className="md:cursor-none">
                       {ev.titulo}
@@ -156,16 +143,26 @@ const EventosSection = ({ eventos, showHeading = true }: Props) => {
                 </div>
               </article>
             )
-          })}
-        </div>
+            })}
+          </div>
+        ) : (
+          <div className="mx-auto max-w-2xl border border-[var(--color-borgonha)]/20 bg-white/45 px-6 py-12 text-center">
+            <p className="font-cormorant text-3xl text-[var(--color-borgonha)]">
+              Novas actividades serão publicadas em breve.
+            </p>
+            <p className="mt-3 text-sm font-light text-[var(--color-preto)]/70">
+              Consulta a Agenda para acompanhar as próximas iniciativas da Mindjer i Futuro.
+            </p>
+          </div>
+        )}
 
         {showHeading ? (
           <div className="mt-16 text-center">
             <Link
-              href="/eventos"
+              href="/calendario"
               className="text-label text-[var(--color-borgonha)] underline decoration-[var(--color-ouro)] decoration-1 underline-offset-8 hover:text-[var(--color-borgonha-escuro)] md:cursor-none"
             >
-              Ver todos os eventos
+              Ver Agenda
             </Link>
           </div>
         ) : null}

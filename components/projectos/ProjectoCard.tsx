@@ -73,7 +73,7 @@ const ProjectoCard = ({ titulo, slug, categoria, imagemUrl, index }: ProjectoCar
       href={`/projectos/${slug}`}
       data-cursor="image"
       aria-label={`Ver projecto: ${titulo}`}
-      className="group relative block aspect-[4/5] overflow-hidden bg-[var(--color-cinza-quente)] shadow-[var(--shadow-borgonha)] perspective-[1000px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ouro)] md:cursor-none"
+      className="group relative block aspect-[4/3] overflow-hidden bg-[var(--color-cinza-quente)] shadow-[var(--shadow-borgonha)] perspective-[1000px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ouro)] md:cursor-none"
       style={{ perspective: "1000px" }}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -94,14 +94,17 @@ const ProjectoCard = ({ titulo, slug, categoria, imagemUrl, index }: ProjectoCar
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
-        <div className="pointer-events-none absolute inset-0 bg-[var(--color-borgonha)] opacity-0 transition-opacity duration-500 group-hover:opacity-80 group-focus-visible:opacity-80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-borgonha)] via-[var(--color-borgonha)]/20 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-75 group-focus-visible:opacity-75" />
         <span
           className="pointer-events-none absolute right-4 top-4 font-cormorant text-6xl text-[var(--color-ouro)]/25 md:text-8xl"
           aria-hidden
         >
           {num}
         </span>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+        <div
+          data-testid="project-card-copy"
+          className="pointer-events-none absolute inset-x-0 bottom-0 p-6 opacity-100"
+        >
           <p className="text-label mb-2 text-[var(--color-ouro)]">{categoria}</p>
           <h3 className="font-cormorant text-2xl font-semibold text-[var(--color-branco)] md:text-3xl">
             {titulo}

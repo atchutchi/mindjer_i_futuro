@@ -50,7 +50,7 @@ export default async function ProjectosPage() {
           Capacitação profissional, mentoria, bolsas, cultura e angariação — iniciativas sem fins lucrativos para
           mulheres guineenses.
         </p>
-        <div className="grid grid-cols-1 gap-0.5 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {list.map((p, i) => (
             <ProjectoCard key={p.slug} {...p} index={i} />
           ))}

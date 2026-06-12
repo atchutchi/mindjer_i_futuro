@@ -14,6 +14,22 @@ Ao longo da masterclass, foi dada especial atenção ao fortalecimento da autoco
 
 A iniciativa contou com uma forte adesão e participação ativa, com as participantes a demonstrarem melhorias visíveis na forma como se expressam e apresentam as suas ideias. Os resultados evidenciaram um aumento da confiança, da clareza na comunicação e da capacidade de intervenção em contextos públicos e profissionais.`
 
+export const textoWorkshopsCapacitacao = `Os workshops e programas de capacitação da Mindjer i Futuro respondem às necessidades práticas de jovens mulheres em diferentes fases do seu percurso pessoal, académico e profissional. Cada actividade combina conhecimento aplicado, exercícios e partilha de experiências.
+
+Desde 2023, a programação abrange temas como habilidades profissionais, comunicação e falar em público, gestão de projectos, literacia digital, empreendedorismo, escrita de CV e cartas de apresentação, LinkedIn, Canva, educação financeira, inteligência emocional, saúde sexual e reprodutiva e escolha de carreira.
+
+As sessões são orientadas por profissionais e organizações parceiras. A metodologia favorece a participação activa e a aplicação imediata dos conteúdos, com espaço para perguntas, exercícios e criação de redes entre participantes.
+
+Os resultados incluem maior confiança, novas competências profissionais e digitais e melhor preparação para oportunidades de educação, emprego, empreendedorismo e liderança.`
+
+export const textoConferenciaLiderancaFeminina = `A Conferência de Liderança Feminina é um dos principais encontros promovidos pela Mindjer i Futuro. Reúne mulheres, jovens, profissionais, empreendedoras, instituições e parceiros para debater liderança, oportunidades e os desafios enfrentados pelas mulheres na Guiné-Bissau.
+
+As diferentes edições combinam conversas, testemunhos, sessões práticas e momentos de criação de redes. A programação aproxima participantes de referências femininas e cria espaço para partilha de experiências e identificação de soluções.
+
+Desde a primeira edição, a conferência cresceu em participação e diversidade de temas. A quarta edição reuniu 297 participantes no Centro Cultural Franco-Bissau-Guineense.
+
+O encontro reforça a visibilidade das mulheres guineenses, cria novas ligações profissionais e incentiva as participantes a assumirem papéis de liderança nas suas comunidades e organizações.`
+
 export const textoIdentidadesDiasporicas = `O evento «Mulheres Guineenses e Identidades Diaspóricas» foi um momento de encontro e reflexão promovido pela Mindjer i Futuro, realizado na Embaixada de França na Guiné-Bissau, em parceria com o Centro Cultural Franco-Bissau-Guineense. Teve como objetivo criar um espaço de diálogo entre mulheres com diferentes percursos de vida, reunindo participantes que cresceram ou viveram na diáspora e que mantêm uma ligação ativa com o país.
 
 A iniciativa procurou explorar temas como identidade, pertença, adaptação cultural e os desafios e oportunidades associados ao regresso ou à ligação à Guiné-Bissau. Através de uma conversa aberta e honesta, as participantes partilharam experiências pessoais e profissionais, trazendo diferentes perspetivas sobre o que significa ser mulher guineense em contextos diversos.

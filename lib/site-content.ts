@@ -1,11 +1,13 @@
 import {
   textoBolsasLinguaFrancesa,
   textoBrunchAngariacao,
+  textoConferenciaLiderancaFeminina,
   textoCursoHabilidadesProfissionais,
   textoIdentidadesDiasporicas,
   textoMasterclassFalarEmPublico,
   textoPodcast,
   textoProgramaMentoria,
+  textoWorkshopsCapacitacao,
 } from "./projectos-textos"
 
 export type ProjectoFallback = {
@@ -41,24 +43,23 @@ export type TestemunhoFallback = {
 }
 
 export const heroSlideUrls = [
+  "/projectos/brunch-angariacao/capa.png",
   "/projectos/identidades-diasporicas/capa.png",
   "/projectos/curso-habilidades-profissionais/capa.png",
-  "/projectos/brunch-angariacao/capa.png",
 ]
 
-export const impactoBgUrl =
-  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
+export const impactoBgUrl = "/projectos/identidades-diasporicas/capa.png"
 
 export const projectosFallback: ProjectoFallback[] = [
   {
-    titulo: "Curso de Habilidades Profissionais",
-    slug: "curso-habilidades-profissionais",
-    categoria: "Capacitação",
+    titulo: "Workshops & Capacitação",
+    slug: "workshops-capacitacao",
+    categoria: "Workshops",
     descricaoBreve:
-      "Parceria com a Embaixada dos EUA. 30 participantes, 6 semanas: CV, entrevistas e comunicação digital.",
-    descricaoLonga: textoCursoHabilidadesProfissionais,
+      "Competências profissionais, digitais e pessoais através de sessões práticas para jovens mulheres.",
+    descricaoLonga: textoWorkshopsCapacitacao,
     destaque: true,
-    impacto: "30 participantes",
+    impacto: "20+ sessões realizadas",
     imagemCapaUrl: "/projectos/curso-habilidades-profissionais/capa.png",
     galeriaUrls: [
       "/projectos/curso-habilidades-profissionais/galeria-1.png",
@@ -66,16 +67,15 @@ export const projectosFallback: ProjectoFallback[] = [
     ],
   },
   {
-    titulo: "Masterclass Falar em Público",
-    slug: "masterclass-falar-em-publico",
-    categoria: "Capacitação",
+    titulo: "Conferência de Liderança Feminina",
+    slug: "conferencia-lideranca-feminina",
+    categoria: "Conferência",
     descricaoBreve:
-      "Na Escola Nacional de Administração: confiança, linguagem corporal e comunicação assertiva.",
-    descricaoLonga: textoMasterclassFalarEmPublico,
+      "Encontro anual para debate, aprendizagem e criação de redes entre mulheres guineenses.",
+    descricaoLonga: textoConferenciaLiderancaFeminina,
     destaque: true,
-    impacto: "Escola Nacional de Administração",
-    imagemCapaUrl: "/projectos/masterclass-falar-em-publico/capa.png",
-    galeriaUrls: ["/projectos/masterclass-falar-em-publico/galeria-1.png"],
+    impacto: "4 edições · 297 participantes na edição de 2026",
+    imagemCapaUrl: "/eventos/e29-4-conferencia-lideranca-feminina-2026/capa.png",
   },
   {
     titulo: "Mulheres Guineenses e Identidades Diaspóricas",
@@ -139,6 +139,100 @@ export const projectosFallback: ProjectoFallback[] = [
   },
 ]
 
+export const projectosDetalheFallback: ProjectoFallback[] = [
+  ...projectosFallback,
+  {
+    titulo: "Curso de Habilidades Profissionais",
+    slug: "curso-habilidades-profissionais",
+    categoria: "Capacitação",
+    descricaoBreve:
+      "Parceria com a Embaixada dos EUA. 30 participantes, 6 semanas: CV, entrevistas e comunicação digital.",
+    descricaoLonga: textoCursoHabilidadesProfissionais,
+    destaque: false,
+    impacto: "30 participantes",
+    imagemCapaUrl: "/projectos/curso-habilidades-profissionais/capa.png",
+    galeriaUrls: [
+      "/projectos/curso-habilidades-profissionais/galeria-1.png",
+      "/projectos/curso-habilidades-profissionais/galeria-2.png",
+    ],
+  },
+  {
+    titulo: "Masterclass Falar em Público",
+    slug: "masterclass-falar-em-publico",
+    categoria: "Capacitação",
+    descricaoBreve:
+      "Na Escola Nacional de Administração: confiança, linguagem corporal e comunicação assertiva.",
+    descricaoLonga: textoMasterclassFalarEmPublico,
+    destaque: false,
+    impacto: "Escola Nacional de Administração",
+    imagemCapaUrl: "/projectos/masterclass-falar-em-publico/capa.png",
+    galeriaUrls: ["/projectos/masterclass-falar-em-publico/galeria-1.png"],
+  },
+]
+
+export type ProjectoEstrutura = {
+  objectivo: string
+  actividades: string[]
+  resultados: string[]
+}
+
+export const projectosEstrutura: Record<string, ProjectoEstrutura> = {
+  "workshops-capacitacao": {
+    objectivo:
+      "Reforçar competências pessoais, profissionais e digitais de jovens mulheres através de aprendizagem prática.",
+    actividades: [
+      "Habilidades profissionais, CV, entrevistas e comunicação",
+      "Gestão de projectos, empreendedorismo e educação financeira",
+      "Literacia digital, LinkedIn e Canva",
+      "Falar em público, inteligência emocional e saúde sexual e reprodutiva",
+    ],
+    resultados: [
+      "Mais de 20 sessões realizadas desde 2023",
+      "Maior confiança e preparação profissional das participantes",
+      "Criação de redes entre participantes, facilitadores e parceiros",
+    ],
+  },
+  "conferencia-lideranca-feminina": {
+    objectivo:
+      "Criar um espaço anual de aprendizagem, debate e ligação entre mulheres guineenses e organizações parceiras.",
+    actividades: [
+      "Painéis e conversas sobre liderança feminina",
+      "Testemunhos e partilha de percursos",
+      "Sessões práticas e momentos de networking",
+    ],
+    resultados: [
+      "Quatro edições realizadas",
+      "297 participantes na edição de 2026",
+      "Maior visibilidade para lideranças femininas guineenses",
+    ],
+  },
+  "bolsas-lingua-francesa": {
+    objectivo: "Ampliar o acesso de jovens mulheres à aprendizagem da língua francesa.",
+    actividades: ["Selecção de bolseiras", "Curso de francês durante oito meses", "Acompanhamento das participantes"],
+    resultados: ["10 bolsas atribuídas", "Novas competências linguísticas", "Maior preparação para oportunidades académicas e profissionais"],
+  },
+  "programa-mentoria": {
+    objectivo: "Apoiar o desenvolvimento pessoal e profissional de jovens mulheres através de mentoria.",
+    actividades: ["Emparelhamento entre mentoras e aprendizes", "Encontros regulares", "Acompanhamento pela equipa MiF"],
+    resultados: ["9 pares de mentoria", "Sete meses de acompanhamento", "Maior clareza de objectivos e confiança"],
+  },
+  "identidades-diasporicas": {
+    objectivo: "Criar pontes entre mulheres guineenses no país e na diáspora.",
+    actividades: ["Conversa aberta sobre identidade e pertença", "Partilha de experiências", "Criação de redes"],
+    resultados: ["Maior ligação entre diferentes percursos", "Novas oportunidades de colaboração", "Valorização das experiências da diáspora"],
+  },
+  "brunch-angariacao": {
+    objectivo: "Mobilizar recursos e reforçar a rede de apoio às actividades da Mindjer i Futuro.",
+    actividades: ["Brunches de angariação", "Apresentação do trabalho da MiF", "Encontro entre apoiantes e parceiras"],
+    resultados: ["Apoio financeiro às actividades", "Maior visibilidade da organização", "Expansão da rede de apoio"],
+  },
+  "podcast-mindjer-i-futuro": {
+    objectivo: "Dar voz a mulheres guineenses e aproximar as suas histórias de um público alargado.",
+    actividades: ["Entrevistas mensais", "Conversas sobre percursos, desafios e conquistas", "Publicação no YouTube"],
+    resultados: ["Arquivo digital de histórias de mulheres", "Maior visibilidade das convidadas", "Conteúdo contínuo de aprendizagem e inspiração"],
+  },
+}
+
 export const equipaFallback: MembroFallback[] = [
   {
     nome: "Ana Djú",
@@ -189,13 +283,13 @@ export const testemunhoFallback: TestemunhoFallback = {
     "Mindjer i Futuro abriu-me portas que não sabia que existiam. Saí com confiança para liderar na minha comunidade.",
   nome: "Participante do programa",
   programa: "Curso de Habilidades Profissionais",
-  fotoUrl:
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
+  fotoUrl: impactoBgUrl,
 }
 
 export type ParceiroItem = {
   nome: string
   logoSrc: string
+  darkBackground?: boolean
 }
 
 export const parceirosItems: ParceiroItem[] = [
@@ -209,5 +303,5 @@ export const parceirosItems: ParceiroItem[] = [
   { nome: "iParticipate", logoSrc: "/parceiros/iparticipate.svg" },
   { nome: "No Kunsi Digital", logoSrc: "/parceiros/no_kunsi_digital.svg" },
   { nome: "QR Consulting", logoSrc: "/parceiros/qr_consulting.svg" },
-  { nome: "Tabanka TV", logoSrc: "/parceiros/tabanka.svg" },
+  { nome: "Tabanka TV", logoSrc: "/parceiros/tabanka.svg", darkBackground: true },
 ]

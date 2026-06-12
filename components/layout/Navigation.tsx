@@ -12,9 +12,7 @@ import { easeOutQuart } from "@/lib/animations"
 const links = [
   { href: "/sobre", label: "Sobre" },
   { href: "/projectos", label: "Projectos" },
-  { href: "/eventos", label: "Eventos" },
-  { href: "/calendario", label: "Calendário" },
-  { href: "/blog", label: "Blog" },
+  { href: "/calendario", label: "Agenda" },
   { href: "/equipa", label: "Equipa" },
   { href: "/parceiros", label: "Parceiros" },
   { href: "/contacto", label: "Contacto" },
@@ -56,31 +54,32 @@ const Navigation = ({ lightBg = false }: Props) => {
               ? lightBg && !scrolled
                 ? "rgba(245, 237, 224, 0.92)"
                 : "rgba(10, 8, 8, 0.72)"
-              : "rgba(10, 8, 8, 0)",
+              : "rgba(10, 8, 8, 0.58)",
         }}
         transition={{ duration: 0.45, ease: easeOutQuart }}
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl",
-          scrolled || (lightBg && !scrolled)
-            ? "border-white/10"
-            : "border-transparent",
+          scrolled || !lightBg ? "border-white/10" : "border-transparent",
           lightBg && !scrolled ? "border-[var(--color-creme-escuro)]/40" : "",
         )}
         style={{
-          backdropFilter: scrolled || lightBg ? "blur(20px)" : "none",
+          backdropFilter: "blur(20px)",
         }}
       >
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 md:px-8"
           aria-label="Principal"
         >
-          <Link href="/" className="relative z-10 shrink-0 md:cursor-none">
+          <Link
+            href="/"
+            className="relative z-10 shrink-0 rounded-full border border-[var(--color-ouro)]/45 bg-[var(--color-creme)]/95 p-1.5 shadow-lg md:cursor-none"
+          >
             <Image
               src="/mindjer_i_futuro_logo.svg"
               alt="Mindjer i Futuro"
               width={160}
               height={56}
-              className="h-10 w-auto object-contain object-left"
+              className="h-11 w-11 object-contain md:h-12 md:w-12"
               priority
               unoptimized
             />

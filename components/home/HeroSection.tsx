@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import { motion } from "motion/react"
 import { useGSAP } from "@gsap/react"
@@ -11,8 +10,6 @@ import { heroSlideUrls } from "@/lib/site-content"
 import { easeOutQuart } from "@/lib/animations"
 import Button, { ButtonOutline } from "@/components/ui/Button"
 
-const HeroParticles = dynamic(() => import("./HeroParticles"), { ssr: false })
-
 type Props = {
   eyebrow?: string
   titulo?: string
@@ -21,17 +18,15 @@ type Props = {
 }
 
 const HeroSection = ({
-  eyebrow = "Guiné-Bissau · Desde 2022",
+  eyebrow = "",
   titulo = "Mindjer i Futuro",
   subtitulo = "Conferência de Liderança Feminina",
   slideUrls = heroSlideUrls,
 }: Props) => {
   const rootRef = useRef<HTMLElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
-  const logoRef = useRef<HTMLDivElement>(null)
   const [slide, setSlide] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
-  const [showParticles, setShowParticles] = useState(false)
   const titleWords = titulo.split(" ").filter(Boolean)
   const images = slideUrls.length ? slideUrls : heroSlideUrls
 
@@ -44,17 +39,6 @@ const HeroSection = ({
   }, [])
 
   useEffect(() => {
-    if (reducedMotion) return
-    const loadParticles = () => setShowParticles(true)
-    const idle = window.requestIdleCallback?.(loadParticles)
-    const timeout = window.setTimeout(loadParticles, 1800)
-    return () => {
-      if (idle) window.cancelIdleCallback?.(idle)
-      window.clearTimeout(timeout)
-    }
-  }, [reducedMotion])
-
-  useEffect(() => {
     if (reducedMotion || images.length <= 1) return
     const id = window.setInterval(() => {
       setSlide((s) => (s + 1) % images.length)
@@ -65,7 +49,6 @@ const HeroSection = ({
   useGSAP(
     () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
-      tl.fromTo(logoRef.current, { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1.1 })
       tl.fromTo(
         ".hero-cta-row",
         { opacity: 0, y: 24 },
@@ -122,36 +105,22 @@ const HeroSection = ({
           />
         ))}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[var(--color-borgonha)]/75 via-[var(--color-preto)]/50 to-[var(--color-preto)]"
+          className="absolute inset-0 bg-gradient-to-b from-[var(--color-creme)]/20 via-[var(--color-borgonha)]/35 to-[var(--color-preto)]/90"
           aria-hidden
         />
       </div>
 
-      {showParticles ? <HeroParticles /> : null}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start px-5 text-left md:px-8">
+        {eyebrow ? <p className="text-label mb-6 text-[var(--color-ouro)]">{eyebrow}</p> : null}
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center md:px-8">
-        <p className="text-label mb-6 text-[var(--color-ouro)]">{eyebrow}</p>
-
-        <div ref={logoRef} className="mb-10">
-          <Image
-            src="/mindjer_i_futuro_logo.svg"
-            alt="Mindjer i Futuro — Conferência de Liderança Feminina"
-            width={320}
-            height={320}
-            className="mx-auto h-36 w-auto max-w-[min(90vw,22rem)] object-contain drop-shadow-[var(--shadow-borgonha)] md:h-44"
-            priority
-            unoptimized
-          />
-        </div>
-
-        <h1 className="font-cormorant text-hero-title mb-4 text-[var(--color-branco)]">
+        <h1 className="font-cormorant text-hero-title mb-4 max-w-full text-[var(--color-branco)] drop-shadow-[0_3px_18px_rgba(0,0,0,0.85)]">
           {titleWords.map((word, i) => (
             <motion.span
               key={word}
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + i * 0.1, duration: 0.85, ease: easeOutQuart }}
-              className="inline-block pr-[0.2em] last:pr-0"
+              className="block sm:inline-block sm:pr-[0.2em] sm:last:pr-0"
             >
               {word}
             </motion.span>
@@ -162,14 +131,14 @@ const HeroSection = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.9 }}
-          className="text-label mb-12 max-w-xl text-[var(--color-branco)]/90"
+          className="text-label mb-12 max-w-xl text-[var(--color-branco)]/90 drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]"
         >
           {subtitulo}
         </motion.p>
 
-        <div className="hero-cta-row flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <div className="hero-cta-row flex flex-col items-start gap-4 sm:flex-row">
           <Button href="/sobre">Conhecer a Missão</Button>
-          <ButtonOutline href="/eventos">Ver Eventos</ButtonOutline>
+          <ButtonOutline href="/calendario">Ver Agenda</ButtonOutline>
         </div>
 
         <motion.a

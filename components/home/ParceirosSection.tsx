@@ -3,7 +3,7 @@
 import { parceirosItems } from "@/lib/site-content"
 
 const logoClass =
-  "h-11 w-auto max-w-[min(200px,42vw)] object-contain object-center brightness-0 invert opacity-90 transition-all duration-300 hover:scale-105 hover:brightness-100 hover:invert-0 md:h-14 md:max-w-[220px]"
+  "h-12 w-auto max-w-[min(200px,42vw)] object-contain object-center transition-transform duration-300 hover:scale-105 md:h-16 md:max-w-[220px]"
 
 const Row = ({ reverse, slow }: { reverse?: boolean; slow?: boolean }) => (
   <div
@@ -12,7 +12,12 @@ const Row = ({ reverse, slow }: { reverse?: boolean; slow?: boolean }) => (
     } ${reverse ? "[animation-direction:reverse]" : ""}`}
   >
     {[...parceirosItems, ...parceirosItems].map((p, i) => (
-      <span key={`${p.nome}-${i}`} className="flex shrink-0 items-center justify-center">
+      <span
+        key={`${p.nome}-${i}`}
+        className={`flex min-h-28 min-w-56 shrink-0 items-center justify-center rounded-sm px-7 py-5 shadow-lg ${
+          p.darkBackground ? "bg-[var(--color-preto)]" : "bg-white"
+        }`}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element -- SVGs locais variados; evita otimização pesada */}
         <img src={p.logoSrc} alt={p.nome} className={logoClass} loading="lazy" />
       </span>

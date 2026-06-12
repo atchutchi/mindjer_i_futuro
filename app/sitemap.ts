@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next"
 import {
-  fetchArtigoSlugs,
   fetchEventoSlugs,
   fetchProjectoSlugs,
 } from "@/lib/sanity.fetch"
@@ -19,9 +18,7 @@ const staticRoutes = [
   "",
   "/sobre",
   "/projectos",
-  "/eventos",
   "/calendario",
-  "/blog",
   "/programacao",
   "/equipa",
   "/parceiros",
@@ -31,13 +28,12 @@ const staticRoutes = [
 const toDate = (value?: string) => (value ? new Date(value) : new Date())
 
 const staticFrequency = (path: string): ChangeFrequency =>
-  path === "/blog" || path === "/eventos" ? "weekly" : "monthly"
+  path === "/calendario" ? "weekly" : "monthly"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [projectoSlugs, eventoSlugs, artigoSlugs] = await Promise.all([
+  const [projectoSlugs, eventoSlugs] = await Promise.all([
     fetchProjectoSlugs(),
     fetchEventoSlugs(),
-    fetchArtigoSlugs(),
   ])
 
   const projectos = new Map<string, SlugEntry>()
@@ -47,8 +43,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const eventos = new Map<string, SlugEntry>()
   eventosFallbackOrdenados.forEach((e) => eventos.set(e.slug, { slug: e.slug }))
   ;((eventoSlugs as SlugEntry[] | null) ?? []).forEach((e) => eventos.set(e.slug, e))
-
-  const artigos = ((artigoSlugs as SlugEntry[] | null) ?? []).filter((a) => a.slug)
 
   return [
     ...staticRoutes.map((path) => ({
@@ -68,12 +62,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: toDate(e.updatedAt),
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    })),
-    ...artigos.map((a) => ({
-      url: `${site}/blog/${a.slug}`,
-      lastModified: toDate(a.updatedAt),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
     })),
   ]
 }

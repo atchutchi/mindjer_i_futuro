@@ -105,10 +105,10 @@ export default async function EventoDetalhePage({ params }: Props) {
     <article className="bg-[var(--color-creme)] pb-24 pt-28 md:pt-36">
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <Link
-          href="/eventos"
+          href="/calendario"
           className="text-label mb-8 inline-block text-[var(--color-borgonha)] hover:text-[var(--color-ouro)] md:cursor-none"
         >
-          ← Eventos
+          ← Agenda
         </Link>
         <span className="text-label mb-4 block text-[var(--color-ouro)]">{statusLabel[status]}</span>
         <h1 className="font-cormorant text-section-title mb-4 text-[var(--color-borgonha)]">{titulo}</h1>

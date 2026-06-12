@@ -66,6 +66,10 @@ export default function SobrePage() {
             mentoria e da criação de redes — incluindo a diáspora — construímos pontes para um
             amanhã mais justo, inclusivo e cheio de possibilidades.
           </p>
+          <p>
+            Fundada em 2022, a associação desenvolve projectos de capacitação, mentoria,
+            liderança e criação de redes para mulheres guineenses.
+          </p>
         </div>
 
         {/* Missão */}

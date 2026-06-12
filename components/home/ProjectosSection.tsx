@@ -24,7 +24,7 @@ const ProjectosSection = ({ projectos }: Props) => (
           <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--color-ouro)] transition-all duration-300 group-hover:w-full" />
         </Link>
       </div>
-      <div className="grid grid-cols-1 gap-0.5 md:grid-cols-2 md:gap-0.5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {projectos.map((p, i) => (
           <ProjectoCard key={p.slug} {...p} index={i} />
         ))}
