@@ -6,6 +6,7 @@ import { CalendarPlus } from "lucide-react"
 import { fetchEventoBySlug, fetchEventoSlugs } from "@/lib/sanity.fetch"
 import { urlForImage } from "@/lib/sanity.image"
 import { eventosFallback, type EventoFallback } from "@/lib/site-content"
+import { paragrafosDeTexto } from "@/lib/texto"
 import PortableBody from "@/components/content/PortableBody"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -100,6 +101,10 @@ export default async function EventoDetalhePage({ params }: Props) {
   const meta = fb as EventoFallback | undefined
   const parceiroLinha =
     meta?.parceiro && meta.parceiro.trim() !== "-" ? meta.parceiro : null
+  const corpoParagrafos =
+    !doc?.descricao && meta?.descricaoLonga
+      ? paragrafosDeTexto(meta.descricaoLonga)
+      : null
 
   return (
     <article className="bg-[var(--color-creme)] pb-24 pt-28 md:pt-36">
@@ -149,10 +154,17 @@ export default async function EventoDetalhePage({ params }: Props) {
             priority
           />
         </div>
-        {descricaoBreve && !doc?.descricao ? (
+        {doc?.descricao ? (
+          <PortableBody value={doc.descricao} className="prose-mif" />
+        ) : corpoParagrafos ? (
+          <div className="space-y-6 text-base font-light leading-relaxed text-[var(--color-preto)]/90">
+            {corpoParagrafos.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        ) : descricaoBreve ? (
           <p className="mb-8 text-lg font-light leading-relaxed text-[var(--color-preto)]/90">{descricaoBreve}</p>
         ) : null}
-        {doc?.descricao ? <PortableBody value={doc.descricao} className="prose-mif" /> : null}
         {doc?.galeria?.length ? (
           <div className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-3">
             {doc.galeria.map((img, i) => {

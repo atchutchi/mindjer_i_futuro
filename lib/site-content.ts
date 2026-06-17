@@ -181,15 +181,51 @@ export const projectosEstrutura: Record<string, ProjectoEstrutura> = {
     objectivo:
       "Reforçar competências pessoais, profissionais e digitais de jovens mulheres através de aprendizagem prática.",
     actividades: [
-      "Habilidades profissionais, CV, entrevistas e comunicação",
-      "Gestão de projectos, empreendedorismo e educação financeira",
-      "Literacia digital, LinkedIn e Canva",
-      "Falar em público, inteligência emocional e saúde sexual e reprodutiva",
+      "Saúde sexual e reprodutiva",
+      "Falar em público e comunicação",
+      "Habilidades profissionais e empregabilidade",
+      "Educação financeira",
+      "Escolha de carreira",
+      "Literacia digital e inteligência artificial",
+      "Inteligência emocional",
     ],
     resultados: [
       "Mais de 20 sessões realizadas desde 2023",
+      "Mais de 200 participantes nas edições de saúde sexual e reprodutiva",
+      "Mais de 150 participantes nas edições de educação financeira",
       "Maior confiança e preparação profissional das participantes",
-      "Criação de redes entre participantes, facilitadores e parceiros",
+    ],
+  },
+  "curso-habilidades-profissionais": {
+    objectivo:
+      "Preparar jovens mulheres para o mercado de trabalho através de competências práticas e aplicáveis.",
+    actividades: [
+      "Elaboração de CV",
+      "Escrita de cartas de apresentação",
+      "Preparação para entrevistas",
+      "Comunicação profissional",
+      "Ferramentas digitais",
+    ],
+    resultados: [
+      "30 participantes certificadas",
+      "Duas turmas ao longo de 6 semanas",
+      "Maior confiança e clareza de objectivos profissionais",
+    ],
+  },
+  "masterclass-falar-em-publico": {
+    objectivo:
+      "Apoiar jovens mulheres no desenvolvimento da sua capacidade de comunicação e expressão.",
+    actividades: [
+      "Estrutura de discurso",
+      "Controlo do nervosismo",
+      "Linguagem corporal",
+      "Técnicas de comunicação eficaz",
+      "Exercícios práticos e simulações",
+    ],
+    resultados: [
+      "Maior confiança na apresentação de ideias",
+      "Melhoria da clareza na comunicação",
+      "Maior capacidade de intervenção em contextos públicos e profissionais",
     ],
   },
   "conferencia-lideranca-feminina": {

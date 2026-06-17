@@ -1,3 +1,20 @@
+import {
+  textoBolsasLinguaFrancesa,
+  textoBrunchAngariacao,
+  textoCursoHabilidadesProfissionais,
+  textoIdentidadesDiasporicas,
+  textoMasterclassFalarEmPublico,
+  textoNhaFalaAdamaDjalo,
+  textoProgramaMentoria,
+  textoWorkshopEducacaoFinanceira,
+  textoWorkshopEscolhendoCarreira,
+  textoWorkshopFalarEmPublico,
+  textoWorkshopHabilidadesProfissionais,
+  textoWorkshopInteligenciaEmocional,
+  textoWorkshopLiteraciaDigital,
+  textoWorkshopSaudeSexualReprodutiva,
+} from "./projectos-textos"
+
 export type EventoFallback = {
   no: number
   titulo: string
@@ -9,6 +26,7 @@ export type EventoFallback = {
   parceiro: string
   duracao: string
   descricaoBreve: string
+  descricaoLonga?: string
   status: "passado" | "proximo" | "inscricoes-abertas"
   imagemCapaUrl: string
 }
@@ -61,14 +79,15 @@ export const eventosFallback: EventoFallback[] = [
   }),
   ev({
     no: 2,
-    titulo: "Workshop: Perfil Comportamental",
+    titulo: "Nha Fala com Adama Djalo",
     slug: "e02-workshop-perfil-comportamental-2023",
     data: "2023-03-11T14:00:00.000Z",
-    local: "Hotel Coimbra, Bissau",
+    local: "CCFBG, Bissau",
     facilitador: "Adama Djalo",
-    totalParticipantes: 50,
-    parceiro: "Clarity4D",
+    totalParticipantes: 60,
+    parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoNhaFalaAdamaDjalo,
   }),
   ev({
     no: 3,
@@ -80,6 +99,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 50,
     parceiro: "-",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopHabilidadesProfissionais,
   }),
   ev({
     no: 4,
@@ -91,6 +111,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 30,
     parceiro: "American Corner",
     duracao: "6 semanas",
+    descricaoLonga: textoCursoHabilidadesProfissionais,
   }),
   ev({
     no: 5,
@@ -102,6 +123,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 33,
     parceiro: "American Corner",
     duracao: "6 semanas",
+    descricaoLonga: textoCursoHabilidadesProfissionais,
   }),
   ev({
     no: 6,
@@ -113,6 +135,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 10,
     parceiro: "CCFBG",
     duracao: "8 meses",
+    descricaoLonga: textoBolsasLinguaFrancesa,
   }),
   ev({
     no: 7,
@@ -124,6 +147,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 30,
     parceiro: "GãMela",
     duracao: "4 horas",
+    descricaoLonga: textoBrunchAngariacao,
   }),
   ev({
     no: 8,
@@ -146,6 +170,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 49,
     parceiro: "ENA",
     duracao: "2 horas",
+    descricaoLonga: textoMasterclassFalarEmPublico,
   }),
   ev({
     no: 10,
@@ -179,6 +204,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 64,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopFalarEmPublico,
   }),
   ev({
     no: 13,
@@ -190,6 +216,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 11,
     parceiro: "CCFBG, Abiptom",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopLiteraciaDigital,
   }),
   ev({
     no: 14,
@@ -212,6 +239,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 50,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopHabilidadesProfissionais,
   }),
   ev({
     no: 16,
@@ -267,6 +295,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 50,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopEscolhendoCarreira,
   }),
   ev({
     no: 21,
@@ -278,6 +307,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 30,
     parceiro: "CCFBG, Embaixada da França",
     duracao: "3 horas",
+    descricaoLonga: textoIdentidadesDiasporicas,
   }),
   ev({
     no: 22,
@@ -289,6 +319,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 18,
     parceiro: "CCFBG",
     duracao: "6 meses",
+    descricaoLonga: textoProgramaMentoria,
   }),
   ev({
     no: 23,
@@ -300,6 +331,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 100,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopInteligenciaEmocional,
   }),
   ev({
     no: 24,
@@ -311,6 +343,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 50,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopSaudeSexualReprodutiva,
   }),
   ev({
     no: 25,
@@ -322,6 +355,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 60,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopEducacaoFinanceira,
   }),
   ev({
     no: 26,
@@ -333,6 +367,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 10,
     parceiro: "iParticipate / Abiptom",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopLiteraciaDigital,
   }),
   ev({
     no: 27,
@@ -344,6 +379,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 60,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopSaudeSexualReprodutiva,
   }),
   ev({
     no: 28,
@@ -355,6 +391,7 @@ export const eventosFallback: EventoFallback[] = [
     totalParticipantes: 50,
     parceiro: "CCFBG",
     duracao: "2 horas",
+    descricaoLonga: textoWorkshopFalarEmPublico,
   }),
   ev({
     no: 29,

@@ -14,13 +14,23 @@ Ao longo da masterclass, foi dada especial atenção ao fortalecimento da autoco
 
 A iniciativa contou com uma forte adesão e participação ativa, com as participantes a demonstrarem melhorias visíveis na forma como se expressam e apresentam as suas ideias. Os resultados evidenciaram um aumento da confiança, da clareza na comunicação e da capacidade de intervenção em contextos públicos e profissionais.`
 
-export const textoWorkshopsCapacitacao = `Os workshops e programas de capacitação da Mindjer i Futuro respondem às necessidades práticas de jovens mulheres em diferentes fases do seu percurso pessoal, académico e profissional. Cada actividade combina conhecimento aplicado, exercícios e partilha de experiências.
+export const textoWorkshopsCapacitacao = `Os workshops e programas de capacitação da Mindjer i Futuro respondem às necessidades práticas de jovens mulheres em diferentes fases do seu percurso pessoal, académico e profissional. Cada atividade combina conhecimento aplicado, exercícios e partilha de experiências.
 
-Desde 2023, a programação abrange temas como habilidades profissionais, comunicação e falar em público, gestão de projectos, literacia digital, empreendedorismo, escrita de CV e cartas de apresentação, LinkedIn, Canva, educação financeira, inteligência emocional, saúde sexual e reprodutiva e escolha de carreira.
+Saúde Sexual e Reprodutiva: o workshop já vai na sua 5.ª edição e alcançou mais de 200 participantes. Facilitado pela enfermeira Maria Mendes, aborda saúde menstrual, métodos contracetivos, prevenção de infeções sexualmente transmissíveis, planeamento familiar e direitos sexuais e reprodutivos.
 
-As sessões são orientadas por profissionais e organizações parceiras. A metodologia favorece a participação activa e a aplicação imediata dos conteúdos, com espaço para perguntas, exercícios e criação de redes entre participantes.
+Falar em Público: o workshop centra-se no desenvolvimento da confiança, liderança e capacidade de comunicação. Facilitado por Né Vaz, trabalha técnicas de apresentação, estruturação de discursos, linguagem corporal e gestão do nervosismo através de exercícios práticos.
 
-Os resultados incluem maior confiança, novas competências profissionais e digitais e melhor preparação para oportunidades de educação, emprego, empreendedorismo e liderança.`
+Habilidades Profissionais: o workshop apoia jovens mulheres na inserção e progressão no mercado de trabalho. Facilitado por Ana Djú, aborda elaboração de currículo, preparação para entrevistas, comunicação profissional, gestão da imagem pessoal e competências interpessoais.
+
+Educação Financeira: o workshop «Como Gerir o Meu Dinheiro» promove literacia financeira, autonomia e independência económica. Facilitado por Noella Bangura, trabalha orçamentos, gestão de despesas, poupança, reserva de emergência, dívidas e noções básicas de investimento.
+
+Escolhendo uma Carreira: o workshop apoia jovens mulheres na tomada de decisões sobre o seu futuro académico e profissional. Facilitado por Ilsa Cá e Sá, aborda vocação, influência social, bolsas de estudo, percursos académicos, oportunidades na Guiné-Bissau e noções introdutórias de empreendedorismo.
+
+Literacia Digital e Inteligência Artificial: a iniciativa sensibiliza jovens mulheres para a importância das competências digitais. Facilitada pela Abiptom SARL, aborda segurança digital, uso responsável da internet, oportunidades digitais e introdução à inteligência artificial.
+
+Inteligência Emocional: o workshop apoia jovens mulheres na compreensão e gestão das emoções. Facilitado por Elise Bidault, psicóloga clínica e psicoterapeuta, trabalha reconhecimento emocional, impacto das emoções nas decisões, comunicação, ansiedade e resolução de desafios pessoais e profissionais.
+
+Os resultados incluem maior confiança, novas competências profissionais, digitais e pessoais e melhor preparação para oportunidades de educação, emprego, empreendedorismo e liderança.`
 
 export const textoConferenciaLiderancaFeminina = `A Conferência de Liderança Feminina é um dos principais encontros promovidos pela Mindjer i Futuro. Reúne mulheres, jovens, profissionais, empreendedoras, instituições e parceiros para debater liderança, oportunidades e os desafios enfrentados pelas mulheres na Guiné-Bissau.
 
@@ -69,3 +79,37 @@ Através de episódios mensais, o podcast reúne mulheres que fazem parte da red
 O formato do podcast permite abordar temas relevantes de forma acessível, incluindo desenvolvimento profissional, autonomia, literacia digital e os desafios enfrentados pelas mulheres na Guiné-Bissau. Para além de informar, procura inspirar e criar identificação com diferentes realidades e trajetórias.
 
 Os episódios são publicados mensalmente no canal Mindjer i Futuro no YouTube, alcançando um público crescente e reforçando a presença digital da organização. O podcast contribui para ampliar a visibilidade das mulheres guineenses e fortalecer a rede da organização, criando um arquivo de histórias e experiências que continuam a inspirar outras mulheres.`
+
+export const textoNhaFalaAdamaDjalo = `O evento «Nha Fala com Adama Djalo» foi promovido pela Mindjer i Futuro com o objetivo de criar um espaço de partilha e reflexão em torno de percursos de vida, desenvolvimento pessoal e profissional. Realizado no Centro Cultural Franco-Bissau-Guineense, contou com a participação de Adama Djalo, especialista em análise de perfis comportamentais, que partilhou a sua trajetória marcada por mais de 10 anos de experiência profissional em diferentes países e o seu processo de adaptação e reconexão com a Guiné-Bissau.
+
+A conversa abordou temas como resiliência, identidade, crescimento pessoal e os desafios associados à construção de uma carreira em diferentes contextos culturais. O formato aberto permitiu uma interação próxima com o público, incentivando a reflexão e a troca de experiências.
+
+O evento reuniu cerca de 60 participantes e proporcionou um momento inspirador de aprendizagem, reforçando a importância de criar espaços onde histórias reais possam motivar outras mulheres a acreditar no seu potencial e a construir os seus próprios percursos.`
+
+export const textoWorkshopSaudeSexualReprodutiva = `O Workshop de Saúde Sexual e Reprodutiva já vai na sua 5.ª edição, tendo alcançado mais de 200 participantes ao longo das diferentes sessões. A iniciativa foi criada para responder à necessidade de maior acesso a informação correta e acessível sobre temas fundamentais para a saúde e o bem-estar das jovens mulheres na Guiné-Bissau.
+
+Facilitado pela enfermeira Maria Mendes, o workshop aborda temas como saúde menstrual, métodos contracetivos, prevenção de infeções sexualmente transmissíveis, planeamento familiar e direitos sexuais e reprodutivos. Através de uma abordagem participativa, procura criar um espaço seguro para esclarecer dúvidas, combater a desinformação e promover decisões mais conscientes e informadas sobre a saúde.`
+
+export const textoWorkshopFalarEmPublico = `O Workshop de Falar em Público centra-se no desenvolvimento da confiança, liderança e capacidade de comunicação das participantes. Reconhecendo que a comunicação eficaz é uma competência essencial para o sucesso académico, profissional e pessoal, a iniciativa procura capacitar jovens mulheres para expressarem as suas ideias com clareza, segurança e impacto.
+
+Facilitado por uma das co-fundadoras, Né Vaz, o workshop aborda temas como técnicas de apresentação, estruturação de discursos, linguagem corporal e gestão do nervosismo. Através de exercícios práticos e momentos de interação, as participantes desenvolvem competências que lhes permitem comunicar com maior confiança, fortalecer a sua presença em espaços profissionais e assumir um papel mais ativo em contextos de liderança e tomada de decisão.`
+
+export const textoWorkshopHabilidadesProfissionais = `O Workshop de Habilidades Profissionais foi concebido para apoiar jovens mulheres no desenvolvimento de competências essenciais para a sua inserção e progressão no mercado de trabalho. Num contexto em que muitas jovens concluem a sua formação académica sem acesso a orientação prática sobre empregabilidade, a iniciativa procura reduzir esta lacuna através da partilha de ferramentas concretas e aplicáveis.
+
+Facilitado por uma das co-fundadoras, Ana Djú, o workshop aborda temas como elaboração de currículo, preparação para entrevistas, comunicação profissional, gestão da imagem pessoal e competências interpessoais. Para além do desenvolvimento técnico, a sessão procura reforçar a confiança das participantes, ajudando-as a identificar o seu potencial e a prepararem-se melhor para oportunidades académicas e profissionais.`
+
+export const textoWorkshopEducacaoFinanceira = `O Workshop «Como Gerir o Meu Dinheiro» foi criado para promover a literacia financeira entre jovens mulheres, reconhecendo a importância da gestão financeira para a autonomia, estabilidade e independência económica. Ao longo de três edições, a iniciativa já alcançou mais de 150 participantes, demonstrando o crescente interesse e necessidade de espaços dedicados à educação financeira na Guiné-Bissau.
+
+Facilitado por Noella Bangura, o workshop aborda temas como elaboração de orçamentos, gestão de despesas, hábitos de poupança, reserva de emergência, dívidas e noções básicas de investimento. Através de exemplos práticos e exercícios aplicados, as participantes são incentivadas a refletir sobre a sua relação com o dinheiro e a desenvolver hábitos financeiros mais conscientes, sustentáveis e alinhados com os seus objetivos pessoais e profissionais.`
+
+export const textoWorkshopEscolhendoCarreira = `O Workshop «Como Escolher uma Carreira» foi desenvolvido para apoiar jovens mulheres no processo de tomada de decisões sobre o seu futuro académico e profissional. A iniciativa procurou responder a dúvidas frequentes relacionadas com vocação, escolhas de carreira e acesso a oportunidades, num contexto em que muitos jovens enfrentam limitações de informação e orientação.
+
+Facilitado por Ilsa Cá e Sá, o workshop abordou temas como a diferença entre vocação e influência social, oportunidades de bolsas de estudo, percursos académicos e profissionais disponíveis na Guiné-Bissau, bem como noções introdutórias de empreendedorismo. A sessão contou ainda com o testemunho de Tania Gomes, que partilhou a sua trajetória de sucesso construída integralmente na Guiné-Bissau, reforçando a mensagem de que não existe um único caminho para o sucesso e que a proatividade, a resiliência e o acesso à informação são elementos fundamentais para alcançar objetivos pessoais e profissionais.`
+
+export const textoWorkshopLiteraciaDigital = `O Workshop de Literacia Digital e Inteligência Artificial foi desenvolvido para sensibilizar jovens mulheres para a importância das competências digitais num mundo cada vez mais conectado e tecnológico. A iniciativa procurou desmistificar conceitos relacionados com a transformação digital e demonstrar como as ferramentas digitais podem ser usadas para aprendizagem, produtividade, empregabilidade e empreendedorismo.
+
+Facilitado pela Abiptom SARL, o workshop abordou temas como segurança digital, uso responsável da internet, oportunidades oferecidas pelas tecnologias digitais e introdução à inteligência artificial. Através de exemplos práticos e demonstrações, as participantes exploraram formas de usar ferramentas digitais e de inteligência artificial para apoiar os seus estudos, trabalho e desenvolvimento pessoal. A sessão reforçou a importância da literacia digital como uma competência essencial para a participação ativa na sociedade e para o acesso a novas oportunidades profissionais.`
+
+export const textoWorkshopInteligenciaEmocional = `O Workshop de Inteligência Emocional foi desenvolvido para apoiar jovens mulheres na compreensão e gestão das suas emoções, reconhecendo a importância da saúde mental e emocional para o bem-estar, desenvolvimento pessoal e sucesso profissional. A iniciativa procurou criar um espaço de reflexão e aprendizagem sobre a forma como as emoções influenciam os pensamentos, comportamentos e relações interpessoais.
+
+Facilitado por Elise Bidault, psicóloga clínica e psicoterapeuta, o workshop abordou os principais pilares da inteligência emocional: reconhecer emoções, compreender o seu impacto nas nossas ações e decisões, desenvolver estratégias para lidar com emoções difíceis e usar a inteligência emocional para melhorar a comunicação, gerir a ansiedade e resolver desafios pessoais e profissionais. Através de uma abordagem prática e participativa, as participantes foram incentivadas a desenvolver um maior autoconhecimento e ferramentas para promover o seu equilíbrio emocional e bem-estar.`
