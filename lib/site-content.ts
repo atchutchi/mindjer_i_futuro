@@ -43,9 +43,10 @@ export type TestemunhoFallback = {
 }
 
 export const heroSlideUrls = [
+  "/eventos/e08-2-conferencia-lideranca-feminina-2024/capa.png",
+  "/projectos/curso-habilidades-profissionais/galeria-1.png",
   "/projectos/brunch-angariacao/capa.png",
-  "/projectos/identidades-diasporicas/capa.png",
-  "/projectos/curso-habilidades-profissionais/capa.png",
+  "/projectos/podcast-mindjer-i-futuro/capa.png",
 ]
 
 export const impactoBgUrl = "/projectos/identidades-diasporicas/capa.png"
@@ -59,7 +60,7 @@ export const projectosFallback: ProjectoFallback[] = [
       "Competências profissionais, digitais e pessoais através de sessões práticas para jovens mulheres.",
     descricaoLonga: textoWorkshopsCapacitacao,
     destaque: true,
-    impacto: "20+ sessões realizadas",
+    impacto: "30+ actividades realizadas",
     imagemCapaUrl: "/projectos/curso-habilidades-profissionais/capa.png",
     galeriaUrls: [
       "/projectos/curso-habilidades-profissionais/galeria-1.png",
@@ -75,14 +76,14 @@ export const projectosFallback: ProjectoFallback[] = [
     descricaoLonga: textoConferenciaLiderancaFeminina,
     destaque: true,
     impacto: "4 edições · 297 participantes na edição de 2026",
-    imagemCapaUrl: "/eventos/e29-4-conferencia-lideranca-feminina-2026/capa.png",
+    imagemCapaUrl: "/eventos/e08-2-conferencia-lideranca-feminina-2024/capa.png",
   },
   {
     titulo: "Mulheres Guineenses e Identidades Diaspóricas",
     slug: "identidades-diasporicas",
-    categoria: "Cultura",
+    categoria: "Diálogos",
     descricaoBreve:
-      "Embaixada de França e CCFBG: identidade, pertença e diáspora guineense.",
+      "Diálogos e conversas temáticas sobre identidade, pertença e diáspora guineense.",
     descricaoLonga: textoIdentidadesDiasporicas,
     destaque: true,
     impacto: "Embaixada de França + CCFBG",
@@ -108,10 +109,10 @@ export const projectosFallback: ProjectoFallback[] = [
     slug: "programa-mentoria",
     categoria: "Mentoria",
     descricaoBreve:
-      "9 pares mentora/aprendiz ao longo de 7 meses para desenvolvimento pessoal e profissional.",
+      "9 pares no piloto e nova edição prevista para junho de 2026 na Embaixada de França.",
     descricaoLonga: textoProgramaMentoria,
     destaque: true,
-    impacto: "9 pares · 7 meses",
+    impacto: "9 pares · nova edição em junho de 2026",
     imagemCapaUrl: "/projectos/programa-mentoria/capa.png",
   },
   {
@@ -119,10 +120,10 @@ export const projectosFallback: ProjectoFallback[] = [
     slug: "brunch-angariacao",
     categoria: "Angariação",
     descricaoBreve:
-      "Parceria com o Restaurante Gã Melá: rede e financiamento da organização.",
+      "Dois brunches de angariação com o Restaurante Gã Melá para mobilizar recursos e rede.",
     descricaoLonga: textoBrunchAngariacao,
     destaque: true,
-    impacto: "Parceria Gã Melá",
+    impacto: "2 brunches · parceria Gã Melá",
     imagemCapaUrl: "/projectos/brunch-angariacao/capa.png",
     galeriaUrls: ["/projectos/brunch-angariacao/galeria-1.png"],
   },
@@ -131,10 +132,10 @@ export const projectosFallback: ProjectoFallback[] = [
     slug: "podcast-mindjer-i-futuro",
     categoria: "Podcast",
     descricaoBreve:
-      "Parceria iParticipate, mensal no YouTube: vozes de mulheres guineenses inspiradoras.",
+      "Parceria com iParticipate: conversas mensais no YouTube com mulheres guineenses.",
     descricaoLonga: textoPodcast,
     destaque: true,
-    impacto: "Mensal · YouTube",
+    impacto: "Parceiro iParticipate · mensal no YouTube",
     imagemCapaUrl: "/projectos/podcast-mindjer-i-futuro/capa.png",
   },
 ]
@@ -167,6 +168,126 @@ export const projectosDetalheFallback: ProjectoFallback[] = [
     impacto: "Escola Nacional de Administração",
     imagemCapaUrl: "/projectos/masterclass-falar-em-publico/capa.png",
     galeriaUrls: ["/projectos/masterclass-falar-em-publico/galeria-1.png"],
+  },
+]
+
+export type ActividadeRealizada = {
+  tema: string
+  edicoes: string
+  participantes: string
+  parceiros: string
+  descricao: string
+  imagemUrl: string
+}
+
+export const actividadesRealizadas: ActividadeRealizada[] = [
+  {
+    tema: "Saúde Sexual e Reprodutiva",
+    edicoes: "5 edições",
+    participantes: "200+ participantes",
+    parceiros: "CCFBG",
+    descricao:
+      "Sessões sobre saúde menstrual, métodos contracetivos, prevenção de infeções, planeamento familiar e direitos sexuais e reprodutivos.",
+    imagemUrl: "/eventos/e27-workshop-saude-sexual-2025-11/capa.png",
+  },
+  {
+    tema: "Falar em Público",
+    edicoes: "5 edições",
+    participantes: "160+ participantes",
+    parceiros: "CCFBG, ENA",
+    descricao:
+      "Formação prática em estrutura de discurso, linguagem corporal, gestão do nervosismo, liderança e comunicação segura.",
+    imagemUrl: "/eventos/e28-workshop-falar-em-publico-2026/capa.png",
+  },
+  {
+    tema: "Habilidades Profissionais",
+    edicoes: "5 edições",
+    participantes: "160+ participantes",
+    parceiros: "American Corner, Embaixada dos EUA",
+    descricao:
+      "Preparação para o mercado de trabalho com CV, cartas de apresentação, entrevistas, comunicação profissional e ferramentas digitais.",
+    imagemUrl: "/projectos/curso-habilidades-profissionais/capa.png",
+  },
+  {
+    tema: "Educação Financeira",
+    edicoes: "3 edições",
+    participantes: "150+ participantes",
+    parceiros: "Ecobank, CCFBG",
+    descricao:
+      "Literacia financeira com orçamento, gestão de despesas, poupança, reserva de emergência, dívidas e noções básicas de investimento.",
+    imagemUrl: "/eventos/e25-workshop-educacao-financeira-2025/capa.png",
+  },
+  {
+    tema: "Escolha de Carreira",
+    edicoes: "1 edição",
+    participantes: "50 participantes",
+    parceiros: "CCFBG",
+    descricao:
+      "Orientação sobre vocação, influência social, bolsas de estudo, percursos académicos, carreira e empreendedorismo.",
+    imagemUrl: "/eventos/e20-workshop-escolhendo-carreira-2024/capa.png",
+  },
+  {
+    tema: "Literacia Digital e IA",
+    edicoes: "5 edições",
+    participantes: "80+ participantes",
+    parceiros: "Abiptom, iParticipate, CCFBG",
+    descricao:
+      "Sessões sobre segurança digital, uso responsável da internet, competências digitais e introdução à inteligência artificial.",
+    imagemUrl: "/eventos/e26-workshop-literacia-digital-2025/capa.png",
+  },
+  {
+    tema: "Inteligência Emocional",
+    edicoes: "1 edição",
+    participantes: "100 participantes",
+    parceiros: "CCFBG",
+    descricao:
+      "Reflexão prática sobre reconhecimento emocional, ansiedade, comunicação e resolução de desafios pessoais e profissionais.",
+    imagemUrl: "/eventos/e23-workshop-inteligencia-emocional-2025/capa.png",
+  },
+  {
+    tema: "Conferência de Liderança Feminina",
+    edicoes: "4 edições",
+    participantes: "297 participantes na edição de 2026",
+    parceiros: "CCFBG, Rádio Jovem, No Kunsi Digital, Ecobank",
+    descricao:
+      "Encontro anual com painéis, testemunhos, sessões práticas e criação de redes entre mulheres, jovens, instituições e parceiros.",
+    imagemUrl: "/eventos/e08-2-conferencia-lideranca-feminina-2024/capa.png",
+  },
+  {
+    tema: "Programa de Mentoria",
+    edicoes: "2 edições",
+    participantes: "9 pares no piloto",
+    parceiros: "CCFBG, Embaixada de França",
+    descricao:
+      "Ligação entre mentoras e aprendizes para orientação pessoal e profissional, com nova edição prevista para junho de 2026.",
+    imagemUrl: "/projectos/programa-mentoria/capa.png",
+  },
+  {
+    tema: "Brunch & Angariação de Fundos",
+    edicoes: "2 brunches",
+    participantes: "Comunidade MiF e apoiantes",
+    parceiros: "Restaurante & Bar Gã Melá",
+    descricao:
+      "Momentos de encontro e angariação para apoiar workshops, mentoria, bolsas e outras actividades da organização.",
+    imagemUrl: "/projectos/brunch-angariacao/capa.png",
+  },
+  {
+    tema: "Diálogos e conversas temáticas",
+    edicoes: "2 encontros",
+    participantes: "90+ participantes",
+    parceiros: "CCFBG, Embaixada de França",
+    descricao:
+      "Conversas como Mulheres Guineenses e Identidades Diaspóricas e Nha Fala com Adama Djaló.",
+    imagemUrl: "/eventos/e21-coquetel-identidades-diasporicas-2025/capa.png",
+  },
+  {
+    tema: "Podcast Mindjer i Futuro",
+    edicoes: "Episódios mensais",
+    participantes: "Convidadas da rede MiF",
+    parceiros: "iParticipate, CCFBG",
+    descricao:
+      "Conversas abertas sobre percursos, trabalho, desafios, conquistas e liderança de mulheres guineenses.",
+    imagemUrl: "/projectos/podcast-mindjer-i-futuro/capa.png",
   },
 ]
 
@@ -232,14 +353,15 @@ export const projectosEstrutura: Record<string, ProjectoEstrutura> = {
     objectivo:
       "Criar um espaço anual de aprendizagem, debate e ligação entre mulheres guineenses e organizações parceiras.",
     actividades: [
-      "Painéis e conversas sobre liderança feminina",
-      "Testemunhos e partilha de percursos",
-      "Sessões práticas e momentos de networking",
+      "1.ª Conferência de Liderança Feminina",
+      "2.ª Conferência de Liderança Feminina",
+      "3.ª Conferência de Liderança Feminina",
+      "4.ª Conferência de Liderança Feminina",
     ],
     resultados: [
       "Quatro edições realizadas",
       "297 participantes na edição de 2026",
-      "Maior visibilidade para lideranças femininas guineenses",
+      "Painéis, testemunhos, sessões práticas e criação de redes",
     ],
   },
   "bolsas-lingua-francesa": {
@@ -249,17 +371,30 @@ export const projectosEstrutura: Record<string, ProjectoEstrutura> = {
   },
   "programa-mentoria": {
     objectivo: "Apoiar o desenvolvimento pessoal e profissional de jovens mulheres através de mentoria.",
-    actividades: ["Emparelhamento entre mentoras e aprendizes", "Encontros regulares", "Acompanhamento pela equipa MiF"],
-    resultados: ["9 pares de mentoria", "Sete meses de acompanhamento", "Maior clareza de objectivos e confiança"],
+    actividades: [
+      "Emparelhamento entre mentoras e aprendizes",
+      "Encontros regulares",
+      "Acompanhamento pela equipa MiF",
+      "Sessão de lançamento da nova edição em junho de 2026",
+    ],
+    resultados: [
+      "9 pares de mentoria no piloto",
+      "Sete meses de acompanhamento",
+      "Novo grupo previsto na Embaixada de França",
+    ],
   },
   "identidades-diasporicas": {
-    objectivo: "Criar pontes entre mulheres guineenses no país e na diáspora.",
-    actividades: ["Conversa aberta sobre identidade e pertença", "Partilha de experiências", "Criação de redes"],
-    resultados: ["Maior ligação entre diferentes percursos", "Novas oportunidades de colaboração", "Valorização das experiências da diáspora"],
+    objectivo: "Criar espaços de diálogo entre mulheres guineenses no país, na diáspora e na rede MiF.",
+    actividades: ["Identidades Diaspóricas", "Nha Fala com Adama Djaló", "Conversas temáticas e djumbais"],
+    resultados: [
+      "Maior ligação entre diferentes percursos",
+      "Novas oportunidades de colaboração",
+      "Valorização das experiências da diáspora e de histórias reais",
+    ],
   },
   "brunch-angariacao": {
     objectivo: "Mobilizar recursos e reforçar a rede de apoio às actividades da Mindjer i Futuro.",
-    actividades: ["Brunches de angariação", "Apresentação do trabalho da MiF", "Encontro entre apoiantes e parceiras"],
+    actividades: ["Dois brunches de angariação", "Apresentação do trabalho da MiF", "Encontro entre apoiantes e parceiras"],
     resultados: ["Apoio financeiro às actividades", "Maior visibilidade da organização", "Expansão da rede de apoio"],
   },
   "podcast-mindjer-i-futuro": {
@@ -294,14 +429,14 @@ export const equipaFallback: MembroFallback[] = [
   {
     nome: "Domingos Lourenço",
     cargo: "Assistente de Programas & Operações",
-    bio: "Especialista em redes, sistemas informáticos e suporte técnico, com experiência em administração de sistemas Windows e Linux, configuração de firewalls, montagem e manutenção de hardware e resolução de problemas de conectividade. Focado na otimização de processos tecnológicos e na segurança de dados, destaca-se também pelo seu espírito de equipa e atitude proativa, contribuindo ativamente para o bom funcionamento e a implementação das atividades e programação da associação.",
+    bio: "Especialista em redes, sistemas informáticos e suporte técnico, com experiência em administração de sistemas Windows e Linux, configuração de firewalls, montagem e manutenção de hardware e resolução de problemas de conectividade. Focado na optimização de processos tecnológicos e na segurança de dados, destaca-se também pelo seu espírito de equipa e atitude proactiva, contribuindo activamente para o bom funcionamento e a implementação das actividades e programação da associação.",
     ordem: 4,
     fotoUrl: "/equipa/domingos-lourenco.png",
   },
   {
     nome: "Aissatu Ly",
     cargo: "Assistente de Eventos & Logística",
-    bio: "Aissatu Ly é estudante finalista do curso de Gestão de Empresas na Universidade Católica da Guiné-Bissau e desempenha funções como secretária estagiária na empresa Darling Sarl. Desenvolve competências em organização administrativa e comunicação profissional. Integra a equipa da Mindjer i Futuro como Assistente de Eventos & Logística, contribuindo na organização e coordenação de atividades para o desenvolvimento de jovens mulheres. Acredita na educação, liderança jovem e networking como ferramentas de transformação social.",
+    bio: "Aissatu Ly é estudante finalista do curso de Gestão de Empresas na Universidade Católica da Guiné-Bissau e desempenha funções como secretária estagiária na empresa Darling Sarl. Desenvolve competências em organização administrativa e comunicação profissional. Integra a equipa da Mindjer i Futuro como Assistente de Eventos & Logística, contribuindo na organização e coordenação de actividades para o desenvolvimento de jovens mulheres. Acredita na educação, liderança jovem e networking como ferramentas de transformação social.",
     ordem: 5,
     fotoUrl: "/equipa/aissatu-ly.png",
   },
@@ -335,6 +470,7 @@ export const parceirosItems: ParceiroItem[] = [
     nome: "CCFBG",
     logoSrc: "/parceiros/centre_culturel_franco_bissau_guineen.svg",
   },
+  { nome: "Ecobank", logoSrc: "/parceiros/ecobank.png" },
   { nome: "Impact Hub Bissau", logoSrc: "/parceiros/impact_hub.svg" },
   { nome: "iParticipate", logoSrc: "/parceiros/iparticipate.svg" },
   { nome: "No Kunsi Digital", logoSrc: "/parceiros/no_kunsi_digital.svg" },

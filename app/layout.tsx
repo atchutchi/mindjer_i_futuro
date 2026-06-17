@@ -9,11 +9,11 @@ const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mindjerifuturo.org"
 export const metadata: Metadata = {
   metadataBase: new URL(site),
   title: {
-    default: "Mindjer i Futuro — Conferência de Liderança Feminina na Guiné-Bissau",
+    default: "Mindjer i Futuro | Elevando vozes, inspirando mudanças",
     template: "%s | Mindjer i Futuro",
   },
   description:
-    "Mindjer i Futuro é uma conferência sem fins lucrativos que capacita jovens mulheres guineenses através de workshops, mentoria, bolsas de estudo e eventos de liderança.",
+    "Mindjer i Futuro capacita jovens mulheres guineenses através de workshops, mentoria, bolsas, diálogos, podcast e eventos de liderança.",
   keywords: [
     "liderança feminina",
     "Guiné-Bissau",

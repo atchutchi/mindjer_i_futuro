@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button"
 export const metadata: Metadata = {
   title: "Sobre a organização",
   description:
-    "Mindjer i Futuro — Conferência de Liderança Feminina na Guiné-Bissau. Missão, valores e impacto.",
+    "Mindjer i Futuro. Missão, valores e impacto na capacitação de jovens mulheres guineenses.",
 }
 
 const valores = [
@@ -63,11 +63,11 @@ export default function SobrePage() {
           <p>
             A MiF cria oportunidades e fortalece capacidades, promovendo uma geração de mulheres
             confiantes, preparadas e protagonistas do seu próprio futuro. Através da educação, da
-            mentoria e da criação de redes — incluindo a diáspora — construímos pontes para um
+            mentoria e da criação de redes, incluindo a diáspora, construímos pontes para um
             amanhã mais justo, inclusivo e cheio de possibilidades.
           </p>
           <p>
-            Fundada em 2022, a associação desenvolve projectos de capacitação, mentoria,
+            Fundada em 2022, a associação desenvolve actividades de capacitação, mentoria,
             liderança e criação de redes para mulheres guineenses.
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function SobrePage() {
 
         {/* CTAs */}
         <div className="mt-20 flex flex-col gap-4 sm:flex-row">
-          <Button href="/projectos">Ver projectos</Button>
+          <Button href="/projectos">Ver actividades</Button>
           <Link
             href="/contacto"
             className="inline-flex items-center justify-center border border-[var(--color-borgonha)] px-9 py-3.5 text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[var(--color-borgonha)] transition-colors hover:bg-[var(--color-borgonha)] hover:text-[var(--color-branco)] md:cursor-none"

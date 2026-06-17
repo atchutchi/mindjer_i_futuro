@@ -6,7 +6,7 @@ import { contactSchema } from "@/lib/validations/contact"
 export const runtime = "nodejs"
 
 const motivoLabels: Record<string, string> = {
-  participacao: "Participação em atividades",
+  participacao: "Participação em actividades",
   parcerias: "Parcerias",
   voluntariado: "Voluntariado",
   mentoria: "Mentoria",
@@ -53,7 +53,7 @@ export const POST = async (req: Request) => {
   const from = process.env.RESEND_FROM ?? "Mindjer i Futuro <onboarding@resend.dev>"
 
   const html = `
-    <h2>Novo contacto — Mindjer i Futuro</h2>
+    <h2>Novo contacto: Mindjer i Futuro</h2>
     <p><strong>Nome:</strong> ${escapeHtml(d.name)}</p>
     <p><strong>Email:</strong> ${escapeHtml(d.email)}</p>
     ${d.phone ? `<p><strong>Telefone:</strong> ${escapeHtml(d.phone)}</p>` : ""}

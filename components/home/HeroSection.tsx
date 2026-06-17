@@ -20,7 +20,7 @@ type Props = {
 const HeroSection = ({
   eyebrow = "",
   titulo = "Mindjer i Futuro",
-  subtitulo = "Conferência de Liderança Feminina",
+  subtitulo = "Elevando vozes, inspirando mudanças!",
   slideUrls = heroSlideUrls,
 }: Props) => {
   const rootRef = useRef<HTMLElement>(null)
@@ -105,7 +105,7 @@ const HeroSection = ({
           />
         ))}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[var(--color-creme)]/15 via-[var(--color-borgonha)]/35 to-[var(--color-borgonha-escuro)]/95"
+          className="absolute inset-0 bg-gradient-to-b from-[var(--color-creme)]/10 via-[var(--color-borgonha)]/24 to-[var(--color-borgonha)]/72"
           aria-hidden
         />
       </div>

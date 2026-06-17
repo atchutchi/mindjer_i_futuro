@@ -1,115 +1,20 @@
 import type { Metadata } from "next"
+import { programacao2026, type Programacao2026Item } from "@/lib/programacao-2026"
 
 export const metadata: Metadata = {
   title: "Programação 2026",
   description:
-    "Programação anual da Mindjer i Futuro 2026 — workshops, diálogos e conferências para mulheres na Guiné-Bissau.",
+    "Programação anual da Mindjer i Futuro 2026, com workshops, diálogos e conferências para mulheres na Guiné-Bissau.",
 }
 
-type Evento = {
-  dia: string
-  mes: string
-  tipo: "Workshop" | "Conferência" | "Diálogo"
-  titulo: string
-  facilitador: string
-  capacidade?: number
-}
-
-const programacao: Evento[] = [
-  {
-    dia: "21",
-    mes: "fev",
-    tipo: "Workshop",
-    titulo: "Falar em Público",
-    facilitador: "Né Vaz",
-    capacidade: 30,
-  },
-  {
-    dia: "07",
-    mes: "mar",
-    tipo: "Conferência",
-    titulo: "4ª Conferência de Liderança Feminina",
-    facilitador: "",
-  },
-  {
-    dia: "18",
-    mes: "abr",
-    tipo: "Workshop",
-    titulo: "Educação Financeira",
-    facilitador: "Noella Bangura",
-    capacidade: 30,
-  },
-  {
-    dia: "16",
-    mes: "mai",
-    tipo: "Diálogo",
-    titulo: "Saúde Sexual & Reprodutiva",
-    facilitador: "Maria Mendes",
-    capacidade: 30,
-  },
-  {
-    dia: "20",
-    mes: "jun",
-    tipo: "Workshop",
-    titulo: "Empreendedorismo",
-    facilitador: "Ismael Pereira",
-    capacidade: 30,
-  },
-  {
-    dia: "18",
-    mes: "jul",
-    tipo: "Diálogo",
-    titulo: "Inteligência Emocional",
-    facilitador: "por confirmar",
-    capacidade: 30,
-  },
-  {
-    dia: "15",
-    mes: "ago",
-    tipo: "Workshop",
-    titulo: "Literacia Digital",
-    facilitador: "Abiptom Sarl.",
-    capacidade: 30,
-  },
-  {
-    dia: "19",
-    mes: "set",
-    tipo: "Workshop",
-    titulo: "Falar em Público",
-    facilitador: "Né Vaz",
-    capacidade: 30,
-  },
-  {
-    dia: "17",
-    mes: "out",
-    tipo: "Workshop",
-    titulo: "Liderança Feminina",
-    facilitador: "Lamine Sonco",
-    capacidade: 30,
-  },
-  {
-    dia: "",
-    mes: "nov",
-    tipo: "Diálogo",
-    titulo: "Direito das Meninas & Mulheres",
-    facilitador: "por confirmar",
-    capacidade: 30,
-  },
-  {
-    dia: "19",
-    mes: "dec",
-    tipo: "Workshop",
-    titulo: "Habilidades Profissionais",
-    facilitador: "Ana Djú",
-    capacidade: 30,
-  },
-]
-
-const tipoCor: Record<Evento["tipo"], string> = {
+const tipoCor: Record<Programacao2026Item["tipo"], string> = {
   Workshop: "text-[var(--color-borgonha)]",
   Conferência: "text-[var(--color-borgonha-claro)]",
   Diálogo: "text-[var(--color-borgonha)]",
 }
+
+const formatMes = (value: string) =>
+  new Date(value).toLocaleDateString("pt-PT", { month: "short" }).replace(".", "")
 
 export default function ProgramacaoPage() {
   return (
@@ -127,24 +32,22 @@ export default function ProgramacaoPage() {
 
         {/* Timeline */}
         <div className="space-y-0">
-          {programacao.map((ev, i) => (
+          {programacao2026.map((ev, i) => (
             <div
-              key={`${ev.mes}-${ev.titulo}`}
+              key={`${ev.data}-${ev.titulo}`}
               className={`flex items-start gap-5 py-6 md:gap-8 ${
-                i < programacao.length - 1
+                i < programacao2026.length - 1
                   ? "border-b border-[var(--color-borgonha)]/10"
                   : ""
               }`}
             >
               {/* Date box */}
               <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-sm bg-[var(--color-borgonha)] text-[var(--color-branco)] md:h-20 md:w-20">
-                {ev.dia && (
-                  <span className="text-lg font-semibold leading-tight md:text-xl">
-                    {ev.dia}
-                  </span>
-                )}
+                <span className={`${ev.dia ? "text-lg md:text-xl" : "text-[0.62rem] md:text-xs"} font-semibold leading-tight`}>
+                  {ev.dia ?? "A definir"}
+                </span>
                 <span className="text-xs font-light uppercase tracking-wider md:text-sm">
-                  {ev.mes}
+                  {formatMes(ev.data)}
                 </span>
               </div>
 
@@ -168,7 +71,7 @@ export default function ProgramacaoPage() {
 
         {/* Location note */}
         <p className="mt-12 text-center text-sm font-light italic text-[var(--color-preto)]/60">
-          Todas as atividades serão no Centro Cultural Francês.
+          Todas as actividades serão no Centro Cultural Francês.
         </p>
       </div>
     </div>

@@ -87,7 +87,7 @@ test.describe("Auditoria do site", () => {
     await expect(page.getByText("Guiné-Bissau · Desde 2022")).toHaveCount(0)
   })
 
-  test("Home — projectos têm títulos sempre expostos e não carrega canvas 3D", async ({ page }) => {
+  test("Home — actividades têm títulos sempre expostos e não carrega canvas 3D", async ({ page }) => {
     await page.goto("/")
 
     const copy = page.getByTestId("project-card-copy")
@@ -96,12 +96,14 @@ test.describe("Auditoria do site", () => {
     await expect(page.locator("canvas")).toHaveCount(0)
   })
 
-  test("Agenda — apresenta somente actividades futuras", async ({ page }) => {
+  test("Agenda — apresenta programação completa de 2026", async ({ page }) => {
     await page.goto("/calendario")
 
     await expect(page.getByRole("heading", { level: 1, name: "Agenda" })).toBeVisible()
-    await expect(page.getByText("Passado", { exact: true })).toHaveCount(0)
-    await expect(page.getByText("Novas actividades serão publicadas em breve.")).toBeVisible()
+    await expect(page.getByRole("heading", { level: 2, name: "Agenda completa" })).toBeVisible()
+    await expect(page.getByRole("cell", { name: "Falar em Público" }).first()).toBeVisible()
+    await expect(page.getByRole("cell", { name: "Habilidades Profissionais" })).toBeVisible()
+    await expect(page.getByText("Passado", { exact: true }).first()).toBeVisible()
   })
 
   test("Rodapé — inclui Facebook e não expõe Eventos ou Blog", async ({ page }) => {
@@ -136,14 +138,14 @@ test.describe("Auditoria do site", () => {
     await page.goto("/parceiros")
 
     const logos = page.getByTestId("partner-logo")
-    await expect(logos).toHaveCount(8)
+    await expect(logos).toHaveCount(9)
 
     const firstLogoClass = await logos.first().getAttribute("class")
     expect(firstLogoClass).not.toContain("brightness-0")
     expect(firstLogoClass).not.toContain("invert")
   })
 
-  test("Superfícies — creme uniforme e preto exclusivo do rodapé", async ({ page }) => {
+  test("Superfícies — creme uniforme e sem fundos pretos", async ({ page }) => {
     const creme = "rgb(245, 237, 224)"
     const preto = "rgb(10, 8, 8)"
 
@@ -152,32 +154,30 @@ test.describe("Auditoria do site", () => {
     await expect(page.locator("body")).toHaveCSS("background-color", creme)
     await expect(page.locator("#manifesto")).toHaveCSS("background-color", creme)
 
-    for (const heading of ["Projectos", "Equipa", "Parceiros", "Faz parte da mudança"]) {
+    for (const heading of ["Actividades realizadas", "Equipa", "Parceiros", "Faz parte da mudança"]) {
       const section = page.locator("section").filter({
         has: page.getByRole("heading", { level: 2, name: heading }),
       })
       await expect(section).toHaveCSS("background-color", creme)
     }
 
-    await expect(page.getByRole("contentinfo")).toHaveCSS("background-color", preto)
-    const blackOnHomeOutsideFooter = await page.evaluate((black) => {
+    await expect(page.getByRole("contentinfo")).not.toHaveCSS("background-color", preto)
+    const blackOnHome = await page.evaluate((black) => {
       return Array.from(document.querySelectorAll("body *")).filter((element) => {
-        if (element.closest("footer")) return false
         return getComputedStyle(element).backgroundColor === black
       }).length
     }, preto)
-    expect(blackOnHomeOutsideFooter).toBe(0)
+    expect(blackOnHome).toBe(0)
 
     for (const path of ["/projectos", "/equipa", "/parceiros"]) {
       await page.goto(path)
       await expect(page.locator("body")).toHaveCSS("background-color", creme)
-      const blackOutsideFooter = await page.evaluate((black) => {
+      const blackSurfaces = await page.evaluate((black) => {
         return Array.from(document.querySelectorAll("body *")).filter((element) => {
-          if (element.closest("footer")) return false
           return getComputedStyle(element).backgroundColor === black
         }).length
       }, preto)
-      expect(blackOutsideFooter).toBe(0)
+      expect(blackSurfaces).toBe(0)
     }
   })
 })

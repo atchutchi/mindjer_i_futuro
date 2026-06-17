@@ -5,7 +5,7 @@ const jsonLd = {
   "@type": "NGO",
   name: "Mindjer i Futuro",
   description:
-    "Conferência sem fins lucrativos de liderança feminina na Guiné-Bissau. Workshops, mentoria, bolsas de estudo e eventos que capacitam jovens mulheres guineenses.",
+    "Organização sem fins lucrativos na Guiné-Bissau. Workshops, mentoria, bolsas, diálogos, podcast e eventos que capacitam jovens mulheres guineenses.",
   url: siteUrl,
   logo: `${siteUrl}/mindjer_i_futuro_logo.svg`,
   address: {

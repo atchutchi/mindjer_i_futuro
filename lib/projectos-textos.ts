@@ -14,7 +14,7 @@ Ao longo da masterclass, foi dada especial atenção ao fortalecimento da autoco
 
 A iniciativa contou com uma forte adesão e participação ativa, com as participantes a demonstrarem melhorias visíveis na forma como se expressam e apresentam as suas ideias. Os resultados evidenciaram um aumento da confiança, da clareza na comunicação e da capacidade de intervenção em contextos públicos e profissionais.`
 
-export const textoWorkshopsCapacitacao = `Os workshops e programas de capacitação da Mindjer i Futuro respondem às necessidades práticas de jovens mulheres em diferentes fases do seu percurso pessoal, académico e profissional. Cada atividade combina conhecimento aplicado, exercícios e partilha de experiências.
+export const textoWorkshopsCapacitacao = `Os workshops e programas de capacitação da Mindjer i Futuro respondem às necessidades práticas de jovens mulheres em diferentes fases do seu percurso pessoal, académico e profissional. Cada actividade combina conhecimento aplicado, exercícios e partilha de experiências.
 
 Saúde Sexual e Reprodutiva: o workshop já vai na sua 5.ª edição e alcançou mais de 200 participantes. Facilitado pela enfermeira Maria Mendes, aborda saúde menstrual, métodos contracetivos, prevenção de infeções sexualmente transmissíveis, planeamento familiar e direitos sexuais e reprodutivos.
 
@@ -64,13 +64,13 @@ Ao longo do ciclo de mentoria, as participantes foram incentivadas a desenvolver
 
 Na sua fase piloto, o programa contou com 9 pares de mentoras e aprendizes que participaram ao longo de 7 meses, promovendo encontros regulares e construindo relações de apoio mútuo. Os testemunhos recolhidos evidenciaram um impacto claro ao nível da confiança, clareza de objetivos e desenvolvimento pessoal das participantes, reforçando a importância de redes de apoio entre mulheres.`
 
-export const textoBrunchAngariacao = `Os Brunches de Angariação de Fundos foram iniciativas organizadas pela Mindjer i Futuro, em parceria com o Restaurante & Bar Gã Melá, com o objetivo de mobilizar recursos para apoiar as suas atividades e projetos de capacitação de jovens mulheres. Para além da vertente de angariação, estes momentos funcionaram também como espaços de encontro, partilha e fortalecimento da rede da organização.
+export const textoBrunchAngariacao = `Os Brunches de Angariação de Fundos foram iniciativas organizadas pela Mindjer i Futuro, em parceria com o Restaurante & Bar Gã Melá, com o objetivo de mobilizar recursos para apoiar as suas actividades e projectos de capacitação de jovens mulheres. Para além da vertente de angariação, estes momentos funcionaram também como espaços de encontro, partilha e fortalecimento da rede da organização.
 
 Os brunches reuniram mulheres de diferentes áreas, profissionais, empreendedoras e apoiantes da causa, num ambiente informal que incentivou a troca de experiências e a criação de novas ligações. Através destes encontros, foi possível sensibilizar a comunidade para o trabalho da Mindjer i Futuro e envolver mais pessoas na sua missão.
 
 Cada evento foi pensado para criar um equilíbrio entre convivência e propósito, promovendo conversas significativas e oportunidades de colaboração. Estes momentos contribuíram para reforçar o sentido de comunidade e pertença entre as participantes.
 
-Os brunches permitiram mobilizar apoios importantes para as atividades da organização, contribuindo diretamente para a realização de iniciativas como workshops, programas de mentoria e bolsas de estudo. Para além do impacto financeiro, reforçaram a visibilidade da Mindjer i Futuro e expandiram a sua rede de apoio.`
+Os brunches permitiram mobilizar apoios importantes para as actividades da organização, contribuindo diretamente para a realização de iniciativas como workshops, programas de mentoria e bolsas de estudo. Para além do impacto financeiro, reforçaram a visibilidade da Mindjer i Futuro e expandiram a sua rede de apoio.`
 
 export const textoPodcast = `O Podcast Mindjer i Futuro é uma iniciativa criada para dar voz a mulheres guineenses com percursos inspiradores, promovendo conversas abertas sobre trabalho, desafios e conquistas. Desenvolvido em parceria com o iParticipate, o podcast cria um espaço contínuo de partilha e aprendizagem.
 
@@ -104,7 +104,7 @@ Facilitado por Noella Bangura, o workshop aborda temas como elaboração de orç
 
 export const textoWorkshopEscolhendoCarreira = `O Workshop «Como Escolher uma Carreira» foi desenvolvido para apoiar jovens mulheres no processo de tomada de decisões sobre o seu futuro académico e profissional. A iniciativa procurou responder a dúvidas frequentes relacionadas com vocação, escolhas de carreira e acesso a oportunidades, num contexto em que muitos jovens enfrentam limitações de informação e orientação.
 
-Facilitado por Ilsa Cá e Sá, o workshop abordou temas como a diferença entre vocação e influência social, oportunidades de bolsas de estudo, percursos académicos e profissionais disponíveis na Guiné-Bissau, bem como noções introdutórias de empreendedorismo. A sessão contou ainda com o testemunho de Tania Gomes, que partilhou a sua trajetória de sucesso construída integralmente na Guiné-Bissau, reforçando a mensagem de que não existe um único caminho para o sucesso e que a proatividade, a resiliência e o acesso à informação são elementos fundamentais para alcançar objetivos pessoais e profissionais.`
+Facilitado por Ilsa Cá e Sá, o workshop abordou temas como a diferença entre vocação e influência social, oportunidades de bolsas de estudo, percursos académicos e profissionais disponíveis na Guiné-Bissau, bem como noções introdutórias de empreendedorismo. A sessão contou ainda com o testemunho de Tania Gomes, que partilhou a sua trajetória de sucesso construída integralmente na Guiné-Bissau, reforçando a mensagem de que não existe um único caminho para o sucesso e que a proactividade, a resiliência e o acesso à informação são elementos fundamentais para alcançar objectivos pessoais e profissionais.`
 
 export const textoWorkshopLiteraciaDigital = `O Workshop de Literacia Digital e Inteligência Artificial foi desenvolvido para sensibilizar jovens mulheres para a importância das competências digitais num mundo cada vez mais conectado e tecnológico. A iniciativa procurou desmistificar conceitos relacionados com a transformação digital e demonstrar como as ferramentas digitais podem ser usadas para aprendizagem, produtividade, empregabilidade e empreendedorismo.
 

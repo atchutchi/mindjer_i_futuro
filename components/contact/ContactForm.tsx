@@ -8,7 +8,7 @@ import { contactSchema, type ContactInput } from "@/lib/validations/contact"
 import { cn } from "@/lib/utils"
 
 const motivoOptions: { value: ContactInput["reason"]; label: string }[] = [
-  { value: "participacao", label: "Participação em atividades" },
+  { value: "participacao", label: "Participação em actividades" },
   { value: "parcerias", label: "Parcerias" },
   { value: "voluntariado", label: "Voluntariado" },
   { value: "mentoria", label: "Mentoria" },

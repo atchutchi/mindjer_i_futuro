@@ -156,15 +156,24 @@ const buildTestemunho = (raw: SanityTestemunho | null) => {
   return testemunhoFallback
 }
 
-const buildHero = (raw: SanitySiteConfig | null) => ({
-  eyebrow: raw?.heroEyebrow?.includes("2022") ? undefined : raw?.heroEyebrow,
-  titulo: raw?.heroTitulo,
-  subtitulo: raw?.heroSubtitulo,
-  slideUrls:
-    raw?.heroImagens
-      ?.map((img) => urlForImage(img)?.width(1920).height(1080).url())
-      .filter((url): url is string => Boolean(url)) ?? undefined,
-})
+const heroSlogan = "Elevando vozes, inspirando mudanças!"
+
+const buildHero = (raw: SanitySiteConfig | null) => {
+  const subtitulo =
+    raw?.heroSubtitulo?.trim().toLowerCase() === "conferência de liderança feminina"
+      ? heroSlogan
+      : raw?.heroSubtitulo
+
+  return {
+    eyebrow: raw?.heroEyebrow?.includes("2022") ? undefined : raw?.heroEyebrow,
+    titulo: raw?.heroTitulo,
+    subtitulo,
+    slideUrls:
+      raw?.heroImagens
+        ?.map((img) => urlForImage(img)?.width(1920).height(1080).url())
+        .filter((url): url is string => Boolean(url)) ?? undefined,
+  }
+}
 
 export default async function HomePage() {
   const [rawConfig, rawP, rawE, rawEq, rawT] = await Promise.all([

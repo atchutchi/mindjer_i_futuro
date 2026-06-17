@@ -3,7 +3,7 @@ import ContactForm from "@/components/contact/ContactForm"
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Envia uma mensagem à equipa Mindjer i Futuro — parcerias, voluntariado, media e mais.",
+  description: "Envia uma mensagem à equipa Mindjer i Futuro para parcerias, voluntariado, media e mais.",
 }
 
 export default function ContactoPage() {

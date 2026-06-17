@@ -5,12 +5,12 @@ import { useGSAP } from "@gsap/react"
 import { gsap, ScrollTrigger } from "@/lib/gsapConfig"
 
 const quote =
-  "Mindjer i Futuro é um espaço criado por mulheres, para mulheres — onde histórias se tornam força, e força se torna mudança."
+  "Mindjer i Futuro é um espaço criado por mulheres, para mulheres, onde histórias se tornam força e força se torna mudança."
 
 const stats = [
-  { value: 7, suffix: "+", label: "Projectos realizados" },
-  { value: 200, suffix: "+", label: "Mulheres impactadas" },
-  { value: 10, suffix: "+", label: "Parceiros estratégicos" },
+  { value: 30, suffix: "+", label: "Actividades realizadas" },
+  { value: 4000, suffix: "+", label: "Mulheres impactadas" },
+  { value: 10, suffix: "+", label: "Parcerias" },
   { value: 3, suffix: "+", label: "Anos de impacto" },
 ]
 

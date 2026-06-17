@@ -164,7 +164,7 @@ export default async function ProjectoDetalhePage({ params }: Props) {
               <div key={src} className="relative aspect-square overflow-hidden bg-[var(--color-creme-escuro)]">
                 <Image
                   src={src}
-                  alt={`${titulo} — fotografia ${i + 1}`}
+                  alt={`${titulo}, fotografia ${i + 1}`}
                   fill
                   className="object-cover"
                   sizes="(max-width:768px) 50vw, 33vw"

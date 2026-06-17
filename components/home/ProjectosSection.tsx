@@ -13,13 +13,15 @@ const ProjectosSection = ({ projectos }: Props) => (
       <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-label mb-3 text-[var(--color-ouro-escuro)]">Impacto</p>
-          <h2 className="font-cormorant text-section-title text-[var(--color-borgonha)]">Projectos</h2>
+          <h2 className="font-cormorant text-section-title text-[var(--color-borgonha)]">
+            Actividades realizadas
+          </h2>
         </div>
         <Link
           href="/projectos"
           className="group relative inline-flex w-fit text-sm font-medium uppercase tracking-widest text-[var(--color-borgonha)] md:cursor-none"
         >
-          Ver todos os projectos
+          Ver todas as actividades
           <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
           <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--color-borgonha)] transition-all duration-300 group-hover:w-full" />
         </Link>

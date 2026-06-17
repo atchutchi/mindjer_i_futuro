@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { CalendarPlus, Clock, MapPin } from "lucide-react"
 import { fetchEventos } from "@/lib/sanity.fetch"
+import { programacao2026, type Programacao2026Item } from "@/lib/programacao-2026"
 import { eventosFallbackOrdenados } from "@/lib/site-content"
 
 const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mindjerifuturo.org"
@@ -113,6 +114,18 @@ const monthKey = (value: string) =>
     year: "numeric",
   })
 
+const formatProgramacaoDate = (evento: Programacao2026Item) => {
+  const date = new Date(evento.data)
+  const monthYear = date.toLocaleDateString("pt-PT", {
+    month: "long",
+    year: "numeric",
+  })
+  return evento.dia ? `${evento.dia} de ${monthYear}` : monthYear
+}
+
+const getProgramacaoStatus = (value: string) =>
+  new Date(value).getTime() < Date.now() ? "Passado" : "Próximo"
+
 export default async function CalendarioPage() {
   const raw = await fetchEventos()
   const eventos = buildEventos(raw as SanityEvento[] | null)
@@ -130,11 +143,51 @@ export default async function CalendarioPage() {
           Agenda
         </h1>
         <p className="mx-auto mb-16 max-w-2xl text-center text-lg font-light text-[var(--color-preto)]/75">
-          Workshops, conferências e diálogos futuros organizados pela Mindjer i Futuro.
+          Workshops, conferências e diálogos de 2026 organizados pela Mindjer i Futuro.
         </p>
+
+        <section className="mb-20">
+          <p className="text-label mb-3 text-[var(--color-ouro-escuro)]">Programação 2026</p>
+          <h2 className="font-cormorant mb-6 text-4xl font-semibold text-[var(--color-borgonha)]">
+            Agenda completa
+          </h2>
+          <div className="overflow-x-auto border border-[var(--color-borgonha)]/15 bg-white/45">
+            <table className="min-w-[760px] w-full border-collapse text-left">
+              <thead className="border-b border-[var(--color-borgonha)]/15 text-xs uppercase tracking-widest text-[var(--color-borgonha)]">
+                <tr>
+                  <th className="px-5 py-4 font-medium">Data</th>
+                  <th className="px-5 py-4 font-medium">Tipo</th>
+                  <th className="px-5 py-4 font-medium">Actividade</th>
+                  <th className="px-5 py-4 font-medium">Facilitação</th>
+                  <th className="px-5 py-4 font-medium">Capacidade</th>
+                  <th className="px-5 py-4 font-medium">Estado</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--color-borgonha)]/12 text-sm text-[var(--color-preto)]/78">
+                {programacao2026.map((evento) => (
+                  <tr key={`${evento.data}-${evento.titulo}`}>
+                    <td className="px-5 py-4 font-light capitalize">{formatProgramacaoDate(evento)}</td>
+                    <td className="px-5 py-4 font-light">{evento.tipo}</td>
+                    <td className="px-5 py-4 font-medium text-[var(--color-borgonha)]">{evento.titulo}</td>
+                    <td className="px-5 py-4 font-light">{evento.facilitador}</td>
+                    <td className="px-5 py-4 font-light">
+                      {evento.capacidade ? `${evento.capacidade} pessoas` : "A definir"}
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className="text-label border border-[var(--color-borgonha)]/25 px-3 py-1 text-[var(--color-borgonha)]">
+                        {getProgramacaoStatus(evento.data)}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         {Object.keys(grupos).length ? (
           <div className="space-y-14">
+            <p className="text-label text-[var(--color-ouro-escuro)]">Próximas em destaque</p>
             {Object.entries(grupos).map(([mes, items]) => (
             <section key={mes} aria-labelledby={`mes-${mes.replace(/\s+/g, "-")}`}>
               <h2
@@ -211,17 +264,7 @@ export default async function CalendarioPage() {
             </section>
             ))}
           </div>
-        ) : (
-          <div className="border border-[var(--color-borgonha)]/20 bg-white/45 px-6 py-14 text-center">
-            <p className="font-cormorant text-3xl text-[var(--color-borgonha)]">
-              Novas actividades serão publicadas em breve.
-            </p>
-            <p className="mx-auto mt-3 max-w-xl text-sm font-light leading-relaxed text-[var(--color-preto)]/70">
-              A equipa está a preparar a próxima programação. Segue as redes sociais da Mindjer i Futuro para
-              receber as novidades.
-            </p>
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   )
