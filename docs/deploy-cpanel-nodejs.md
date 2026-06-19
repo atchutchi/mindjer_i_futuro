@@ -49,6 +49,10 @@ No painel Sanity:
 
 O site lê dados públicos com CDN. Não há token Sanity no frontend. Não coloques `SANITY_API_TOKEN` no cPanel para este site, porque o código actual não precisa dele.
 
+## Nota sobre build no cPanel
+
+O script `build:cpanel` usa `next build --webpack`. Em alojamentos CloudLinux, a build Turbopack do Next.js 16 tende a consumir mais memória WebAssembly e pode falhar com limite de 4 GB. Webpack é mais adequado para este cPanel.
+
 ## Build local
 
 Antes de enviar para o servidor:
