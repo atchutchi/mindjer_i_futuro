@@ -53,6 +53,14 @@ O site lê dados públicos com CDN. Não há token Sanity no frontend. Não colo
 
 O script `build:cpanel` usa `next build --webpack` e força o SWC nativo em Linux x64. Em alojamentos CloudLinux, a build com WebAssembly do Next.js 16 pode falhar com limite de 4 GB. Webpack com SWC nativo é mais adequado para este cPanel.
 
+Se a build no cPanel continuar a falhar por limite de memória, gera a build localmente, cria um ZIP da pasta `.next/standalone` e carrega `mindjer_i_futuro-standalone.zip` para o root da app no cPanel. Depois, no cPanel, corre:
+
+```bash
+npm run deploy:unpack
+```
+
+O script extrai o pacote para `.next/standalone` e valida que `.next/standalone/server.js` existe. Para outro nome de ficheiro, define `DEPLOY_ARCHIVE`.
+
 ## Build local
 
 Antes de enviar para o servidor:
@@ -96,8 +104,14 @@ npm ci
 npm run build:cpanel
 ```
 
-6. No cPanel, reiniciar a aplicação.
-7. Abrir o domínio e testar páginas e formulário.
+6. Se a build falhar por limite de memória, correr:
+
+```bash
+npm run deploy:unpack
+```
+
+7. No cPanel, reiniciar a aplicação.
+8. Abrir o domínio e testar páginas e formulário.
 
 ## Deploy com build feito localmente
 
