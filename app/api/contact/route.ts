@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { escapeHtml } from "@/lib/escape-html"
 import { rateLimit, requestIp } from "@/lib/rate-limit"
+import { readJsonBody } from "@/lib/request-json"
 import { contactSchema } from "@/lib/validations/contact"
 
 export const runtime = "nodejs"
@@ -21,24 +23,12 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ error: "Muitas tentativas. Tenta mais tarde." }, { status: 429 })
   }
 
-  const key = process.env.RESEND_API_KEY
-  const to = process.env.CONTACT_EMAIL ?? "ferreira.atchutchi@gmail.com"
-
-  if (!key) {
-    return NextResponse.json(
-      { error: "Serviço de email não configurado." },
-      { status: 503 },
-    )
+  const body = await readJsonBody(req)
+  if (!body.ok) {
+    return NextResponse.json({ error: body.message }, { status: body.status })
   }
 
-  let body: unknown
-  try {
-    body = await req.json()
-  } catch {
-    return NextResponse.json({ error: "JSON inválido." }, { status: 400 })
-  }
-
-  const parsed = contactSchema.safeParse(body)
+  const parsed = contactSchema.safeParse(body.data)
   if (!parsed.success) {
     const msg = parsed.error.flatten().fieldErrors
     return NextResponse.json({ error: "Validação falhou.", fields: msg }, { status: 400 })
@@ -49,8 +39,18 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ ok: true })
   }
 
+  const key = process.env.RESEND_API_KEY
+  const to = process.env.CONTACT_EMAIL ?? "info@mindjerifuturo.org"
+
+  if (!key) {
+    return NextResponse.json(
+      { error: "Serviço de email não configurado." },
+      { status: 503 },
+    )
+  }
+
   const resend = new Resend(key)
-  const from = process.env.RESEND_FROM ?? "Mindjer i Futuro <onboarding@resend.dev>"
+  const from = process.env.RESEND_FROM ?? "Mindjer i Futuro <info@mindjerifuturo.org>"
 
   const html = `
     <h2>Novo contacto: Mindjer i Futuro</h2>
@@ -77,10 +77,3 @@ export const POST = async (req: Request) => {
 
   return NextResponse.json({ ok: true })
 }
-
-const escapeHtml = (s: string) =>
-  s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
