@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "build:cpanel": "next build --webpack && rm -rf .next/standalone/public .next/standalone/.next/static && mkdir -p .next/standalone/.next && cp -R public .next/standalone/public && cp -R .next/static .next/standalone/.next/static",
+    "build:cpanel": "node scripts/ensure-next-swc-native.mjs && NEXT_DISABLE_SWC_WASM=1 next build --webpack && rm -rf .next/standalone/public .next/standalone/.next/static && mkdir -p .next/standalone/.next && cp -R public .next/standalone/public && cp -R .next/static .next/standalone/.next/static",
     "start": "next start",
     "start:cpanel": "node .next/standalone/server.js",
     "lint": "eslint",

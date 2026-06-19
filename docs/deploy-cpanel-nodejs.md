@@ -51,7 +51,7 @@ O site lê dados públicos com CDN. Não há token Sanity no frontend. Não colo
 
 ## Nota sobre build no cPanel
 
-O script `build:cpanel` usa `next build --webpack`. Em alojamentos CloudLinux, a build Turbopack do Next.js 16 tende a consumir mais memória WebAssembly e pode falhar com limite de 4 GB. Webpack é mais adequado para este cPanel.
+O script `build:cpanel` usa `next build --webpack` e força o SWC nativo em Linux x64. Em alojamentos CloudLinux, a build com WebAssembly do Next.js 16 pode falhar com limite de 4 GB. Webpack com SWC nativo é mais adequado para este cPanel.
 
 ## Build local
 
